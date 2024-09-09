@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address', 100);
             $table->string('tax_code', 16)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password', 50);
+            $table->string('password', 255);
             $table->rememberToken();
             $table->timestamps();
         });
