@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRestaurantRequest;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +33,9 @@ class RestaurantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRestaurantRequest $request)
     {
-        // $data = $request->validate();
+        $data = $request->validated();
         $data = $request->all();
 
         // visualizzo utente corrente
