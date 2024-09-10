@@ -13,8 +13,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        {{ __('You are logged in!') }}
+                        {{ ucfirst(Auth::user()->name) }}
+                        {{ __('sei autenticato!') }}
                     </div>
                 </div>
             </div>
