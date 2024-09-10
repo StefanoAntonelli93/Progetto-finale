@@ -84,7 +84,7 @@ class RestaurantSeeder extends Seeder
 
 
         ];
-        $numRecords = 10;
+        $numRecords = 5;
 
         for ($i = 0; $i < $numRecords; $i++) {
             $new_restaurant = new Restaurant();
