@@ -37,7 +37,7 @@ class RestaurantSeeder extends Seeder
 
         // 100 restaurant_name 
         $restaurant_names = [
-            'Crispy Parlor',
+            'Crispy McEating',
             'Charming Parlor',
             'Royal Diner',
             'Hearty Kitchen',
