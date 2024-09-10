@@ -8,7 +8,7 @@
                     ristoranti</button></a>
         </div>
         {{-- includo errors.blade.php per mostrare errori --}}
-        {{-- @include('shared.errors') --}}
+        @include('shared.errors')
 
         {{-- form --}}
         <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">

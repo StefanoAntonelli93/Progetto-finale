@@ -12,6 +12,14 @@
                     <button class="btn btn-success""><a href="{{ route('admin.restaurants.create') }}">Crea
                             Ristorante</a></button>
                 @else
+                    {{-- message creazione nuovo ristorante --}}
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+
                     <h1>Ecco il tuo ristorante : {{ $restaurant->restaurant_name }}</h1>
                 @endif
             </div>
