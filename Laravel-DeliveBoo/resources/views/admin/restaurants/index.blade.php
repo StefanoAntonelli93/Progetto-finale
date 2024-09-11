@@ -19,18 +19,7 @@
                             Ristorante</a></button>
                 @else
                     <h1>Ecco il tuo ristorante : {{ $restaurant->restaurant_name }}</h1>
-                    @if ($restaurant->img)
-                        <div>
-                            <img src="{{ asset('storage/' . $restaurant->img) }}" alt="">
-                        </div>
-                    @endif
-                    <p>modifica
-
-                    <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger">elimina</button>
-                    </form>
+                    <button class="btn btn-success""><a href="{{ route('admin.restaurants.edit') }}">Modifica</a></button>
                 @endif
             </div>
         </div>
