@@ -2,7 +2,7 @@
 @section('content')
     <div class="container py-4">
         <div class="content d-flex justify-content-between align-items-center">
-            <h2 class="py-3">Crea nuovo progetto </h2>
+            <h2 class="py-3">Registra nuovo ristorante </h2>
             {{-- Vai a index --}}
             <a href="{{ route('admin.restaurants.index') }}">
                 <button class="btn btn-primary btn-sm">Torna ai tuoi ristoranti</button>

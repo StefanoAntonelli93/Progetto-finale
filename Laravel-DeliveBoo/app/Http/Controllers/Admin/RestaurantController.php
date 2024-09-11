@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRestaurantRequest;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -40,6 +41,8 @@ class RestaurantController extends Controller
 
         // visualizzo utente corrente
         $current_user = Auth::user()->id;
+        // file storage
+        $img_path = Storage::put('uploads', $data['img']);
 
         $restaurant = new Restaurant();
         $restaurant->restaurant_name = $data['restaurant_name'];
@@ -47,6 +50,8 @@ class RestaurantController extends Controller
         $restaurant->phone_number = $data['phone_number'];
         $restaurant->p_iva = $data['p_iva'];
         $restaurant->address = $data['address'];
+        $restaurant->img = $img_path;
+
         // visualizzo utente corrente
         $restaurant->user_id = $current_user;
         $restaurant->save();
@@ -81,8 +86,12 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Restaurant $restaurant)
     {
-        //
+        if ($restaurant->img) {
+            Storage::delete($restaurant->img);
+        }
+        $restaurant->delete();
+        return redirect()->route('admin.restaurants.index')->with('message', 'Ristorante eliminato correttamente');
     }
 }
