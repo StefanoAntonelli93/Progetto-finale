@@ -40,6 +40,8 @@
 
             {{-- File input --}}
             <div class="mb-3">
+                <img id="img-preview" src="#" alt="Anteprima Immagine"
+                    style="display: none; margin-top: 10px; max-width: 300px;">
                 <label for="img" class="form-label">Immagine ristorante</label>
                 <input class="form-control" type="file" id="img" name="img">
             </div>

@@ -12,10 +12,11 @@
                 @endif
                 {{-- se non esiste un collegamento tra admin e hotel allora sprono a crearne uno --}}
                 @if (!$restaurant || !$restaurant->restaurant_name)
-                    <h1 class="text-dark mt-3">Oooops {{ Auth::user()->name }} sembra che non ci siano post... Perchè non ne
-                        crei
+                    <h1 class="text-dark mt-3">Oooops {{ Auth::user()->name }} sembra che non ci siano ristoranti... Perchè
+                        non ne
+                        aggiungi
                         uno? </h1>
-                    <button class="btn btn-success""><a href="{{ route('admin.restaurants.create') }}">Crea
+                    <button class="btn btn-success""><a href="{{ route('admin.restaurants.create') }}">Aggiungi
                             Ristorante</a></button>
                 @else
                     <h1>Ecco il tuo ristorante : {{ $restaurant->restaurant_name }}</h1>
@@ -24,12 +25,13 @@
                             <img src="{{ asset('storage/' . $restaurant->img) }}" alt="">
                         </div>
                     @endif
-                    <p>modifica
+                    <button class="btn btn-primary"><a
+                            href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
 
                     <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger">elimina</button>
+                        <button class="btn btn-danger">Elimina</button>
                     </form>
                 @endif
             </div>
