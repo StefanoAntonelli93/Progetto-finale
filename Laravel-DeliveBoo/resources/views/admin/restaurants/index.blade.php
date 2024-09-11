@@ -25,14 +25,20 @@
                             <img src="{{ asset('storage/' . $restaurant->img) }}" alt="">
                         </div>
                     @endif
-                    <button class="btn btn-primary"><a
-                            href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
-
-                    <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger">Elimina</button>
-                    </form>
+                    <div class="d-flex gap-3">
+                        {{-- visualizza dettagli --}}
+                        <button class="btn btn-info"><a
+                                href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a></button>
+                        {{-- modifica --}}
+                        <button class="btn btn-warning"><a
+                                href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
+                        {{-- cancella --}}
+                        <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Elimina</button>
+                        </form>
+                    </div>
                 @endif
             </div>
         </div>
