@@ -29,7 +29,7 @@ class StoreRestaurantRequest extends FormRequest
             'restaurant_name' => 'required|string|min:3|max:100|unique:restaurants,restaurant_name',
             'description' => 'nullable|string|max:2000',
             'img' => 'nullable|image|max:4096', // massimo 4MB per l'immagine
-            'phone_number' => 'required|regex:/^[\+0-9\s\-]+$/|min:6|max:15',
+            'phone_number' => 'required|regex:/^[\+0-9\s\-]+$/|min:6|max:15|unique:restaurants,phone_number',
             'address' => 'required|string|max:150',
             'p_iva' => 'required|digits:11|unique:restaurants,p_iva' // Usa digits invece di size per convalidare i numeri
         ];
