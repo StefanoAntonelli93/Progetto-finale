@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditRestaurantRequest;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -37,14 +38,9 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
         $data = $request->validated();
-        $data = $request->all();
-
         // visualizzo utente corrente
         $current_user = Auth::user()->id;
         // file storage
-
-
-
         $restaurant = new Restaurant();
         $restaurant->restaurant_name = $data['restaurant_name'];
         $restaurant->description = $data['description'];
@@ -56,8 +52,6 @@ class RestaurantController extends Controller
             $img_path = Storage::put('uploads', $data['img']);
             $restaurant->img = $img_path;
         }
-
-
         // visualizzo utente corrente
         $restaurant->user_id = $current_user;
         $restaurant->save();
@@ -85,9 +79,24 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EditRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->validated();
+        $data = $request->validated();
+
+        // Controlla se è stata caricata una nuova immagine
+        if ($request->hasFile('img')) {
+            // Elimina l'immagine precedente se esiste
+            if ($restaurant->img) {
+                Storage::delete($restaurant->img);
+            }
+            // Carica la nuova immagine
+            $data['img'] = $request->file('img')->store('images', 'public');
+        }
+
+        // Aggiorna il ristorante con i dati, inclusa la nuova immagine (se caricata)
+        $restaurant->update($data);
+        return redirect()->route('admin.restaurants.index', $restaurant)->with('message', 'Ristorante modificato con successo');
     }
 
     /**
