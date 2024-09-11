@@ -42,7 +42,8 @@ class RestaurantController extends Controller
         // visualizzo utente corrente
         $current_user = Auth::user()->id;
         // file storage
-        $img_path = Storage::put('uploads', $data['img']);
+
+
 
         $restaurant = new Restaurant();
         $restaurant->restaurant_name = $data['restaurant_name'];
@@ -50,7 +51,12 @@ class RestaurantController extends Controller
         $restaurant->phone_number = $data['phone_number'];
         $restaurant->p_iva = $data['p_iva'];
         $restaurant->address = $data['address'];
-        $restaurant->img = $img_path;
+        if (isset($data['img'])) {
+            // Il campo img è presente e puoi processarlo.
+            $img_path = Storage::put('uploads', $data['img']);
+            $restaurant->img = $img_path;
+        }
+
 
         // visualizzo utente corrente
         $restaurant->user_id = $current_user;
