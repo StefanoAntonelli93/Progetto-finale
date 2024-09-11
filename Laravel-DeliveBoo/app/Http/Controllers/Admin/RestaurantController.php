@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditRestaurantRequest;
 use App\Http\Requests\StoreRestaurantRequest;
+use App\Models\Category;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,8 @@ class RestaurantController extends Controller
         //
         $admin = auth()->user();
         $restaurant = $admin->restaurant;
-        return view('admin.restaurants.index', compact('restaurant'));
+        $categories = Category::all();
+        return view('admin.restaurants.index', compact('restaurant', 'categories'));
     }
 
     /**
@@ -29,7 +31,8 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        return view('admin.restaurants.create');
+        $categories = Category::all();
+        return view('admin.restaurants.create', compact('categories'));
     }
 
     /**
@@ -55,6 +58,11 @@ class RestaurantController extends Controller
         // visualizzo utente corrente
         $restaurant->user_id = $current_user;
         $restaurant->save();
+        //collego le categorie al ristorante
+        if ($request->has('categories')) {
+            $restaurant->categories()->attach($request->categories);
+        };
+
 
         return redirect()->route('admin.restaurants.index', $restaurant)->with('message', 'Ristorante aggiunto con successo!');
     }
@@ -72,8 +80,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $categories = Category::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'categories'));
     }
 
     /**
@@ -96,6 +104,8 @@ class RestaurantController extends Controller
 
         // Aggiorna il ristorante con i dati, inclusa la nuova immagine (se caricata)
         $restaurant->update($data);
+        // aggiorno le categorie che ho modificato
+        $restaurant->categories()->sync($request->categories);
         return redirect()->route('admin.restaurants.index', $restaurant)->with('message', 'Ristorante modificato con successo');
     }
 

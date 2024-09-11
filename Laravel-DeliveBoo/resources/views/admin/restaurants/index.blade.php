@@ -25,9 +25,18 @@
                             <img src="{{ asset('storage/' . $restaurant->img) }}" alt="">
                         </div>
                     @endif
+                    @if (!$restaurant->categories->isEmpty())
+                        <p>
+                            @foreach ($restaurant->categories as $category)
+                                {{ $category->name }}
+                                <br>
+                            @endforeach
+                        </p>
+                    @else
+                        <p>There are no technologies for this project</p>
+                    @endif
                     <button class="btn btn-primary"><a
                             href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
-
                     <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
                         @csrf
                         @method('DELETE')
