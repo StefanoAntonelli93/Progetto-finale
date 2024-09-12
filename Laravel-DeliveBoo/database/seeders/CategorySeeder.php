@@ -26,23 +26,9 @@ class CategorySeeder extends Seeder
             'Pizza',
             'Burgers',
             'Sushi',
-            'Indian',
             'Chinese',
-            'Thai',
-            'Kebab',
-            'Fried Chicken',
-            'Pasta',
             'Vegetarian',
             'Desserts',
-            'Salads',
-            'Mexican',
-            'Turkish',
-            'Greek',
-            'Healthy',
-            'American',
-            'Japanese',
-            'Italian',
-            'Ice Cream',
 
         ];
 

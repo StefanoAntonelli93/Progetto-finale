@@ -23,7 +23,7 @@
             <p>Numero di telefono: {{ $restaurant->phone_number }}</p>
             <p>Descrizione: {{ $restaurant->description }}</p>
             <p>Partita IVA: {{ $restaurant->p_iva }}</p>
-            <p>Categorie: {{ $restaurant->categories->name }}</p>
+            {{-- <p>Categorie: {{ $restaurant->categories->name }}</p> --}}
         @else
             <p>Ristorante non trovato.</p>
         @endif
