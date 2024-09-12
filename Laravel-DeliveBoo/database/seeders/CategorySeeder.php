@@ -24,19 +24,19 @@ class CategorySeeder extends Seeder
         // categorie di ristoranti
         $categories = [
             'Pizza',
-            'Burgers',
+            'Panini',
             'Sushi',
-            'Chinese',
-            'Vegetarian',
-            'Desserts',
+            'Cinese',
+            'Vegetariano',
+            'Dolci',
+
 
         ];
 
-        // numero campi
-        $numRecords = 20;
+
 
         // ciclo per popolare tabella categories
-        for ($i = 0; $i < $numRecords; $i++) {
+        for ($i = 0; $i < count($categories); $i++) {
             $new_category = new Category();
 
             $new_category->name = $categories[$i];
