@@ -10,10 +10,10 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-
+                            <p class="text-secondary">i campi contrassegnati con * sono obbligatori</p>
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -30,7 +30,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -47,7 +47,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -64,7 +64,7 @@
 
                             <div class="mb-4 row">
                                 <label for="tax_code"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Codice Fiscale') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Codice Fiscale *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -85,7 +85,7 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        class="form-control @error('password *') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
 
                                     @error('password')
@@ -98,7 +98,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password *') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
