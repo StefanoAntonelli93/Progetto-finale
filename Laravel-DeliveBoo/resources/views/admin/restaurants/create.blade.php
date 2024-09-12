@@ -41,9 +41,8 @@
                         @foreach ($categories as $category)
                             <div class="col-4 d-flex flex-column justfy-content-center align-items-center mb-3">
                                 <span class="mb-1">{{ $category->name }}</span>
-                                {{-- techs[] le parentesi permettono di inviare un array di checkbox se selezionato piu di 1 --}}
                                 <input class="checkbox" name="categories[]" type="checkbox" value="{{ $category->id }}"
-                                    {{ in_array($category->id, old('category', [])) ? 'checked' : '' }}>{{-- verifico se i tech selezionati prima sono presenti nell'array techs, setto il controllo old a [] per evitare l'errore iniziale --}}
+                                    {{ in_array($category->id, old('category', [])) ? 'checked' : '' }}>
                             </div>
                         @endforeach
                     </div>

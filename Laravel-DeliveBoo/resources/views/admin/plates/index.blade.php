@@ -4,7 +4,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col mt-4">
-                {{-- message creazione nuovo ristorante --}}
                 @if (session('message'))
                     <div class="alert alert-success">
                         {{ session('message') }}
@@ -17,7 +16,7 @@
                         <div class="piatti p-5">
                             <div class="d-flex justify-content-between mb-5">
                                 <h1>Piatti Disponibili</h1>
-                                <button class="btn btn-primary"><a href="{{ route('admin.plates.index') }}">
+                                <button class="btn btn-primary"><a href="{{ route('admin.plates.create') }}">
                                         Aggiungi
                                         Piatto</a></button>
                             </div>
@@ -27,6 +26,12 @@
                                         <div class="p-4">
                                             <h2 class="text-center mb-4">{{ $plate->name }}</h2>
                                             <div class="img_piatto m-auto mb-4">
+                                                @if ($plate->img)
+                                                    <div class="img_ristorante col p-5 ">
+                                                        <img class="rounded" src="{{ asset('storage/' . $plate->img) }}"
+                                                            alt="">
+                                                    </div>
+                                                @endif
                                                 <img class="rounded" src="{{ $plate->img }}" alt="">
                                             </div>
                                             <div>

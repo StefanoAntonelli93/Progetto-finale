@@ -43,7 +43,6 @@ class RestaurantController extends Controller
         $data = $request->validated();
         // visualizzo utente corrente
         $current_user = Auth::user()->id;
-        // file storage
         $restaurant = new Restaurant();
         $restaurant->restaurant_name = $data['restaurant_name'];
         $restaurant->description = $data['description'];

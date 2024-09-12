@@ -34,12 +34,17 @@
                                 <img class="rounded" src="{{ asset('storage/' . $restaurant->img) }}" alt="">
                             </div>
                         @endif
+
                         {{-- colonna info --}}
+
                         <div class="d-flex flex-column justify-content-between col py-5 pe-5">
                             <div class="text-center">
                                 <h1>{{ $restaurant->restaurant_name }}</h1>
                                 <p class="ms-1">Creato il: {{ $restaurant->created_at }}</p>
                             </div>
+
+                            {{-- piatti --}}
+
                             <div class="piatti">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div>

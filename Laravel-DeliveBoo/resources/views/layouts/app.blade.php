@@ -25,7 +25,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_boo">
-                        <img src="/storage/images/logo_boo.png" alt="">
+                        <img src="/storage/images/logo_boo.png" alt="logo_deliveboo">
                     </div>
                 </a>
 
