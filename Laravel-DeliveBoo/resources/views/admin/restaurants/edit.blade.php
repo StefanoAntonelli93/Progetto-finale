@@ -11,23 +11,24 @@
         <form action="{{ route('admin.restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <p class="text-secondary">i campi contrassegnati con * sono obbligatori</p>
             <div class="mb-3">
-                <label for="restaurant-name" class="form-label">Nome ristorante</label>
+                <label for="restaurant-name" class="form-label">Nome ristorante *</label>
                 <input type="text" class="form-control" id="restaurant-name" name="restaurant_name"
                     value="{{ old('restaurant_name', $restaurant->restaurant_name) }}">
             </div>
             <div class="mb-3">
-                <label for="address" class="form-label">Indirizzo</label>
+                <label for="address" class="form-label">Indirizzo *</label>
                 <input type="text" class="form-control" id="address" name="address"
                     value="{{ old('address', $restaurant->address) }}">
             </div>
             <div class="mb-3">
-                <label for="phone_number" class="form-label">Telefono ristorante</label>
+                <label for="phone_number" class="form-label">Telefono ristorante *</label>
                 <input type="text" class="form-control" id="phone_number" name="phone_number"
                     value="{{ old('phone_number', $restaurant->phone_number) }}">
             </div>
             <div class="mb-3">
-                <label for="p_iva" class="form-label">Partita IVA</label>
+                <label for="p_iva" class="form-label">Partita IVA *</label>
                 <input type="number" class="form-control" id="p_iva" name="p_iva"
                     value="{{ old('p_iva', $restaurant->p_iva) }}">
             </div>
