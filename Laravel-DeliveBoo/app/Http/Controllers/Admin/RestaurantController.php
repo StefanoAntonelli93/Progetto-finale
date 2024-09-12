@@ -72,7 +72,8 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        return view('admin.restaurants.show', compact('restaurant'));
+        $categories = Category::all();
+        return view('admin.restaurants.show', compact('restaurant', 'categories'));
     }
 
     /**
