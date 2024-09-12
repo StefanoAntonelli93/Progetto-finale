@@ -4,3 +4,16 @@ a {
     text-decoration: none;
     color: white;
 }
+
+// logo settings
+
+.logo_boo {
+    width: 200px;
+    height: 80px;
+    img {
+        width: 120%;
+        height: 120%;
+        object-fit: cover;
+        transform: translate(-9%, -3%);
+    }
+}
