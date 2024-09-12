@@ -1,8 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 a {
     text-decoration: none;
     color: white;
+}
+
+h1,
+p {
+    margin: 0;
 }
 
 // logo settings
@@ -15,5 +25,23 @@ a {
         height: 120%;
         object-fit: cover;
         transform: translate(-9%, -3%);
+    }
+}
+
+.img_ristorante {
+    width: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.img_piatto {
+    width: 50%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
