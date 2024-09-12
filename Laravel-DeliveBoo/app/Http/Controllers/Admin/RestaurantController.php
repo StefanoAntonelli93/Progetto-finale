@@ -90,7 +90,7 @@ class RestaurantController extends Controller
      */
     public function update(EditRestaurantRequest $request, Restaurant $restaurant)
     {
-        $data = $request->validated();
+
         $data = $request->validated();
 
         // Controlla se è stata caricata una nuova immagine
@@ -106,7 +106,10 @@ class RestaurantController extends Controller
         // Aggiorna il ristorante con i dati, inclusa la nuova immagine (se caricata)
         $restaurant->update($data);
         // aggiorno le categorie che ho modificato
-        $restaurant->categories()->sync($request->categories);
+        if ($request->has('categories')) {
+            $restaurant->categories()->sync($request->categories);
+        }
+
         return redirect()->route('admin.restaurants.index', $restaurant)->with('message', 'Ristorante modificato con successo');
     }
 

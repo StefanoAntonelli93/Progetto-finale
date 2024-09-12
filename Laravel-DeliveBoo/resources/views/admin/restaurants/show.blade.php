@@ -1,14 +1,3 @@
-<?php
-
-// funzione per virgola alle categorie
-$categoryNames = [];
-foreach ($categories as $category) {
-    $categoryNames[] = $category->name;
-}
-
-?>
-
-
 @extends('layouts.app')
 
 
@@ -36,7 +25,13 @@ foreach ($categories as $category) {
             <p>Partita IVA: {{ $restaurant->p_iva }}</p>
 
 
-            <p>Categorie: {{ implode(', ', $categoryNames) }}</p>
+            <p>Categorie: {{ implode(', ', $restaurant->categories->pluck('name')->toArray()) }}</p>
+
+            {{-- modifica --}}
+            <div>
+                <button class="btn btn-warning"><a
+                        href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
+            </div>
         @else
             <p>Ristorante non trovato.</p>
         @endif

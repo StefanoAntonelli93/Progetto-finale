@@ -1,13 +1,3 @@
-<?php
-
-// funzione per virgola alle categorie
-$categoryNames = [];
-foreach ($categories as $category) {
-    $categoryNames[] = $category->name;
-}
-?>
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -66,7 +56,7 @@ foreach ($categories as $category) {
                                 <h3>Qua ci va il carosello con le immagini dei piatti</h3>
                             </div>
                             <div class="categoria">
-                                <p>Categorie: {{ implode(', ', $categoryNames) }}</p>
+                                <p>Categorie: {{ implode(', ', $restaurant->categories->pluck('name')->toArray()) }}</p>
                             </div>
                             <div class="d-flex gap-3 justify-content-center">
                                 <div>
@@ -74,12 +64,12 @@ foreach ($categories as $category) {
                                     <button class="btn btn-info"><a
                                             href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a></button>
                                 </div>
-
+                                {{-- modifica --}}
                                 <div>
                                     <button class="btn btn-warning"><a
                                             href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
                                 </div>
-                                {{-- modifica --}}
+
                                 <div>
                                     {{-- cancella --}}
                                     <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
