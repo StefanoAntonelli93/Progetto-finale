@@ -33,7 +33,6 @@ class StoreRestaurantRequest extends FormRequest
             'address' => 'required|string|max:150',
             'p_iva' => 'required|digits:11|unique:restaurants,p_iva',
             'categories' => 'nullable|exists:categories,id'
-            // Usa digits invece di size per convalidare i numeri
         ];
     }
 }

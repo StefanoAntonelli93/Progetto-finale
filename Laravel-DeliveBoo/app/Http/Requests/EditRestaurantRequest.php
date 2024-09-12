@@ -28,7 +28,7 @@ class EditRestaurantRequest extends FormRequest
             'img' => 'nullable|image|max:4096', // massimo 4MB per l'immagine
             'phone_number' => ['required', 'regex:/^[\+0-9\s\-]+$/', 'min:6', 'max:15', Rule::unique('restaurants')->ignore($this->restaurant)],
             'address' => 'required|string|max:150',
-            'p_iva' => ['required', 'digits:11', Rule::unique('restaurants')->ignore($this->restaurant)], // Usa digits invece di size per convalidare i numeri
+            'p_iva' => ['required', 'digits:11', Rule::unique('restaurants')->ignore($this->restaurant)],
             'categories' => 'nullable|exists:categories,id'
         ];
     }

@@ -101,4 +101,8 @@ return [
     'uploaded' => 'Il caricamento di :attribute è fallito.',
     'url' => 'Il formato di :attribute non è valido.',
     'uuid' => 'Il :attribute deve essere un UUID valido.',
+    // mail
+    'email' => 'Il :attribute deve essere un indirizzo email valido.',
+    'required' => 'Il campo :attribute è obbligatorio.',
+    'unique' => 'L\'email :attribute è già in uso.',
 ];
