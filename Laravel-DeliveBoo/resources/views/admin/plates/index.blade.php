@@ -41,7 +41,7 @@
                                     </div>
                                     <div>
                                         @foreach ($plates as $plate)
-                                            <div
+                                            <div {{-- se piatto non è disponibile allora la card ha opacità --}}
                                                 class="border border-secondary rounded my-5 {{ $plate->available ? '' : 'opacity-50' }} ">
 
                                                 <div class="p-4">
@@ -78,7 +78,7 @@
                                                         {{-- cancella --}}
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                             data-bs-target="#deleteModal"
-                                                            data-plate-id="{{ $plate }}">
+                                                            data-plate-id="{{ $plate->id }}">
                                                             Elimina
                                                         </button>
                                                     </div>
