@@ -6,8 +6,8 @@
         <div class="content d-flex justify-content-between align-items-center">
             <h2 class="py-3">Dettagli piatto</h2>
             {{-- vai a index --}}
-            <a href="{{ route('admin.plates.index') }}"><button class="btn btn-primary btn-sm">Torna ai
-                    tuoi piatti</button></a>
+            <a href="{{ route('admin.plates.index') }}"> <button class="btn btn-primary btn-md">Torna ai tuoi
+                    piatti</button></a>
         </div>
 
 

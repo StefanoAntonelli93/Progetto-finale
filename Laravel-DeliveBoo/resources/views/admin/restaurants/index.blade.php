@@ -10,7 +10,6 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                {{-- se non esiste un collegamento tra admin e hotel allora sprono a crearne uno --}}
                 @if (!$restaurant || !$restaurant->restaurant_name)
                     <div class="d-flex align-items-center justify-content-around border border-secondary rounded my-5">
                         <div class="p-5">
@@ -52,7 +51,8 @@
                                     </div>
 
                                     <div>
-                                        <button class="btn btn-primary"><a href="{{ route('admin.plates.index') }}">Aggiungi
+                                        <button class="btn btn-primary"><a
+                                                href="{{ route('admin.plates.index', $restaurant) }}">Aggiungi
                                                 Piatto</a></button>
                                     </div>
 

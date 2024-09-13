@@ -22,7 +22,7 @@ class StorePlateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:100',
+            'name' => 'required|string|min:2|max:100|unique:plates,name',
             'ingredients' => 'required|string|max:2000',
             'price' => 'required|numeric|min:0.01|regex:/^\d+(\.\d{1,2})?$/',
             'description' => 'nullable|string|max:2000',

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EditPlateRequest;
 use App\Http\Requests\StorePlateRequest;
 use App\Models\Plate;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -45,11 +46,13 @@ class PlateController extends Controller
 
         $plate = new Plate();
         // aggiungo dati piatti
+        $plate->restaurant_id = auth()->user()->restaurant->id;
         $plate->name = $data['name'];
         $plate->description = $data['description'];
         $plate->ingredients = $data['ingredients'];
         $plate->price = $data['price'];
         $plate->allergenes = $data['allergenes'];
+        $plate->slug = $data['slug'];
 
         if (isset($data['img'])) {
             // Il campo img è presente e puoi processarlo.
@@ -58,8 +61,6 @@ class PlateController extends Controller
         }
 
         $plate->save();
-
-
         return redirect()->route('admin.plates.index', $plate)->with('message', 'Piatto aggiunto con successo!');
     }
 

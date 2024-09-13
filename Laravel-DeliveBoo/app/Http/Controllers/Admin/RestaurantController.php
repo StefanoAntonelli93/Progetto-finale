@@ -20,6 +20,7 @@ class RestaurantController extends Controller
     {
         //
         $admin = auth()->user();
+
         $restaurant = $admin->restaurant;
         $categories = Category::all();
         return view('admin.restaurants.index', compact('restaurant', 'categories'));

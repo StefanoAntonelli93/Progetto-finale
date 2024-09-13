@@ -4,8 +4,8 @@
         <div class="content d-flex justify-content-between align-items-center">
             <h2 class="py-3">Modifica piatto {{ $plate->name }}</h2>
             {{-- vai a index --}}
-            <button class="btn btn-primary btn-md"><a href="{{ route('admin.plates.index') }}">Torna ai tuoi</a>
-                piatti</button>
+            <a href="{{ route('admin.plates.index') }}"> <button class="btn btn-primary btn-md">Torna ai tuoi
+                    piatti</button></a>
         </div>
         <form action="{{ route('admin.plates.update', $plate) }}" method="POST" enctype="multipart/form-data">
             @csrf

@@ -10,10 +10,12 @@
                 Sei sicuro di voler eliminare questo piatto?
             </div>
             <div class="modal-footer">
-                <form action="{{ route('admin.plates.destroy', $plate) }}" method="POST">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <form id="deleteForm" method="POST" style="display: inline;"
+                    action="{{ route('admin.plates.destroy', $plate) }}">
                     @csrf
                     @method('DELETE')
-                    <button id="delete" class="btn btn-danger">Elimina</button>
+                    <button type="submit" class="btn btn-danger">Elimina</button>
                 </form>
             </div>
         </div>
