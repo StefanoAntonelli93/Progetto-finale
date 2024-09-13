@@ -24,7 +24,7 @@
                                     class="d-flex align-items-center justify-content-around border border-secondary rounded my-5">
                                     <div class="p-5">
                                         <h1 class="text-dark">Sembra che non ci siano piatti, perchè non ne
-                                            agigungi
+                                            aggiungi
                                             uno?</h1>
                                         <div class="text-center mt-5">
                                             <a href="{{ route('admin.plates.create') }}"><button class="btn btn-primary">
