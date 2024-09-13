@@ -9,6 +9,12 @@
                         {{ session('message') }}
                     </div>
                 @endif
+                <!-- link top-->
+                <a id="top"></a>
+
+                <div>
+                    <a class="text-primary" href="{{ route('admin.restaurants.index') }}"><- indietro</a>
+                </div>
                 {{-- colonna foto --}}
                 <div class="d-flex justify-content-around border border-secondary rounded my-5">
                     {{-- colonna info --}}
@@ -61,12 +67,18 @@
                                 @endforeach
                             </div>
 
+                            <!-- Scroll fino al link top -->
+                            <div class="d-flex justify-content-center my-4">
+                                <a class="btn btn-primary" href="#top">Torna su</a>
+                            </div>
 
                         </div>
+
                     </div>
 
 
                 </div>
+
             </div>
         </div>
     </div>
