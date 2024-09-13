@@ -5,7 +5,7 @@
             <div class="content d-flex justify-content-between align-items-center">
                 <h2 class="py-3">Registra nuovo piatto </h2>
                 {{-- Vai a index --}}
-                <a href="{{ route('admin.restaurants.index') }}">
+                <a href="{{ route('admin.plates.index') }}">
                     <button class="btn btn-primary btn-sm">Torna ai tuoi piatti</button>
                 </a>
             </div>

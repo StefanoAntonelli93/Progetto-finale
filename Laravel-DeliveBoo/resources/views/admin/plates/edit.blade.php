@@ -4,8 +4,8 @@
         <div class="content d-flex justify-content-between align-items-center">
             <h2 class="py-3">Modifica piatto {{ $plate->name }}</h2>
             {{-- vai a index --}}
-            <a href="{{ route('admin.plates.index') }}"><button class="btn btn-primary btn-sm">Torna ai tuoi
-                    piatti</button></a>
+            <button class="btn btn-primary btn-md"><a href="{{ route('admin.plates.index') }}">Torna ai tuoi</a>
+                piatti</button>
         </div>
         <form action="{{ route('admin.plates.update', $plate) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -34,17 +34,20 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo *</label>
+                <label for="price" class="form-label">Prezzo € *</label>
                 <input type="number" step="0.01" class="form-control" id="price" name="price"
-                    value="{{ old('price') }}" required>
+                    value="{{ old('price', $plate->price) }}" required>
             </div>
 
             {{-- file input --}}
             <div class="mb-3">
-                <img id="img-preview" src="#" alt="Anteprima Immagine"
-                    style="display: none; margin-top: 10px; max-width: 300px;">
+                <img id="img-preview" src="{{ $plate->img }}" alt="Anteprima Immagine"
+                    style="display: none; margin-top: 10px; max-width: 300px;" class="mb-4">
+                <img id="current-img" src="{{ $plate->img }}" alt="Anteprima Immagine"
+                    style="margin-top: 10px; max-width: 300px;" class="mb-4">
                 <input class="form-control" type="file" id="img" name="img">
             </div>
 
-            <button type="submit" class="btn btn-primary">Modifica Ristorante</button>
+            <button type="submit" class="btn btn-primary">Modifica Piatto</button>
+            <button type="#" class="btn btn-danger"><a href="{{ route('admin.plates.index') }}">Annulla</a></button>
         @endsection

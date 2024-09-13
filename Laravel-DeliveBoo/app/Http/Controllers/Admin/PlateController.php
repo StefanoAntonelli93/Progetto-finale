@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EditPlateRequest;
 use App\Http\Requests\StorePlateRequest;
 use App\Models\Plate;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PlateController extends Controller
 {
@@ -41,7 +40,8 @@ class PlateController extends Controller
     {
         // passo i dati già validati nello store request
         $data = $request->validated();
-        // visualizzo utente corrente
+        //creo lo slug
+        $data['slug'] = Str::of($data['name'])->slug();
 
         $plate = new Plate();
         // aggiungo dati piatti
@@ -85,6 +85,7 @@ class PlateController extends Controller
     public function update(EditPlateRequest $request, Plate $plate)
     {
         $data = $request->validated();
+        $data['slug'] = Str::of($data['name'])->slug();
         // Controlla se è stata caricata una nuova immagine
         if ($request->hasFile('img')) {
             // Elimina l'immagine precedente se esiste
