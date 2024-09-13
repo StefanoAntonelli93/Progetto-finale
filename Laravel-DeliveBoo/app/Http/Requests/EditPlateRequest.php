@@ -27,7 +27,8 @@ class EditPlateRequest extends FormRequest
             'price' => 'required|numeric|min:0.01|regex:/^\d+(\.\d{1,2})?$/',
             'description' => 'nullable|string|max:2000',
             'img' => 'nullable|image|max:4096', // massimo 4MB per l'immagine
-            'allergenes' => 'nullable|string'
+            'allergenes' => 'nullable|string',
+            'available' => 'boolean'
         ];
     }
 }

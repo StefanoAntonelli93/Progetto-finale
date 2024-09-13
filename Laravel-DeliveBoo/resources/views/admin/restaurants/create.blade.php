@@ -6,7 +6,7 @@
                 <h2 class="py-3">Registra nuovo ristorante </h2>
                 {{-- Vai a index --}}
                 <a href="{{ route('admin.restaurants.index') }}">
-                    <button class="btn btn-primary btn-sm">Torna ai tuoi ristoranti</button>
+                    <button class="btn btn-primary btn-md">Torna ai tuoi ristoranti</button>
                 </a>
             </div>
             {{-- Includo errors.blade.php per mostrare errori --}}
@@ -15,24 +15,27 @@
             {{-- Form --}}
             <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <p class="text-secondary">i campi contrassegnati con * sono obbligatori</p>
+                <p class="text-secondary">I campi contrassegnati con * sono obbligatori</p>
                 <div class="mb-3">
                     <label for="restaurant-name" class="form-label">Nome ristorante *</label>
-                    <input type="text" class="form-control" id="restaurant-name" name="restaurant_name"
+                    <input type="text" class="form-control" id="restaurant-name" name="restaurant_name" required
                         value="{{ old('restaurant_name') }}">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Indirizzo *</label>
-                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                    <input type="text" class="form-control" id="address" name="address" required
+                        value="{{ old('address') }}">
                 </div>
                 <div class="mb-3">
                     <label for="phone_number" class="form-label">Telefono ristorante *</label>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        value="{{ old('phone_number') }}">
+                        pattern="^(\+?\d{1,4}[\s-]?)?(\(?\d{1,4}\)?[\s-]?)?[\d\s-]{5,15}$" value="{{ old('phone_number') }}"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="p_iva" class="form-label">Partita IVA *</label>
-                    <input type="text" class="form-control" id="p_iva" name="p_iva" value="{{ old('p_iva') }}">
+                    <input type="text" class="form-control" id="p_iva" pattern="^\d{11}$" required name="p_iva"
+                        placeholder="(11 numeri)" value="{{ old('p_iva') }}">
                 </div>
                 <!-- Type -->
                 <div class="mb-3 ">

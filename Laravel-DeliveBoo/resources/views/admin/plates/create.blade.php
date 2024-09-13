@@ -40,9 +40,30 @@
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Prezzo *</label>
-                    <input type="number" step="0.01" class="form-control" id="price" name="price"
-                        value="{{ old('price') }}" required>
+                    <input type="number" step="0.01" class="form-control" id="price" name="price" max="100000"
+                        placeholder="Inserisci un prezzo in euro" value="{{ old('price') }}" required>
                 </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="font-weight-bold form-label">Disponibile</p>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="available" id="available" value="1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Si
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="available" id="available" checked
+                                value="0">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
 
 
                 {{-- File input --}}
@@ -52,6 +73,8 @@
                     <label for="img" class="form-label">Immagine piatto</label>
                     <input class="form-control" type="file" id="img" name="img">
                 </div>
+
+
                 <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary">Crea
                         piatto</button></div>
 

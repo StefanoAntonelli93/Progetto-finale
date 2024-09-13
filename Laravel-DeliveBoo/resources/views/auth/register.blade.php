@@ -34,7 +34,8 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                        class="form-control @error('email') non è valida @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
@@ -67,7 +68,7 @@
                                     class="col-md-4 col-form-label text-md-right ">{{ __('Codice Fiscale *') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text"
+                                    <input id="address" type="text" oninput="this.value = this.value.toUpperCase()"
                                         class="form-control text-uppercase @error('tax_code') is-invalid @enderror"
                                         name="tax_code" value="{{ old('tax_code') }}" required autocomplete="tax_code">
 

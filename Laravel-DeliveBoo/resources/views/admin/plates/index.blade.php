@@ -42,7 +42,7 @@
                                     <div>
                                         @foreach ($plates as $plate)
                                             <div
-                                                class="border border-secondary rounded my-5{{ $plate->available ? '' : 'opacity-50' }} ">
+                                                class="border border-secondary rounded my-5 {{ $plate->available ? '' : 'opacity-50' }} ">
 
                                                 <div class="p-4">
                                                     <h2 class="text-center mb-4">{{ $plate->name }}</h2>
@@ -67,13 +67,13 @@
                                                     <div class="d-flex gap-3 justify-content-center">
                                                         <div>
                                                             {{-- visualizza dettagli --}}
-                                                            <button class="btn btn-info"><a
-                                                                    href="{{ route('admin.plates.show', $plate) }}">Dettagli</a></button>
+                                                            <a href="{{ route('admin.plates.show', $plate) }}"><button
+                                                                    class="btn btn-info">Dettagli</button></a>
                                                         </div>
 
                                                         <div>
-                                                            <button class="btn btn-warning"><a
-                                                                    href="{{ route('admin.plates.edit', $plate) }}">Modifica</a></button>
+                                                            <a href="{{ route('admin.plates.edit', $plate) }}"><button
+                                                                    class="btn btn-warning">Modifica</button></a>
                                                         </div>
                                                         {{-- cancella --}}
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"

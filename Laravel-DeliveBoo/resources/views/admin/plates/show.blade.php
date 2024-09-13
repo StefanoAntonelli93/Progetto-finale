@@ -29,7 +29,7 @@
 
             {{-- modifica --}}
             <div>
-                <button class="btn btn-warning"><a href="{{ route('admin.plates.edit', $plate) }}">Modifica</a></button>
+                <a href="{{ route('admin.plates.edit', $plate) }}"><button class="btn btn-warning">Modifica</button></a>
             </div>
         @else
             <p>Piatto non trovato.</p>

@@ -53,6 +53,7 @@ class PlateController extends Controller
         $plate->price = $data['price'];
         $plate->allergenes = $data['allergenes'];
         $plate->slug = $data['slug'];
+        $plate->available = $data['available'];
 
         if (isset($data['img'])) {
             // Il campo img è presente e puoi processarlo.

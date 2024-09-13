@@ -39,6 +39,26 @@
                     value="{{ old('price', $plate->price) }}" required>
             </div>
 
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="font-weight-bold form-label">Disponibile</p>
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="available" id="available" value="1"
+                            {{ $plate->available ? 'checked' : '' }}>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Si
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="available" id="available" value="0"
+                            {{ $plate->available ? '' : 'checked' }}>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+
             {{-- file input --}}
             <div class="mb-3">
                 <img id="img-preview" src="{{ $plate->img }}" alt="Anteprima Immagine"

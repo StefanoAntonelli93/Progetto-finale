@@ -6,10 +6,9 @@
         <div class="content d-flex justify-content-between align-items-center">
             <h2 class="py-3">Dettagli del tuo ristorante</h2>
             {{-- vai a index --}}
-            <a href="{{ route('admin.restaurants.index') }}"><button class="btn btn-primary btn-sm">Torna ai
+            <a href="{{ route('admin.restaurants.index') }}"><button class="btn btn-primary btn-md">Torna ai
                     ristoranti</button></a>
         </div>
-
 
         @if ($restaurant)
             @if ($restaurant->img)

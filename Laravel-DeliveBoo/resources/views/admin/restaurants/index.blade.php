@@ -21,9 +21,10 @@
                                 uno? </h1>
                         </div>
 
-                        <div class="p-5"><button class="btn btn-success"><a
-                                    href="{{ route('admin.restaurants.create') }}">Aggiungi
-                                    Ristorante</a></button></div>
+                        <div class="p-5">
+                            <a href="{{ route('admin.restaurants.create') }}"><button class="btn btn-success">Aggiungi
+                                    Ristorante</button>
+                        </div></a>
                     </div>
                 @else
                     {{-- colonna foto --}}
@@ -45,17 +46,40 @@
                             {{-- piatti --}}
 
                             <div class="piatti">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h2>Non ci sono piatti disponibili</h2>
-                                    </div>
+                                <div>
+                                    @if (!$restaurant->plates)
+                                        <div>
+                                            <h2>Non ci sono piatti disponibili</h2>
+                                            <button class="btn btn-primary"><a
+                                                    href="{{ route('admin.plates.index', $restaurant) }}">Aggiungi
+                                                    Piatto</a></button>
+                                        </div>
+                                    @else
+                                        <div
+                                            class="d-flex
+                                         justify-content-between align-items-center">
+                                            <h2>Piatti:</h2>
+                                            <button class="btn btn-primary"><a
+                                                    href="{{ route('admin.plates.index', $restaurant) }}">Visualizza
+                                                    Piatti</a></button>
+                                        </div>
 
-                                    <div>
-                                        <button class="btn btn-primary"><a
-                                                href="{{ route('admin.plates.index', $restaurant) }}">Aggiungi
-                                                Piatto</a></button>
-                                    </div>
-
+                                        <div>
+                                            @foreach ($restaurant->plates as $plate)
+                                                @if ($plate->available)
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <div class="d-flex align-items-center">
+                                                            <img width="50px" height="50px"
+                                                                src="{{ asset('storage/' . $plate->img) }}"
+                                                                alt="{{ $plate->name }}">
+                                                            <p class="mx-2">{{ $plate->name }}</p>
+                                                        </div>
+                                                        <div>Prezzo: {{ $plate->price }}€</div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endif
                                 </div>
 
                                 <h3>Qua ci va il carosello con le immagini dei piatti</h3>

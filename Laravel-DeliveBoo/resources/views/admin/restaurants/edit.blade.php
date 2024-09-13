@@ -5,31 +5,32 @@
             @include('shared.errors')
             <h2 class="py-3">Modifica ristorante {{ $restaurant->restaurant_name }}</h2>
             {{-- vai a index --}}
-            <a href="{{ route('admin.restaurants.index') }}"><button class="btn btn-primary btn-sm">Torna ai tuoi
+            <a href="{{ route('admin.restaurants.index') }}"><button class="btn btn-primary btn-md">Torna ai tuoi
                     ristoranti</button></a>
         </div>
         <form action="{{ route('admin.restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <p class="text-secondary">i campi contrassegnati con * sono obbligatori</p>
+            <p class="text-secondary">I campi contrassegnati con * sono obbligatori</p>
             <div class="mb-3">
                 <label for="restaurant-name" class="form-label">Nome ristorante *</label>
-                <input type="text" class="form-control" id="restaurant-name" name="restaurant_name"
+                <input type="text" class="form-control" id="restaurant-name" name="restaurant_name" required
                     value="{{ old('restaurant_name', $restaurant->restaurant_name) }}">
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Indirizzo *</label>
-                <input type="text" class="form-control" id="address" name="address"
+                <input type="text" class="form-control" id="address" name="address" required
                     value="{{ old('address', $restaurant->address) }}">
             </div>
             <div class="mb-3">
                 <label for="phone_number" class="form-label">Telefono ristorante *</label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number"
+                <input type="text" class="form-control" id="phone_number" name="phone_number" required
+                    pattern="^(\+?\d{1,4}[\s-]?)?(\(?\d{1,4}\)?[\s-]?)?[\d\s-]{5,15}$"
                     value="{{ old('phone_number', $restaurant->phone_number) }}">
             </div>
             <div class="mb-3">
                 <label for="p_iva" class="form-label">Partita IVA *</label>
-                <input type="number" class="form-control" id="p_iva" name="p_iva"
+                <input type="number" class="form-control" id="p_iva" name="p_iva" required pattern="^\d{11}$"
                     value="{{ old('p_iva', $restaurant->p_iva) }}">
             </div>
             <div class="d-flex flex-wrap">
