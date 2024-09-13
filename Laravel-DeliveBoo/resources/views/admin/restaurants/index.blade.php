@@ -60,7 +60,7 @@
                                          justify-content-between align-items-center">
                                             <h2>Piatti:</h2>
                                             <button class="btn btn-primary"><a
-                                                    href="{{ route('admin.plates.index', $restaurant) }}">Visualizza
+                                                    href="{{ route('admin.plates.index', $restaurant) }}">Visualizza tutti i
                                                     Piatti</a></button>
                                         </div>
 
@@ -82,7 +82,7 @@
                                     @endif
                                 </div>
 
-                                <h3>Qua ci va il carosello con le immagini dei piatti</h3>
+
                             </div>
                             <div class="categoria">
                                 <p>Categorie: {{ implode(', ', $restaurant->categories->pluck('name')->toArray()) }}</p>

@@ -12,28 +12,38 @@
 
 
         @if ($plate)
-            @if ($plate->img)
-                <div>
-                    <img class="w-50" src="{{ asset('storage/' . $plate->img) }}" alt="{{ $plate->name }}">
-                </div>
-            @endif
-            <p>Nome piatto: {{ $plate->name }}</p>
-            <p>Ingredienti: {{ $plate->ingredients }}</p>
-            <p>Allergeni: {{ $plate->allergenes }}</p>
-            <p>Descrizione: {{ $plate->description }}</p>
-            <p>Prezzo: {{ $plate->price }}</p>
-
-
-
-
-
-            {{-- modifica --}}
-            <div>
-                <a href="{{ route('admin.plates.edit', $plate) }}"><button class="btn btn-warning">Modifica</button></a>
-            </div>
-        @else
-            <p>Piatto non trovato.</p>
+            <div class="container-sm">
+                <div class="row">
+                    <div class="col-6">
+                        @if ($plate->img)
+                            <div>
+                                <img class="w-100" src="{{ asset('storage/' . $plate->img) }}" alt="{{ $plate->name }}">
+                            </div>
+                    </div>
+                    <div class="col-6">
         @endif
+        <p>Nome piatto: {{ $plate->name }}</p>
+        <p>Ingredienti: {{ $plate->ingredients }}</p>
+        <p>Allergeni: {{ $plate->allergenes }}</p>
+        <p>Descrizione: {{ $plate->description }}</p>
+        <p>Prezzo: {{ $plate->price }}</p>
+        {{-- modifica --}}
+        <div>
+            <a href="{{ route('admin.plates.edit', $plate) }}"><button class="btn btn-warning mt-3">Modifica</button></a>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+    </div>
+@else
+    <p>Piatto non trovato.</p>
+    @endif
 
     </div>
 @endsection

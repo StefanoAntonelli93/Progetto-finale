@@ -44,46 +44,54 @@
                                             <div {{-- se piatto non è disponibile allora la card ha opacità --}}
                                                 class="border border-secondary rounded my-5 {{ $plate->available ? '' : 'opacity-50' }} ">
 
-                                                <div class="p-4">
-                                                    <h2 class="text-center mb-4">{{ $plate->name }}</h2>
-                                                    @if (!$plate->available)
-                                                        <h2 class="text-danger text-center ">Non
-                                                            Disponibile</h2>
-                                                    @endif
-                                                    <div class="img_piatto m-auto">
-                                                        @if ($plate->img)
-                                                            <div class="img_ristorante col p-2 ">
-                                                                <img class="rounded"
-                                                                    src="{{ asset('storage/' . $plate->img) }}"
-                                                                    alt="{{ $plate->name }}">
+                                                <div class="container p-4">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="img_piatto m-auto">
+                                                                @if ($plate->img)
+                                                                    <div class="img_ristorante col p-2 ">
+                                                                        <img class="rounded"
+                                                                            src="{{ asset('storage/' . $plate->img) }}"
+                                                                            alt="{{ $plate->name }}">
+                                                                    </div>
+                                                                @endif
+
                                                             </div>
-                                                        @endif
-
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <h3>{{ $plate->description }}</h3>
-                                                        <h3>{{ $plate->price }}€</h3>
-                                                    </div>
-                                                    <div class="d-flex gap-3 justify-content-center">
-                                                        <div>
-                                                            {{-- visualizza dettagli --}}
-                                                            <a href="{{ route('admin.plates.show', $plate) }}"><button
-                                                                    class="btn btn-info">Dettagli</button></a>
                                                         </div>
+                                                        <div class="col d-flex flex-column justify-content-around py-4">
+                                                            <h2 class="text-center mb-4">{{ $plate->name }}</h2>
+                                                            @if (!$plate->available)
+                                                                <h2 class="text-danger text-center ">Non
+                                                                    Disponibile</h2>
+                                                            @endif
 
-                                                        <div>
-                                                            <a href="{{ route('admin.plates.edit', $plate) }}"><button
-                                                                    class="btn btn-warning">Modifica</button></a>
+                                                            <div class="text-center">
+                                                                <h4>{{ $plate->description }}</h4>
+                                                                <h5>Prezzo: {{ $plate->price }}€</h5>
+                                                            </div>
+                                                            <div class="d-flex gap-3 justify-content-center">
+                                                                <div>
+                                                                    {{-- visualizza dettagli --}}
+                                                                    <a href="{{ route('admin.plates.show', $plate) }}"><button
+                                                                            class="btn btn-info">Dettagli</button></a>
+                                                                </div>
+
+                                                                <div>
+                                                                    <a href="{{ route('admin.plates.edit', $plate) }}"><button
+                                                                            class="btn btn-warning">Modifica</button></a>
+                                                                </div>
+                                                                {{-- cancella --}}
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                    data-plate-id="{{ $plate->id }}">
+                                                                    Elimina
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                        {{-- cancella --}}
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#deleteModal"
-                                                            data-plate-id="{{ $plate->id }}">
-                                                            Elimina
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             @include('shared.modal')
                                         @endforeach
                             @endif
