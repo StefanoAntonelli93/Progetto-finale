@@ -42,13 +42,19 @@
                                                 <div>
                                                     {{-- visualizza dettagli --}}
                                                     <button class="btn btn-info"><a
-                                                            href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a></button>
+                                                            href="{{ route('admin.plates.show', $plate) }}">Dettagli</a></button>
                                                 </div>
 
                                                 <div>
                                                     <button class="btn btn-warning"><a
-                                                            href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
+                                                            href="{{ route('admin.plates.edit', $plate) }}">Modifica</a></button>
                                                 </div>
+                                                {{-- cancella --}}
+                                                <form action="{{ route('admin.plates.destroy', $plate) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger">Elimina</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

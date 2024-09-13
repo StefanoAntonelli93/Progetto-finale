@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditPlateRequest;
 use App\Http\Requests\StorePlateRequest;
 use App\Models\Plate;
 use Illuminate\Http\Request;
@@ -48,6 +49,7 @@ class PlateController extends Controller
         $plate->description = $data['description'];
         $plate->ingredients = $data['ingredients'];
         $plate->price = $data['price'];
+        $plate->allergenes = $data['allergenes'];
 
         if (isset($data['img'])) {
             // Il campo img è presente e puoi processarlo.
@@ -72,26 +74,42 @@ class PlateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Plate $plate)
     {
-        //
+        return view('admin.plates.edit', compact('plate'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EditPlateRequest $request, Plate $plate)
     {
-        //
+        $data = $request->validated();
+        // Controlla se è stata caricata una nuova immagine
+        if ($request->hasFile('img')) {
+            // Elimina l'immagine precedente se esiste
+            if ($plate->img) {
+                Storage::delete($plate->img);
+            }
+            // Carica la nuova immagine
+            $data['img'] = $request->file('img')->store('images', 'public');
+        }
+
+        $plate->update($data);
+
+        return redirect()->route('admin.plates.index', $plate)->with('message', 'Piatto modificato con successo');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Plate $plates)
+    public function destroy(Plate $plate)
     {
         //
-        $plates->delete();
+        if ($plate->img) {
+            Storage::delete($plate->img);
+        }
+        $plate->delete();
         return redirect()->route('admin.plates.index')->with('message', 'Piatto eliminato correttamente');
     }
 }

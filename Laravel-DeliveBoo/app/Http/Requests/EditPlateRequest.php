@@ -11,7 +11,7 @@ class EditPlateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class EditPlateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|min:2|max:100',
+            'ingredients' => 'required|string|max:2000',
+            'price' => 'required|numeric|min:0.01|regex:/^\d+(\.\d{1,2})?$/',
+            'description' => 'nullable|string|max:2000',
+            'img' => 'nullable|image|max:4096', // massimo 4MB per l'immagine
+            'allergenes' => 'nullable|string'
         ];
     }
 }
