@@ -108,7 +108,7 @@ header {
   display: flex; /* Usa Flexbox per gestire il layout delle sezioni */
   justify-content: space-between; /* Spazia le sezioni sinistra e destra */
   align-items: center; /* Allinea verticalmente al centro */
-  max-width: 1200px; /* Larghezza massima del container */
+  // max-width: 1200px; /* Larghezza massima del container */
   margin: 0 auto; /* Centra orizzontalmente */
   padding: 0 15px; /* Padding ai lati */
 }

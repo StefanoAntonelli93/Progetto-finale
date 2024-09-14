@@ -1,7 +1,7 @@
 <template>
   <!-- title -->
-  <TitlePage :titlePage="'Homepage'"></TitlePage>
-  <main class="vh-100">
+  <!-- <TitlePage :titlePage="'Homepage'"></TitlePage> -->
+  <main class="vh-100 p-5">
     <div class="main-container mt-3">
       <!-- Sezione sinistra: Ricerca -->
       <!-- <section class="left-section">
@@ -49,9 +49,15 @@
     <router-link class="btn btn-primary" :to="{ name: 'cashout' }"
       >pagina cashout</router-link
     >
+    <!-- slogan -->
+    <section>
+      <div>
+        <h1 class="fw-bold">Scegli cosa mangiare a Venezia</h1>
+      </div>
+    </section>
     <!-- ricerca categoria -->
     <section>
-      <h2 class="text-center py-4">Ricerca il tuo ristorante per categoria</h2>
+      <h3 class="text-center py-4">Ricerca il tuo ristorante per categoria</h3>
       <div>
         <ul class="d-flex gap-3 justify-content-center">
           <li class="list-unstyled" v-for="category in store.categories">
@@ -69,7 +75,10 @@
     </section>
 
     <!-- ristoranti -->
-    <section></section>
+    <section>
+      <h4>Ristoranti</h4>
+      <p>qui ci vanno tutti i ristoranti con chiamata api</p>
+    </section>
 
     <!-- carosello -->
     <!-- <section>
@@ -100,6 +109,10 @@ export default {
 <style scoped lang="scss">
 @use "@/assets/scss/partials/variables.scss" as *;
 @use "@/assets/scss/partials/commons.scss" as *;
+
+h1 {
+  color: $primary-color;
+}
 
 .card-category {
   background-color: rgba(250, 249, 249, 0.2);
