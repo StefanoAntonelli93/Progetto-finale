@@ -76,9 +76,10 @@
     </section>
 
     <!-- ristoranti -->
-    <section>
+    <section class="py-4">
       <h4>Ristoranti</h4>
       <p>qui ci vanno tutti i ristoranti con chiamata api</p>
+      <RestaurantList />
     </section>
 
     <!-- carosello -->
@@ -92,6 +93,7 @@
 import { store } from "../store";
 import TitlePage from "../components/TitlePage.vue";
 import Carousel from "../components/home_element/Carousel.vue";
+import RestaurantList from "../components/home_element/RestaurantList.vue";
 
 export default {
   name: "home",
@@ -103,6 +105,7 @@ export default {
   components: {
     TitlePage,
     Carousel,
+    RestaurantList,
   },
 };
 </script>
