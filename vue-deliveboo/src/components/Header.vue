@@ -4,7 +4,7 @@
       <div class="left">
         <a href="/">
           <img
-            src="@/assets/img/deliveboo-logo.png"
+            src="@/assets/img/logo_boo.png"
             alt="DeliveBoo Logo"
             class="logo"
           />
@@ -68,12 +68,9 @@
 
                   <!-- Lista di opzioni -->
                   <ul class="account-options">
-                    <li><i class="fa fa-credit-card"></i> Carte Fedeltà</li>
-                    <li><i class="fa fa-info-circle"></i> Ti serve aiuto?</li>
-                    <li><i class="fa fa-bicycle"></i> Diventa rider</li>
-                    <li>
-                      <i class="fa fa-building"></i> Just Eat for business
-                    </li>
+                    <li><i class="fa fa-phone"></i> Contatti</li>
+                    <li><i class="fa fa-building"></i> Diventa partner</li>
+                    <li><i class="fa fa-users"></i> Chi siamo</li>
                   </ul>
                 </div>
               </div>
@@ -118,7 +115,7 @@ header {
 }
 
 .logo {
-  width: 150px; /* Puoi regolare la dimensione dell'immagine */
+  width: 200px; /* Puoi regolare la dimensione dell'immagine */
   height: auto;
   color: $primary-color;
 }

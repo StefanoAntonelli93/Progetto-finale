@@ -51,7 +51,7 @@
     >
     <!-- slogan -->
     <section>
-      <div>
+      <div class="slogan-fixed">
         <h1 class="fw-bold">Scegli cosa mangiare a Venezia</h1>
       </div>
     </section>
