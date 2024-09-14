@@ -1,86 +1,100 @@
 <template>
-    <header>
-        <div class="container">
-            <div class="left">
-                <a href="#">
-                    <img src="@/assets/img/deliveboo-logo.png" alt="DeliveBoo Logo" class="logo">
-                </a>
-            </div>
-            <div class="right">
-
-                <!-- Sezione 1 -->
-                <div class="right-section">
-                    <button class="btn btn-primary">
-                        <i class="fa fa-user"></i> Accedi
-                    </button>
-                </div>
-
-                <!-- Sezione 2 -->
-                <div class="right-section">
-                    <img src="@/assets/img/italy-flag.png" alt="Italian Flag" class="flag">
-                </div>
-
-                <!-- Sezione 3 -->
-                <div class="right-section">
-
-                    <!-- Menu hamburger -->
-                    <button type="button" class="btn btn-outline-secondary navbar-toggler" data-bs-toggle="modal" data-bs-target="#menuModal">
-
-                        <!-- Icona menu hamburger -->
-                        <i class="fa fa-bars hamburger-icon"></i>
-                    </button>
-
-                    <!-- Modale del menu -->
-                    <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="menuModalLabel">Menu</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <!-- Pulsanti Accedi e crea un account -->
-                                    <div class="account-buttons">
-                                        <button class="btn btn-light">Accedi</button>
-                                        <button class="btn btn-primary">Crea un account</button>
-                                    </div>
-
-                                    <!-- Lista di opzioni -->
-                                    <ul class="account-options">
-                                        <li>
-                                            <i class="fa fa-credit-card"></i> Carte Fedeltà
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-info-circle"></i> Ti serve aiuto?
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bicycle"></i> Diventa rider
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-building"></i> Just Eat for business
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <header>
+    <div class="container">
+      <div class="left">
+        <a href="#">
+          <img
+            src="@/assets/img/deliveboo-logo.png"
+            alt="DeliveBoo Logo"
+            class="logo"
+          />
+        </a>
+      </div>
+      <div class="right">
+        <!-- Sezione 1 -->
+        <div class="right-section">
+          <button class="btn btn-primary">
+            <i class="fa fa-user"></i> Accedi
+          </button>
         </div>
-    </header>
+
+        <!-- Sezione 2 -->
+        <div class="right-section">
+          <img
+            src="@/assets/img/italy-flag.png"
+            alt="Italian Flag"
+            class="flag"
+          />
+        </div>
+
+        <!-- Sezione 3 -->
+        <div class="right-section">
+          <!-- Menu hamburger -->
+          <button
+            type="button"
+            class="btn btn-outline-secondary navbar-toggler"
+            data-bs-toggle="modal"
+            data-bs-target="#menuModal"
+          >
+            <!-- Icona menu hamburger -->
+            <i class="fa fa-bars hamburger-icon"></i>
+          </button>
+
+          <!-- Modale del menu -->
+          <div
+            class="modal fade"
+            id="menuModal"
+            tabindex="-1"
+            aria-labelledby="menuModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="menuModalLabel">Menu</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Pulsanti Accedi e crea un account -->
+                  <div class="account-buttons">
+                    <button class="btn btn-light">Accedi</button>
+                    <button class="btn btn-primary">Crea un account</button>
+                  </div>
+
+                  <!-- Lista di opzioni -->
+                  <ul class="account-options">
+                    <li><i class="fa fa-credit-card"></i> Carte Fedeltà</li>
+                    <li><i class="fa fa-info-circle"></i> Ti serve aiuto?</li>
+                    <li><i class="fa fa-bicycle"></i> Diventa rider</li>
+                    <li>
+                      <i class="fa fa-building"></i> Just Eat for business
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 </template>
 
 <!-- Script -->
 <script>
-  export default {
-    name: 'Header',
-  };
+export default {
+  name: "Header",
+};
 </script>
 
 <!-- Style -->
 <style scoped lang="scss">
-@import '@/assets/scss/variables.scss';
+@use "@/assets/scss/partials/variables.scss" as *;
 
 header {
   padding: 20px 0; /* Aggiungi del padding sopra e sotto */
@@ -101,12 +115,12 @@ header {
 
 /* Sezione sinistra */
 .left {
-  
 }
 
 .logo {
   width: 150px; /* Puoi regolare la dimensione dell'immagine */
   height: auto;
+  color: $primary-color;
 }
 
 /* Sezione destra */
@@ -194,5 +208,3 @@ header {
   background-color: transparent;
 }
 </style>
-
-  

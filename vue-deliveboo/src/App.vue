@@ -3,28 +3,25 @@
     <!-- Header -->
     <Header />
 
-    <Main />
+    <main>
+      <router-view></router-view>
+    </main>
 
     <Footer />
-
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import Main from './components/Main.vue';
-import Footer from './components/Footer.vue';
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Header,
     Footer,
-    Main,
   },
 };
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
