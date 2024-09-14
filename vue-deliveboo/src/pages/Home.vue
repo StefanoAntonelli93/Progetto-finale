@@ -54,18 +54,17 @@
     <a id="top"></a>
     <section>
       <div class="slogan-fixed">
-        <h1 class="fw-bold">Scegli cosa mangiare a Venezia</h1>
+        <h1 class="fw-bold text-center mb-5">Scegli cosa mangiare a Venezia</h1>
       </div>
     </section>
     <!-- ricerca categoria -->
     <section>
-      <h3 class="text-center py-4">Ricerca il tuo ristorante per categoria</h3>
       <div>
         <ul class="d-flex gap-3 justify-content-center">
           <li class="list-unstyled" v-for="category in store.categories">
             <div class="card-category d-flex flex-column gap-2">
               <img
-                class="mt-5 category_img"
+                class="category_img"
                 :src="category.img"
                 :alt="category.name"
               />
@@ -126,6 +125,7 @@ h1 {
   }
   img {
     pointer-events: none;
+    border-radius: 20px 20px 0 0;
   }
 }
 

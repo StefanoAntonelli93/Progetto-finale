@@ -144,8 +144,8 @@ header {
 
 /* Stile per la bandiera */
 .flag {
-  width: 30px;
-  height: auto;
+  width: 20px;
+  height: 15px;
 }
 
 /* Menu hamburger */
