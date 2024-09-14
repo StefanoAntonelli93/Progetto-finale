@@ -51,8 +51,8 @@
             </div>
             {{-- file input --}}
             <div class="mb-3">
-                <img id="img-preview" src="#" alt="Anteprima Immagine"
-                    style="display: none; margin-top: 10px; max-width: 300px;">
+                <img class="mb-3" id="img-preview" src="{{ asset('storage/' . $restaurant->img) }}"
+                    alt="Anteprima Immagine" style=" max-width: 300px; max-height: 200px">
                 <input class="form-control" type="file" id="img" name="img">
             </div>
 

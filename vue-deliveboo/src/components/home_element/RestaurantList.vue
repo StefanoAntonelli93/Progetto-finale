@@ -61,14 +61,14 @@ export default {
     <div class="row">
       <div class="col-6" v-for="restaurant in restaurants">
         <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-3">
-          <div class="col-4">
+          <div class="col-lg-4 col-md-12">
             <img
               class="category_img ms-3"
-              :src="restaurant.img"
+              :src="restaurant.image_url"
               :alt="restaurant.name"
             />
           </div>
-          <div class="col-7">
+          <div class="col-lg-6 col-md-12">
             <p>{{ restaurant.restaurant_name }}</p>
             <p class="text-secondary">{{ restaurant.address }}</p>
             <p>{{ restaurant.description }}</p>

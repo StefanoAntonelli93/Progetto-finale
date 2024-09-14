@@ -54,10 +54,12 @@ class RestaurantController extends Controller
             // Il campo img è presente e puoi processarlo.
             $img_path = Storage::put('uploads', $data['img']);
             $restaurant->img = $img_path;
+            $restaurant->image_url = url('storage/' . $restaurant->img);
         }
         // visualizzo utente corrente
         $restaurant->user_id = $current_user;
         $restaurant->save();
+
         //collego le categorie al ristorante
         if ($request->has('categories')) {
             $restaurant->categories()->attach($request->categories);

@@ -43,7 +43,6 @@
                                         @foreach ($plates as $plate)
                                             <div {{-- se piatto non è disponibile allora la card ha opacità --}}
                                                 class="border border-secondary rounded my-5 {{ $plate->available ? '' : 'opacity-50' }} ">
-
                                                 <div class="container p-4">
                                                     <div class="row">
                                                         <div class="col">
@@ -55,15 +54,14 @@
                                                                             alt="{{ $plate->name }}">
                                                                     </div>
                                                                 @endif
-
                                                             </div>
                                                         </div>
                                                         <div class="col d-flex flex-column justify-content-around py-4">
-                                                            <h2 class="text-center mb-4">{{ $plate->name }}</h2>
                                                             @if (!$plate->available)
                                                                 <h2 class="text-danger text-center ">Non
                                                                     Disponibile</h2>
                                                             @endif
+                                                            <h2 class="text-center mb-4">{{ $plate->name }}</h2>
 
                                                             <div class="text-center">
                                                                 <h4>{{ $plate->description }}</h4>
