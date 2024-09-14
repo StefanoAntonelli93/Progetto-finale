@@ -112,8 +112,6 @@ header {
 }
 
 /* Sezione sinistra */
-.left {
-}
 
 .logo {
   width: 200px; /* Puoi regolare la dimensione dell'immagine */
