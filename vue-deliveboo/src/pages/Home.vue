@@ -1,7 +1,7 @@
 <template>
   <!-- title -->
   <!-- <TitlePage :titlePage="'Homepage'"></TitlePage> -->
-  <main class="vh-100 p-5">
+  <main class="p-5">
     <div class="main-container mt-3">
       <!-- Sezione sinistra: Ricerca -->
       <!-- <section class="left-section">
@@ -50,6 +50,8 @@
       >pagina cashout</router-link
     >
     <!-- slogan -->
+    <!-- link top-->
+    <a id="top"></a>
     <section>
       <div class="slogan-fixed">
         <h1 class="fw-bold">Scegli cosa mangiare a Venezia</h1>

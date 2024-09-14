@@ -94,6 +94,7 @@ export default {
 @use "@/assets/scss/partials/variables.scss" as *;
 
 header {
+  background-color: rgb(235, 235, 235);
   padding: 20px 0; /* Aggiungi del padding sopra e sotto */
   height: 100px; /* Aumenta l'altezza dell'header */
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);

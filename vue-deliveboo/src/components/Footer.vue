@@ -2,11 +2,12 @@
   <footer>
     <!-- Logo al centro, sopra le altre sezioni -->
     <div class="logo-container">
-      <img
-        src="@/assets/img/logo-bianco.png"
-        alt="Logo DeliveBoo"
-        class="footer-logo"
-      />
+      <a href="#top">
+        <img
+          src="@/assets/img/logo_boo.png"
+          alt="Logo DeliveBoo"
+          class="footer-logo"
+      /></a>
     </div>
 
     <div class="container">
@@ -67,7 +68,7 @@ footer {
 }
 
 .footer-logo {
-  width: 150px; /* Dimensione del logo */
+  width: 180px; /* Dimensione del logo */
   height: auto;
 }
 
