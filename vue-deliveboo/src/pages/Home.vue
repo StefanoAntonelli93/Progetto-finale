@@ -1,7 +1,7 @@
 <template>
   <!-- title -->
   <TitlePage :titlePage="'Homepage'"></TitlePage>
-  <main>
+  <main class="vh-100">
     <div class="main-container mt-3">
       <!-- Sezione sinistra: Ricerca -->
       <!-- <section class="left-section">
@@ -44,25 +44,52 @@
 
     <!-- router link alle pagine menu ristorante e cashout -->
     <router-link class="btn btn-primary me-2" :to="{ name: 'restaurant_menu' }"
-      >ristoranti</router-link
+      >pagina menu ristorante</router-link
     >
     <router-link class="btn btn-primary" :to="{ name: 'cashout' }"
-      >cashout</router-link
+      >pagina cashout</router-link
     >
+    <!-- ricerca categoria -->
+    <section>
+      <h2 class="text-center py-4">Ricerca il tuo ristorante per categoria</h2>
+      <div>
+        <ul class="d-flex gap-3 justify-content-center">
+          <li class="list-unstyled" v-for="category in store.categories">
+            <div class="card-category d-flex flex-column gap-2">
+              <img
+                class="mt-5 category_img"
+                :src="category.img"
+                :alt="category.name"
+              />
+              <p class="text-center">{{ category.name }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ristoranti -->
+    <section></section>
 
     <!-- carosello -->
-    <section>
+    <!-- <section>
       <Carousel />
-    </section>
+    </section> -->
   </main>
 </template>
 
 <script>
+import { store } from "../store";
 import TitlePage from "../components/TitlePage.vue";
 import Carousel from "../components/home_element/Carousel.vue";
 
 export default {
   name: "home",
+  data() {
+    return {
+      store,
+    };
+  },
   components: {
     TitlePage,
     Carousel,
@@ -72,6 +99,38 @@ export default {
 
 <style scoped lang="scss">
 @use "@/assets/scss/partials/variables.scss" as *;
+@use "@/assets/scss/partials/commons.scss" as *;
+
+.card-category {
+  background-color: rgba(250, 249, 249, 0.2);
+  border-radius: 20px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  p {
+    user-select: none;
+  }
+  img {
+    pointer-events: none;
+  }
+}
+
+.card-category:hover {
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.4
+  ); /* Cambia il colore dello sfondo al passaggio del mouse */
+}
+
+.card-category:active {
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.6
+  ); /* Cambia il colore dello sfondo quando cliccato */
+}
 
 // main {
 //   padding: 0;

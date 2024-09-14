@@ -2,3 +2,4 @@
 @use "bootstrap/scss/bootstrap" as *;
 // importo tutte le partials nel main.scss
 @use "./partials/variables" as *;
+@use "./partials/commons" as *;

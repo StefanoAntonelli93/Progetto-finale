@@ -2,7 +2,7 @@
   <header>
     <div class="container">
       <div class="left">
-        <a href="#">
+        <a href="/">
           <img
             src="@/assets/img/deliveboo-logo.png"
             alt="DeliveBoo Logo"
