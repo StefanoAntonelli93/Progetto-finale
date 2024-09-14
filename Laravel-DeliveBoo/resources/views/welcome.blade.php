@@ -6,7 +6,7 @@
                 <img class="rounded w-50" src="{{ asset('storage/images/chef.jpg') }}" alt="chef">
             </div>
             <div class="col-6 d-flex flex-column gap-5 ">
-                <h1>Benvenuto {{ Auth::user()->name }}!</h1>
+                <h1>Benvenuto in Deliveboo!</h1>
                 <p class="lh-lg">Il nostro sito è la piattaforma ideale per far conoscere e vendere i tuoi piatti
                     a una
                     clientela più ampia. Registrando il tuo ristorante su Deliveboo, potrai facilmente gestire ordini online
