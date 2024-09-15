@@ -59,6 +59,7 @@ class PlateController extends Controller
             // Il campo img è presente e puoi processarlo.
             $img_path = Storage::put('uploads', $data['img']);
             $plate->img = $img_path;
+            $plate->image_url = url('storage/' . $plate->img);
         }
 
         $plate->save();
@@ -96,6 +97,7 @@ class PlateController extends Controller
             }
             // Carica la nuova immagine
             $data['img'] = $request->file('img')->store('images', 'public');
+            $data['image_url'] = url('storage/' . $data['img']);
         }
 
         $plate->update($data);

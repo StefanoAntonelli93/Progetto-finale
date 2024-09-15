@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\api\RestaurantController;
+use App\Http\Controllers\api\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*

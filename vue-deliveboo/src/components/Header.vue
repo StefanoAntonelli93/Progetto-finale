@@ -1,3 +1,17 @@
+<script>
+export default {
+  name: "Header",
+  methods: {
+    goToLogin() {
+      window.location.href = "http://127.0.0.1:8000/login"; // Route Blade per il login
+    },
+    goToRegister() {
+      window.location.href = "http://127.0.0.1:8000/register"; // Route Blade per la registrazione
+    },
+  },
+};
+</script>
+
 <template>
   <header>
     <div class="container">
@@ -13,7 +27,7 @@
       <div class="right">
         <!-- Sezione 1 -->
         <div class="right-section">
-          <button class="btn btn-primary">
+          <button @click="goToLogin" class="btn btn-primary">
             <i class="fa fa-user"></i> Accedi
           </button>
         </div>
@@ -62,8 +76,12 @@
                 <div class="modal-body">
                   <!-- Pulsanti Accedi e crea un account -->
                   <div class="account-buttons">
-                    <button class="btn btn-light">Accedi</button>
-                    <button class="btn btn-primary">Crea un account</button>
+                    <button @click="goToLogin" class="btn btn-light">
+                      Accedi
+                    </button>
+                    <button @click="goToRegister" class="btn btn-primary">
+                      Crea un account
+                    </button>
                   </div>
 
                   <!-- Lista di opzioni -->
@@ -81,13 +99,6 @@
     </div>
   </header>
 </template>
-
-<!-- Script -->
-<script>
-export default {
-  name: "Header",
-};
-</script>
 
 <!-- Style -->
 <style scoped lang="scss">

@@ -19,6 +19,7 @@ class Restaurant extends Model
         'description',
         'address',
         'p_iva',
+        'image_url'
     ];
     //creo collegamento 1/1
     public function user()

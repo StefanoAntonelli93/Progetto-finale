@@ -46,41 +46,41 @@
                             {{-- piatti --}}
 
                             <div class="piatti">
-                                <div>
-                                    @if (!$restaurant->plates)
-                                        <div>
-                                            <h2>Non ci sono piatti disponibili</h2>
-                                            <button class="btn btn-primary"><a
-                                                    href="{{ route('admin.plates.index', $restaurant) }}">Aggiungi
-                                                    Piatto</a></button>
-                                        </div>
-                                    @else
-                                        <div
-                                            class="d-flex
-                                         justify-content-between align-items-center">
-                                            <h2>Piatti:</h2>
-                                            <button class="btn btn-primary"><a
-                                                    href="{{ route('admin.plates.index', $restaurant) }}">Visualizza tutti i
-                                                    Piatti</a></button>
-                                        </div>
 
-                                        <div>
-                                            @foreach ($restaurant->plates as $plate)
-                                                @if ($plate->available)
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="d-flex align-items-center">
-                                                            <img width="50px" height="50px"
-                                                                src="{{ asset('storage/' . $plate->img) }}"
-                                                                alt="{{ $plate->name }}">
-                                                            <p class="mx-2">{{ $plate->name }}</p>
-                                                        </div>
-                                                        <div>Prezzo: {{ $plate->price }}€</div>
+                                @if ($restaurant->plates->isEmpty())
+                                    <div>
+                                        <h2>Non ci sono piatti disponibili</h2>
+                                        <button class="btn btn-primary"><a
+                                                href="{{ route('admin.plates.index', $restaurant) }}">Aggiungi
+                                                Piatto</a></button>
+                                    </div>
+                                @else
+                                    <div
+                                        class="d-flex
+                                         justify-content-between align-items-center">
+                                        <h2>Piatti:</h2>
+                                        <button class="btn btn-primary"><a
+                                                href="{{ route('admin.plates.index', $restaurant) }}">Visualizza tutti i
+                                                Piatti</a></button>
+                                    </div>
+
+                                    <div>
+                                        @foreach ($restaurant->plates as $plate)
+                                            @if ($plate->available)
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div class="d-flex align-items-center">
+                                                        <img width="50px" height="50px"
+                                                            src="{{ asset('storage/' . $plate->img) }}"
+                                                            alt="{{ $plate->name }}">
+                                                        <p class="mx-2">{{ $plate->name }}</p>
                                                     </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                </div>
+                                                    <div>Prezzo: {{ $plate->price }}€</div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endif
+
 
 
                             </div>

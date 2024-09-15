@@ -103,6 +103,7 @@ class RestaurantController extends Controller
             }
             // Carica la nuova immagine
             $data['img'] = $request->file('img')->store('images', 'public');
+            $data['image_url'] = url('storage/' . $data['img']);
         }
 
         // Aggiorna il ristorante con i dati, inclusa la nuova immagine (se caricata)

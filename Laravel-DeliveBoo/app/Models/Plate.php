@@ -19,6 +19,7 @@ class Plate extends Model
         'allergenes',
         'available',
         'slug',
+        'image_url'
     ];
 
     public function restaurant()
