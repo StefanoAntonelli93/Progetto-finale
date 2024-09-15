@@ -8,6 +8,7 @@ export default {
   },
   data() {
     return {
+      baseImageUrl: "http://127.0.0.1:8000/storage/",
       restaurants: [],
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
@@ -65,7 +66,7 @@ export default {
           <div class="col-lg-4 col-md-12">
             <img
               class="category_img ms-3"
-              :src="restaurant.image_url"
+              :src="baseImageUrl + restaurant.img"
               :alt="restaurant.name"
             />
           </div>
