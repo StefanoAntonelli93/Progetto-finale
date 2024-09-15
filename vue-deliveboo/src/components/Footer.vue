@@ -1,15 +1,5 @@
 <template>
   <footer>
-    <!-- Logo al centro, sopra le altre sezioni -->
-    <div class="logo-container">
-      <a href="#top">
-        <img
-          src="@/assets/img/logo_boo.png"
-          alt="Logo DeliveBoo"
-          class="footer-logo"
-      /></a>
-    </div>
-
     <div class="container">
       <!-- Sezione 1: Informazioni aziendali o link rapidi -->
       <div class="footer-section">
@@ -41,6 +31,15 @@
         <p>&copy; 2024 DeliveBoo. Tutti i diritti riservati.</p>
       </div>
     </div>
+    <!-- Logo al centro, sopra le altre sezioni -->
+    <div class="logo-container">
+      <a href="#top">
+        <img
+          src="@/assets/img/logo_boo.png"
+          alt="Logo DeliveBoo"
+          class="footer-logo"
+      /></a>
+    </div>
   </footer>
 </template>
 
@@ -64,11 +63,10 @@ footer {
 .logo-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px; /* Spazio sotto il logo */
 }
 
 .footer-logo {
-  width: 180px; /* Dimensione del logo */
+  width: 150px; /* Dimensione del logo */
   height: auto;
 }
 

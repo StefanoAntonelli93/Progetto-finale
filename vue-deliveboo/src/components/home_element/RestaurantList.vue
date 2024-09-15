@@ -87,6 +87,33 @@ export default {
 
 <style scoped lang="scss">
 .restaurant-card {
-  border: 1px solid black;
+  background-color: rgba(250, 249, 249, 0.2);
+  border-radius: 5px;
+  box-shadow: 4px 4px 8px rgba(167, 165, 162, 0.3);
+  cursor: pointer;
+  p {
+    user-select: none;
+  }
+  img {
+    pointer-events: none;
+  }
+}
+
+.restaurant-card:hover {
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.4
+  ); /* Cambia il colore dello sfondo al passaggio del mouse */
+}
+
+.restaurant-card:active {
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.6
+  ); /* Cambia il colore dello sfondo quando cliccato */
 }
 </style>
