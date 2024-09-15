@@ -62,24 +62,29 @@
       <div>
         <ul class="d-flex gap-3 justify-content-center">
           <li class="list-unstyled" v-for="category in store.categories">
-            <div class="card-category d-flex flex-column gap-2">
+            <div
+              class="card-category d-flex flex-column gap-2"
+              @click="selectCategory(category)"
+            >
               <img
                 class="category_img"
                 :src="category.img"
                 :alt="category.name"
               />
               <p class="text-center">{{ category.name }}</p>
+              <p class="text-center">{{ category.id }}</p>
             </div>
           </li>
         </ul>
       </div>
     </section>
+    <!-- db categories -->
 
     <!-- ristoranti -->
     <section class="py-4">
       <h4>Ristoranti</h4>
       <p>qui ci vanno tutti i ristoranti con chiamata api</p>
-      <RestaurantList />
+      <RestaurantList :selectedCategory="selectedCategory" />
     </section>
 
     <!-- carosello -->
@@ -100,12 +105,19 @@ export default {
   data() {
     return {
       store,
+      selectedCategory: null,
     };
   },
   components: {
     TitlePage,
     Carousel,
     RestaurantList,
+  },
+  methods: {
+    selectCategory(category) {
+      this.selectedCategory = category; // Imposta la categoria selezionata
+      console.log("Categoria selezionata:", this.selectedCategory);
+    },
   },
 };
 </script>
