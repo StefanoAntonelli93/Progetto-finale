@@ -74,7 +74,6 @@
                   :alt="category.name"
                 />
                 <p class="text-center">{{ category.name }}</p>
-                <p class="text-center">{{ category.id }}</p>
               </div>
             </div>
           </li>
@@ -85,8 +84,7 @@
 
     <!-- ristoranti -->
     <section class="py-4">
-      <h4>Ristoranti</h4>
-      <p>qui ci vanno tutti i ristoranti con chiamata api</p>
+      <h4 class="py-4">Ristoranti</h4>
       <RestaurantList :selectedCategory="selectedCategory" />
     </section>
 

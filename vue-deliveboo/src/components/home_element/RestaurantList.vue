@@ -81,29 +81,33 @@ export default {
         v-for="restaurant in filteredRestaurants"
         :key="restaurant.id"
       >
-        <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-y3">
-          <div class="col-lg-4 col-md-12">
-            <img
-              class="category_img ms-3"
-              :src="baseImageUrl + restaurant.img"
-              :alt="restaurant.name"
-            />
-          </div>
-          <div class="col-lg-6 col-md-12">
-            <p>{{ restaurant.restaurant_name }}</p>
-            <p class="text-secondary">{{ restaurant.address }}</p>
-            <p>{{ restaurant.description }}</p>
+        <router-link class="no-style-link" :to="{ name: 'restaurant_menu' }">
+          <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-y3">
+            <div class="col-lg-4 col-md-12">
+              <img
+                class="category_img ms-3"
+                :src="baseImageUrl + restaurant.img"
+                :alt="restaurant.name"
+              />
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <p>{{ restaurant.restaurant_name }}</p>
+              <p class="text-secondary">{{ restaurant.address }}</p>
+              <p>{{ restaurant.description }}</p>
 
-            <!-- categorie -->
-            <div v-if="restaurant.categories.length">
-              <p>Categorie:</p>
-
-              <div v-for="category in restaurant.categories" :key="category.id">
-                {{ category.name }}
+              <!-- categorie -->
+              <div class="d-flex gap-1" v-if="restaurant.categories.length">
+                Categorie:
+                <div
+                  v-for="category in restaurant.categories"
+                  :key="category.id"
+                >
+                  {{ category.name }}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
     <nav class="py-4 d-flex justify-content-center gap-2">
@@ -143,5 +147,13 @@ export default {
     128,
     0.6
   ); /* Cambia il colore dello sfondo quando cliccato */
+}
+.no-style-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.no-style-link:hover {
+  text-decoration: none;
 }
 </style>
