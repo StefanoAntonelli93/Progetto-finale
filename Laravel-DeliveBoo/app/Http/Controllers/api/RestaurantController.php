@@ -13,7 +13,6 @@ class RestaurantController extends Controller
     public function index(Request $request)
     {
         // aggiungo 4 ristoranti per pagina e le tabelle relazionate a tabella restaurants con l'eager loading
-        $page = $request->query('page', 1);
         $categoryName = $request->query('categories');
         $restaurants = Restaurant::with(['plates', 'categories', 'orders'])->when($categoryName, function ($query, $categoryName) {
             return $query->whereHas('categories', function ($q) use ($categoryName) {
