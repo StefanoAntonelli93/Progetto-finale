@@ -1,47 +1,58 @@
+<script>
+import { store } from "../store";
+import RestaurantList from "../components/home_element/RestaurantList.vue";
+import axios from "axios";
+
+export default {
+  name: "home",
+  data() {
+    return {
+      store,
+      categories: [],
+      currentPage: 1,
+      api: {
+        baseUrl: "http://127.0.0.1:8000/api/",
+        endPoints: "restaurants",
+      },
+    };
+  },
+  components: {
+    RestaurantList,
+  },
+  methods: {
+    resetCategories() {
+      this.categories = [];
+      this.categoryCall();
+    },
+    categoryCall(category) {
+      const url = this.api.baseUrl + this.api.endPoints;
+      this.categories.push(category);
+      axios
+        .get(url, {
+          params: {
+            page: this.currentPage,
+            categories: this.categories,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.results.data);
+          //   console.log(response);
+          // se l'array è popolato restituisci qualcosa altrimenti messaggio errore
+          if (response.data.results && response.data.results.data.length) {
+            this.store.restaurants = response.data.results.data;
+          } else {
+            console.log("No restaurants found");
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+  },
+};
+</script>
 <template>
   <!-- title -->
   <!-- <TitlePage :titlePage="'Homepage'"></TitlePage> -->
   <main class="p-5">
-    <div class="main-container mt-3">
-      <!-- Sezione sinistra: Ricerca -->
-      <!-- <section class="left-section">
-        <div class="content">
-          <h1>Ordina cibo e tanto altro</h1>
-          <p>Ristoranti e spesa, a domicilio</p>
-
-          <div class="search-container">
-            <input
-              type="text"
-              placeholder="Cerca qui i ristoranti"
-              class="search-input"
-            />
-
-            <router-link
-              activeClass="fw-bold"
-              class="link"
-              :to="{ name: 'restaurant_menu' }"
-            >
-              <button class="search-btn">Cerca</button>
-            </router-link>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- Sezione destra divisa in due parti, con la sinistra inclinata e più piccola -->
-      <!-- <section class="right-section"> -->
-      <!-- Sezione più piccola inclinata a sinistra -->
-      <!-- <div class="colored-section"></div> -->
-      <!-- Sezione più grande con immagine a destra -->
-      <!-- <div class="image-section py-5">
-          <img
-            src="@/assets/img/busta-con-logo.png"
-            alt="Busta con logo"
-            class="bag-image"
-          />
-        </div> -->
-      <!-- </section> -->
-    </div>
-
     <!-- router link alle pagine menu ristorante e cashout -->
     <router-link class="btn btn-primary me-2" :to="{ name: 'restaurant_menu' }"
       >pagina menu ristorante</router-link
@@ -94,62 +105,6 @@
     </section> -->
   </main>
 </template>
-
-<script>
-import { store } from "../store";
-import TitlePage from "../components/TitlePage.vue";
-import Carousel from "../components/home_element/Carousel.vue";
-import RestaurantList from "../components/home_element/RestaurantList.vue";
-import axios from "axios";
-
-export default {
-  name: "home",
-  data() {
-    return {
-      store,
-      categories: [],
-      currentPage: 1,
-      api: {
-        baseUrl: "http://127.0.0.1:8000/api/",
-        endPoints: "restaurants",
-      },
-    };
-  },
-  components: {
-    TitlePage,
-    Carousel,
-    RestaurantList,
-  },
-  methods: {
-    resetCategories() {
-      this.categories = [];
-      this.categoryCall();
-    },
-    categoryCall(category) {
-      const url = this.api.baseUrl + this.api.endPoints;
-      this.categories.push(category);
-      axios
-        .get(url, {
-          params: {
-            page: this.currentPage,
-            categories: this.categories,
-          },
-        })
-        .then((response) => {
-          console.log(response.data.results.data);
-          //   console.log(response);
-          // se l'array è popolato restituisci qualcosa altrimenti messaggio errore
-          if (response.data.results && response.data.results.data.length) {
-            this.store.restaurants = response.data.results.data;
-          } else {
-            console.log("No restaurants found");
-          }
-        })
-        .catch((error) => console.log(error));
-    },
-  },
-};
-</script>
 
 <style scoped lang="scss">
 @use "@/assets/scss/partials/variables.scss" as *;

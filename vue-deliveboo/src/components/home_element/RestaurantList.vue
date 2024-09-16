@@ -1,5 +1,4 @@
 <script>
-import TitlePage from "../TitlePage.vue";
 import axios from "axios";
 import { store } from "@/store";
 
@@ -11,9 +10,7 @@ export default {
       default: null,
     },
   },
-  components: {
-    TitlePage,
-  },
+
   data() {
     return {
       store,

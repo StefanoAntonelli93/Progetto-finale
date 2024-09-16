@@ -1,18 +1,12 @@
 <script>
-import TitlePage from "../components/TitlePage.vue";
-
 export default {
   name: "restaurant_menu",
-  components: {
-    TitlePage,
-  },
+
   props: ["restaurantId"],
 };
 </script>
 
 <template>
-  <!-- title -->
-  <TitlePage :titlePage="'Menu ristorante'"></TitlePage>
   <div class="container">
     <div class="content bg-primary"><h1>card ristorante</h1></div>
 
