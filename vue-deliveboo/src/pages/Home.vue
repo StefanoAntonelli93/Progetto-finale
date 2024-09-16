@@ -54,12 +54,12 @@ export default {
   <!-- <TitlePage :titlePage="'Homepage'"></TitlePage> -->
   <main class="p-5">
     <!-- router link alle pagine menu ristorante e cashout -->
-    <router-link class="btn btn-primary me-2" :to="{ name: 'restaurant_menu' }"
+    <!-- <router-link class="btn btn-primary me-2" :to="{ name: 'restaurant_menu' }"
       >pagina menu ristorante</router-link
     >
     <router-link class="btn btn-primary" :to="{ name: 'cashout' }"
       >pagina cashout</router-link
-    >
+    > -->
     <!-- slogan -->
     <!-- link top-->
     <a id="top"></a>

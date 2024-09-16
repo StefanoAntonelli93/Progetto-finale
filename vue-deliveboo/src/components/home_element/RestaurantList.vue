@@ -78,7 +78,10 @@ export default {
         v-for="restaurant in filteredRestaurants"
         :key="restaurant.id"
       >
-        <router-link class="no-style-link" :to="{ name: 'restaurant_menu' }">
+        <router-link
+          class="no-style-link"
+          :to="{ name: 'RestaurantDetail', params: { id: restaurant.id } }"
+        >
           <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-y3">
             <div class="col-lg-4 col-md-12">
               <img
