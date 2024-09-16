@@ -30,8 +30,8 @@
             </div>
             <div class="mb-3">
                 <label for="p_iva" class="form-label">Partita IVA *</label>
-                <input type="number" class="form-control" id="p_iva" name="p_iva" required pattern="^\d{11}$"
-                    value="{{ old('p_iva', $restaurant->p_iva) }}">
+                <input type="number" class="form-control" id="p_iva" name="p_iva" required min="11"
+                    placeholder="(11 numeri)" max="11" value="{{ old('p_iva', $restaurant->p_iva) }}">
             </div>
             <div class="d-flex flex-wrap">
                 @foreach ($categories as $category)

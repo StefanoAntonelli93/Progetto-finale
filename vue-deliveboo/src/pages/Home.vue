@@ -60,16 +60,14 @@
     <!-- ricerca categoria -->
     <section>
       <div>
+        <button @click="resetCategories">Reset</button>
         <ul class="d-flex gap-3 justify-content-center">
           <li class="list-unstyled" v-for="category in store.categories">
             <div
               @click="categoryCall(category.name)"
               class="card-category d-flex flex-column gap-2"
             >
-              <div
-                class="card-category d-flex flex-column gap-2"
-                @click="selectCategory(category.name)"
-              >
+              <div class="card-category d-flex flex-column gap-2">
                 <img
                   class="category_img"
                   :src="category.img"
@@ -111,7 +109,7 @@ export default {
   data() {
     return {
       store,
-      category: "",
+      categories: [],
       currentPage: 1,
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
@@ -125,17 +123,18 @@ export default {
     RestaurantList,
   },
   methods: {
+    resetCategories() {
+      this.categories = [];
+      this.categoryCall();
+    },
     categoryCall(category) {
       const url = this.api.baseUrl + this.api.endPoints;
-      this.category = category;
-      console.log("URL:", url); // Log the URL
-      console.log("Category:", this.category);
-      //   console.log(url);
+      this.categories.push(category);
       axios
         .get(url, {
           params: {
             page: this.currentPage,
-            categories: this.category,
+            categories: this.categories,
           },
         })
         .then((response) => {
