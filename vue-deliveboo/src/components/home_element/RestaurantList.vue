@@ -42,7 +42,6 @@ export default {
           if (response.data.results.data.length) {
             // console.log(response.data.results);
             this.restaurants = response.data.results.data;
-            console.log(response.data.user.data);
             // console.log(response.data.results.data);
           } else {
             console.log("errore chiamata api");

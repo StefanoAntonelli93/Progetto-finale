@@ -62,7 +62,10 @@
       <div>
         <ul class="d-flex gap-3 justify-content-center">
           <li class="list-unstyled" v-for="category in store.categories">
-            <div class="card-category d-flex flex-column gap-2">
+            <div
+              @click="categoryCall(category.name)"
+              class="card-category d-flex flex-column gap-2"
+            >
               <img
                 class="category_img"
                 :src="category.img"
@@ -94,18 +97,52 @@ import { store } from "../store";
 import TitlePage from "../components/TitlePage.vue";
 import Carousel from "../components/home_element/Carousel.vue";
 import RestaurantList from "../components/home_element/RestaurantList.vue";
+import axios from "axios";
 
 export default {
   name: "home",
   data() {
     return {
       store,
+      category: "",
+      currentPage: 1,
+      api: {
+        baseUrl: "http://127.0.0.1:8000/api/",
+        endPoints: "restaurants",
+      },
     };
   },
   components: {
     TitlePage,
     Carousel,
     RestaurantList,
+  },
+  methods: {
+    categoryCall(category) {
+      const url = this.api.baseUrl + this.api.endPoints;
+      this.category = category;
+      console.log("URL:", url); // Log the URL
+      console.log("Category:", this.category);
+      //   console.log(url);
+      axios
+        .get(url, {
+          params: {
+            page: this.currentPage,
+            categories: this.category,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.results.data);
+          //   console.log(response);
+          // se l'array è popolato restituisci qualcosa altrimenti messaggio errore
+          if (response.data.results && response.data.results.data.length) {
+            this.restaurants = response.data.results.data;
+          } else {
+            console.log("No restaurants found");
+          }
+        })
+        .catch((error) => console.log(error));
+    },
   },
 };
 </script>

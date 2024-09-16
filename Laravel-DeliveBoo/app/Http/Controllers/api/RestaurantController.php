@@ -10,10 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // aggiungo 4 ristoranti per pagina e le tabelle relazionate a tabella restaurants con l'eager loading
-        $restaurants = Restaurant::with('plates', 'categories', 'orders')->paginate(4);
+        $page = $request->query('page', 1);
+        $categoryName = $request->query('categories');
+        $restaurants = Restaurant::with(['plates', 'categories', 'orders'])->when($categoryName, function ($query, $categoryName) {
+            return $query->whereHas('categories', function ($q) use ($categoryName) {
+                $q->where('name', $categoryName); // Assuming 'name' is the column in the categories table
+            });
+        })->paginate(4);
 
         return response()->json([
             'status' => 'success',
