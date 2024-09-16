@@ -3,11 +3,18 @@ import TitlePage from "../TitlePage.vue";
 import axios from "axios";
 export default {
   name: "restaurant_list",
+  props: {
+    selectedCategory: {
+      type: Object,
+      default: null,
+    },
+  },
   components: {
     TitlePage,
   },
   data() {
     return {
+      baseImageUrl: "http://127.0.0.1:8000/storage/",
       restaurants: [],
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
@@ -15,6 +22,14 @@ export default {
       },
       currentPage: 1,
     };
+  },
+  computed: {
+    filteredRestaurants() {
+      if (!this.selectedCategory) return this.restaurants;
+      return this.restaurants.filter((restaurant) =>
+        restaurant.categories.includes(this.selectedCategory.id)
+      );
+    },
   },
   methods: {
     prevPage() {
@@ -59,12 +74,16 @@ export default {
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-6" v-for="restaurant in restaurants">
-        <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-3">
+      <div
+        class="col-6"
+        v-for="restaurant in filteredRestaurants"
+        :key="restaurant.id"
+      >
+        <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-y3">
           <div class="col-lg-4 col-md-12">
             <img
               class="category_img ms-3"
-              :src="restaurant.image_url"
+              :src="baseImageUrl + restaurant.img"
               :alt="restaurant.name"
             />
           </div>
@@ -72,6 +91,15 @@ export default {
             <p>{{ restaurant.restaurant_name }}</p>
             <p class="text-secondary">{{ restaurant.address }}</p>
             <p>{{ restaurant.description }}</p>
+
+            <!-- categorie -->
+            <div v-if="restaurant.categories.length">
+              <p>Categorie:</p>
+
+              <div v-for="category in restaurant.categories" :key="category.id">
+                {{ category.name }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -85,6 +113,33 @@ export default {
 
 <style scoped lang="scss">
 .restaurant-card {
-  border: 1px solid black;
+  background-color: rgba(250, 249, 249, 0.2);
+  border-radius: 5px;
+  box-shadow: 4px 4px 8px rgba(167, 165, 162, 0.3);
+  cursor: pointer;
+  p {
+    user-select: none;
+  }
+  img {
+    pointer-events: none;
+  }
+}
+
+.restaurant-card:hover {
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.4
+  ); /* Cambia il colore dello sfondo al passaggio del mouse */
+}
+
+.restaurant-card:active {
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.6
+  ); /* Cambia il colore dello sfondo quando cliccato */
 }
 </style>

@@ -66,23 +66,29 @@
               @click="categoryCall(category.name)"
               class="card-category d-flex flex-column gap-2"
             >
+            <div
+              class="card-category d-flex flex-column gap-2"
+              @click="selectCategory(category)"
+            >
               <img
                 class="category_img"
                 :src="category.img"
                 :alt="category.name"
               />
               <p class="text-center">{{ category.name }}</p>
+              <p class="text-center">{{ category.id }}</p>
             </div>
           </li>
         </ul>
       </div>
     </section>
+    <!-- db categories -->
 
     <!-- ristoranti -->
     <section class="py-4">
       <h4>Ristoranti</h4>
       <p>qui ci vanno tutti i ristoranti con chiamata api</p>
-      <RestaurantList />
+      <RestaurantList :selectedCategory="selectedCategory" />
     </section>
 
     <!-- carosello -->

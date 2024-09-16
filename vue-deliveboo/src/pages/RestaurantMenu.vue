@@ -11,5 +11,5 @@ export default {
 
 <template>
   <!-- title -->
-  <TitlePage :titlePage="'Ristoranti'"></TitlePage>
+  <TitlePage :titlePage="'Menu ristorante'"></TitlePage>
 </template>
