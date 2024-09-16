@@ -66,17 +66,18 @@
               @click="categoryCall(category.name)"
               class="card-category d-flex flex-column gap-2"
             >
-            <div
-              class="card-category d-flex flex-column gap-2"
-              @click="selectCategory(category)"
-            >
-              <img
-                class="category_img"
-                :src="category.img"
-                :alt="category.name"
-              />
-              <p class="text-center">{{ category.name }}</p>
-              <p class="text-center">{{ category.id }}</p>
+              <div
+                class="card-category d-flex flex-column gap-2"
+                @click="selectCategory(category.name)"
+              >
+                <img
+                  class="category_img"
+                  :src="category.img"
+                  :alt="category.name"
+                />
+                <p class="text-center">{{ category.name }}</p>
+                <p class="text-center">{{ category.id }}</p>
+              </div>
             </div>
           </li>
         </ul>
@@ -142,7 +143,7 @@ export default {
           //   console.log(response);
           // se l'array è popolato restituisci qualcosa altrimenti messaggio errore
           if (response.data.results && response.data.results.data.length) {
-            this.restaurants = response.data.results.data;
+            this.store.restaurants = response.data.results.data;
           } else {
             console.log("No restaurants found");
           }

@@ -1,6 +1,8 @@
 <script>
 import TitlePage from "../TitlePage.vue";
 import axios from "axios";
+import { store } from "@/store";
+
 export default {
   name: "restaurant_list",
   props: {
@@ -14,8 +16,8 @@ export default {
   },
   data() {
     return {
+      store,
       baseImageUrl: "http://127.0.0.1:8000/storage/",
-      restaurants: [],
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
         endPoints: "restaurants",
@@ -25,7 +27,7 @@ export default {
   },
   computed: {
     filteredRestaurants() {
-      if (!this.selectedCategory) return this.restaurants;
+      if (!this.selectedCategory) return this.store.restaurants;
       return this.restaurants.filter((restaurant) =>
         restaurant.categories.includes(this.selectedCategory.id)
       );
@@ -56,7 +58,7 @@ export default {
           // se l'array è popolato restituisci qualcosa altrimenti messaggio errore
           if (response.data.results.data.length) {
             // console.log(response.data.results);
-            this.restaurants = response.data.results.data;
+            this.store.restaurants = response.data.results.data;
             // console.log(response.data.results.data);
           } else {
             console.log("errore chiamata api");
