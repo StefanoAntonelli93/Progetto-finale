@@ -30,8 +30,8 @@
             </div>
             <div class="mb-3">
                 <label for="p_iva" class="form-label">Partita IVA *</label>
-                <input type="text" class="form-control" id="p_iva" name="p_iva" required pattern="\d{11}"
-                    placeholder="(11 numeri)" value="{{ old('p_iva', $restaurant->p_iva) }}">
+                <input type="text" class="form-control" id="p_iva" name="p_iva" required minlength="11"
+                    maxlength="11" placeholder="(11 numeri)" value="{{ old('p_iva', $restaurant->p_iva) }}">
                 <div class="invalid-feedback">
                     La Partita IVA deve essere composta esattamente da 11 numeri.
                 </div>
