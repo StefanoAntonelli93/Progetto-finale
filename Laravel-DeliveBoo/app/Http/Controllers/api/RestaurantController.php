@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plate;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -43,5 +44,27 @@ class RestaurantController extends Controller
             'status' => 'success',
             'result' => $restaurant,
         ]);
+    }
+    //  funzione per visualizzare i piatti di un ristorante
+    public function getPlates($id)
+    {
+        // Trova il ristorante per ID
+        $restaurant = Restaurant::find($id);
+
+        // Verifica se il ristorante esiste
+        if (!$restaurant) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Restaurant not found',
+            ], 404);
+        }
+
+        // Ottieni i piatti associati al ristorante
+        $plates = $restaurant->plates;
+
+        return response()->json([
+            'status' => 'success',
+            'result' => $plates,
+        ], 200); // Usa 200 per successo
     }
 }

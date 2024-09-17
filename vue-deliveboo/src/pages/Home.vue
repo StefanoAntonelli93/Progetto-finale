@@ -1,6 +1,7 @@
 <script>
 import { store } from "../store";
 import RestaurantList from "../components/home_element/RestaurantList.vue";
+import Carousel from "../components/home_element/Carousel.vue";
 import axios from "axios";
 
 export default {
@@ -18,6 +19,7 @@ export default {
   },
   components: {
     RestaurantList,
+    Carousel,
   },
   methods: {
     categoryCall(categories) {
@@ -64,6 +66,10 @@ export default {
     <!-- slogan -->
     <!-- link top-->
     <a id="top"></a>
+    <!-- carosello -->
+    <section>
+      <Carousel />
+    </section>
     <section>
       <div class="slogan-fixed">
         <h1 class="fw-bold text-center mb-5">Scegli cosa mangiare a Venezia</h1>
@@ -98,11 +104,6 @@ export default {
       <h4 class="py-4">Ristoranti</h4>
       <RestaurantList :selectedCategory="selectedCategory" />
     </section>
-
-    <!-- carosello -->
-    <!-- <section>
-      <Carousel />
-    </section> -->
   </main>
 </template>
 
