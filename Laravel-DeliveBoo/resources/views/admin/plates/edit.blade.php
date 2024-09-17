@@ -61,10 +61,8 @@
 
             {{-- file input --}}
             <div class="mb-3">
-                <img id="img-preview" src="{{ $plate->img }}" alt="Anteprima Immagine"
-                    style="display: none; margin-top: 10px; max-width: 300px;" class="mb-4">
-                <img id="current-img" src="{{ $plate->img }}" alt="Anteprima Immagine"
-                    style="margin-top: 10px; max-width: 300px;" class="mb-4">
+                <img id="img-preview" src="{{ asset('storage/' . $plate->img) }}" alt="Anteprima Immagine"
+                    style=" margin-top: 10px; max-width: 300px;" class="mb-4">
                 <input class="form-control" type="file" id="img" name="img">
             </div>
 

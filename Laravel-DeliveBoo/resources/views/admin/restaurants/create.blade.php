@@ -34,7 +34,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="p_iva" class="form-label">Partita IVA *</label>
-                    <input type="text" class="form-control" id="p_iva" min="11" max="11" required
+                    <input type="text" class="form-control" id="p_iva" minlength="11" maxlength="11" required
                         name="p_iva" placeholder="(11 numeri)" value="{{ old('p_iva') }}">
                 </div>
                 <!-- Type -->

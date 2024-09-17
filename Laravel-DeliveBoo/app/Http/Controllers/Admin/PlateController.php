@@ -19,10 +19,11 @@ class PlateController extends Controller
     {
         //
         $admin = auth()->user();
-        $plates = Plate::all();
         $restaurant = $admin->restaurant;
+        $plates = Plate::where('restaurant_id', $restaurant->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         // Ordina i piatti per data di creazione in ordine decrescente
-        $plates = Plate::orderBy('created_at', 'desc')->get();
         return view('admin.plates.index', compact('restaurant', 'plates'));
     }
 

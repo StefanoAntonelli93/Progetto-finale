@@ -34,7 +34,7 @@
                                     </div>
                                 @else
                                     <div class="d-flex justify-content-between mb-5">
-                                        <h1>Piatti Disponibili</h1>
+                                        <h1>Tutti i Piatti del Ristorante</h1>
                                         <button class="btn btn-primary"><a href="{{ route('admin.plates.create') }}">
                                                 Aggiungi
                                                 Piatto</a></button>

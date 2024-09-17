@@ -104,5 +104,5 @@ return [
     // mail
     'email' => 'Il :attribute deve essere un indirizzo email valido.',
     'required' => 'Il campo :attribute è obbligatorio.',
-    'unique' => 'L\'email :attribute è già in uso.',
+    'unique' => 'Il campo :attribute è già in uso.',
 ];

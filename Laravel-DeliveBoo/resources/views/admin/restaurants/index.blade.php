@@ -100,16 +100,16 @@
                                 </div>
 
                                 <div>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteRestaurant" data-restaurant-id="{{ $restaurant->id }}">
+                                        Elimina
+                                    </button>
                                     {{-- cancella --}}
-                                    <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger">Elimina</button>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @include('shared.restaurantModal')
                 @endif
             </div>
         </div>

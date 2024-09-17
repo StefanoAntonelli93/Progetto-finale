@@ -68,7 +68,8 @@
                                     class="col-md-4 col-form-label text-md-right ">{{ __('Codice Fiscale *') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text" oninput="this.value = this.value.toUpperCase()"
+                                    <input id="address" maxlength="16" type="text"
+                                        oninput="this.value = this.value.toUpperCase()"
                                         class="form-control text-uppercase @error('tax_code') is-invalid @enderror"
                                         name="tax_code" value="{{ old('tax_code') }}" required autocomplete="tax_code">
 
