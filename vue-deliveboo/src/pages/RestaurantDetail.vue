@@ -1,8 +1,12 @@
 <script>
 import axios from "axios";
+import Cart from "@/components/cart/Cart.vue";
 
 export default {
   name: "RestaurantDetail",
+  components: {
+    Cart,
+  },
   data() {
     return {
       restaurant: null,
@@ -102,7 +106,9 @@ export default {
               </li>
             </ul>
           </div>
-          <div class="col-3">carrello</div>
+          <div class="col-3">
+            <Cart />
+          </div>
         </div>
       </div>
     </div>

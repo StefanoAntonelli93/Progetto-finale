@@ -84,19 +84,18 @@ export default {
         :class="{ active: currentSlide === index }"
         class="carousel-text"
       >
+        <!-- Indicatori di stato -->
+        <div class="carousel-indicators">
+          <span
+            v-for="(image, index) in images"
+            :key="index"
+            @click="setSlide(index)"
+            :class="{ active: currentSlide === index }"
+            class="indicator"
+          ></span>
+        </div>
         <p>{{ text }}</p>
       </div>
-    </div>
-
-    <!-- Indicatori di stato -->
-    <div class="carousel-indicators">
-      <span
-        v-for="(image, index) in images"
-        :key="index"
-        @click="setSlide(index)"
-        :class="{ active: currentSlide === index }"
-        class="indicator"
-      ></span>
     </div>
   </div>
 </template>
@@ -116,18 +115,23 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 500px; /* Definisci un'altezza fissa per evitare salti nel layout */
+  height: 400px;
+  width: 100%;
+  /* Definisci un'altezza fissa per evitare salti nel layout */
 }
 
 .carousel-image {
   position: absolute; /* Sovrappone tutte le immagini l'una sull'altra */
-  max-width: 500px;
-  height: auto;
+  width: 500px;
+  img {
+    background-size: contain;
+  }
+  height: 400px;
   opacity: 0;
-  transition: opacity 1s ease-in-out; /* Transizione fluida di 1 secondo */
+  transition: opacity 1s ease; /* Transizione fluida di 1 secondo */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-  transform: scale(1.1); /* Ingrandita leggermente all'inizio */
+  transform: ease scale(1.1); /* Ingrandita leggermente all'inizio */
 }
 
 .carousel-image.active {
@@ -137,9 +141,6 @@ export default {
 
 /* Carosello testi */
 .carousel-texts {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 20px;
   text-align: center;
   height: 50px;
@@ -170,10 +171,7 @@ export default {
 
 /* Indicatori */
 .carousel-indicators {
-  position: absolute;
-  bottom: -475px;
-  left: 0;
-  right: 0;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
