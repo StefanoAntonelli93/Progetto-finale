@@ -30,9 +30,13 @@
             </div>
             <div class="mb-3">
                 <label for="p_iva" class="form-label">Partita IVA *</label>
-                <input type="number" class="form-control" id="p_iva" name="p_iva" required min="11"
-                    placeholder="(11 numeri)" max="11" value="{{ old('p_iva', $restaurant->p_iva) }}">
+                <input type="text" class="form-control" id="p_iva" name="p_iva" required pattern="\d{11}"
+                    placeholder="(11 numeri)" value="{{ old('p_iva', $restaurant->p_iva) }}">
+                <div class="invalid-feedback">
+                    La Partita IVA deve essere composta esattamente da 11 numeri.
+                </div>
             </div>
+
             <div class="d-flex flex-wrap">
                 @foreach ($categories as $category)
                     <div class="col-4 d-flex flex-column justfy-content-center align-items-center mb-3">
