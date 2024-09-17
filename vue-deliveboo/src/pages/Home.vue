@@ -20,6 +20,19 @@ export default {
     RestaurantList,
   },
   methods: {
+    selectFilter(category) {
+      // Toggle category selection
+      if (this.store.selectedCategories.includes(category)) {
+        // If the category is already selected, remove it
+        this.store.selectedCategories = this.store.selectedCategories.filter(
+          (selected) => selected !== category
+        );
+      } else {
+        // If it's not selected, add it to the array
+        this.store.selectedCategories.push(category);
+      }
+    },
+
     categoryCall(categories) {
       const url = this.api.baseUrl + this.api.endPoints;
       const params = {
@@ -53,7 +66,7 @@ export default {
 <template>
   <!-- title -->
   <!-- <TitlePage :titlePage="'Homepage'"></TitlePage> -->
-  <main class="p-5">
+  <main class="p-5 container">
     <!-- router link alle pagine menu ristorante e cashout -->
     <!-- <router-link class="btn btn-primary me-2" :to="{ name: 'restaurant_menu' }"
       >pagina menu ristorante</router-link
@@ -72,8 +85,14 @@ export default {
     <!-- ricerca categoria -->
     <section>
       <div>
-        <ul class="d-flex gap-3 justify-content-center">
-          <li class="list-unstyled" v-for="category in store.categories">
+        <ul id="category" class="d-flex gap-3 justify-content-center">
+          <li
+            class="list-unstyled"
+            @click="selectFilter(category)"
+            :class="{ isActive: store.selectedCategories.includes(category) }"
+            v-for="category in store.categories"
+            :key="category.id"
+          >
             <div
               @click="categoryCall(category.name)"
               class="card-category d-flex flex-column gap-2"
@@ -135,6 +154,11 @@ h1 {
     128,
     0.4
   ); /* Cambia il colore dello sfondo al passaggio del mouse */
+}
+
+.isActive {
+  background-color: rgba(128, 128, 128, 0.6);
+  border-radius: 20px;
 }
 
 .card-category:active {

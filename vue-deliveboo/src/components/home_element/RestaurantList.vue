@@ -34,6 +34,7 @@ export default {
   methods: {
     resetCategories() {
       this.store.category = [];
+      this.store.selectedCategories = [];
       this.categoryCall(null);
       this.show = 1;
     },
@@ -122,6 +123,8 @@ export default {
       </div>
       <div v-if="store.restaurants.length === 0">
         <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
+      </div>
+      <div class="text-end">
         <button class="btn btn-primary" @click="resetCategories">Reset</button>
       </div>
     </div>
