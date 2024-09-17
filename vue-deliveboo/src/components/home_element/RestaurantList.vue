@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       store,
+      show: 1,
       baseImageUrl: "http://127.0.0.1:8000/storage/",
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
@@ -31,41 +32,51 @@ export default {
     },
   },
   methods: {
+    resetCategories() {
+      this.store.category = [];
+      this.categoryCall(null);
+      this.show = 1;
+    },
     prevPage() {
       console.log("pagina precedente");
       this.currentPage--;
-      this.getRestaurants();
+      this.categoryCall();
     },
     nextPage() {
       console.log("pagina seguente");
       this.currentPage++;
-      this.getRestaurants();
+      this.categoryCall();
     },
-    getRestaurants() {
+    categoryCall(categories) {
       const url = this.api.baseUrl + this.api.endPoints;
-      //   console.log(url);
+      const params = {
+        page: this.currentPage,
+      };
+
+      if (categories) {
+        // Add categories to params if they are provided
+        this.store.category.push(categories);
+        params.categories = this.store.category.join(",");
+      }
+
       axios
-        .get(url, {
-          params: {
-            page: this.currentPage,
-          },
-        })
+        .get(url, { params })
         .then((response) => {
-          //   console.log(response);
-          // se l'array è popolato restituisci qualcosa altrimenti messaggio errore
-          if (response.data.results.data.length) {
-            // console.log(response.data.results);
-            this.store.restaurants = response.data.results.data;
-            // console.log(response.data.results.data);
+          const data = response.data.results.data;
+          if (data && data.length) {
+            this.store.restaurants = data;
+            this.show = 1; // Set show to 1 if restaurants are found
           } else {
-            console.log("errore chiamata api");
+            this.store.restaurants = [];
+            console.log("No restaurants found");
+            this.show = 0; // Set show to 0 if no restaurants are found
           }
         })
         .catch((error) => console.log(error));
     },
   },
   created() {
-    this.getRestaurants();
+    this.categoryCall();
   },
 };
 </script>
@@ -75,11 +86,17 @@ export default {
     <div class="row">
       <div
         class="col-6"
-        v-for="restaurant in filteredRestaurants"
+        v-for="restaurant in store.restaurants"
         :key="restaurant.id"
       >
-        <router-link class="no-style-link" :to="{ name: 'restaurant_menu' }">
-          <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-y3">
+        <router-link
+          class="no-style-link"
+          :to="{ name: 'restaurant_menu', params: { id: restaurant.id } }"
+        >
+          <div
+            v-if="restaurant"
+            class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-y3"
+          >
             <div class="col-lg-4 col-md-12">
               <img
                 class="category_img ms-3"
@@ -106,6 +123,10 @@ export default {
           </div>
         </router-link>
       </div>
+      <div v-if="store.restaurants.length === 0">
+        <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
+        <button class="btn btn-primary" @click="resetCategories">Reset</button>
+      </div>
     </div>
     <nav class="py-4 d-flex justify-content-center gap-2">
       <button class="btn btn-primary" @click="prevPage">indietro</button>
@@ -126,6 +147,7 @@ export default {
   img {
     pointer-events: none;
   }
+  height: 200px;
 }
 
 .restaurant-card:hover {
