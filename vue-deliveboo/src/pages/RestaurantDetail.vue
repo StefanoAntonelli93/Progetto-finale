@@ -98,21 +98,8 @@ export default {
                         />
                       </div>
                     </div>
-                    <!-- button -->
-                    <div
-                      class="col-2 d-flex flex-column justify-content-around align-items-center"
-                    >
-                      <div
-                        class="d-flex justify-content-center align-items-center"
-                      >
-                        <button class="py-1">-</button>
-                        <div class="px-3">1</div>
-                        <button class="py-1">+</button>
-                      </div>
-                      <div>
-                        <button>Aggiungi</button>
-                      </div>
-                    </div>
+                    <!-- Counter per gli ordini + aggiungi ordine al carrello -->
+                    <OrderCounter />
                   </div>
                 </div>
               </li>
@@ -138,33 +125,6 @@ img {
   border: 2px solid#ff9553b9;
   margin-top: 10px;
   border-radius: 10px;
-  button {
-    background-color: rgb(254, 255, 255);
-    border: 2px solid #ff9553b9;
-    border-radius: 5px;
-    padding: 10px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-
-    &:hover {
-      background-color: #ff9553b9;
-      border-color: #ff7553;
-      color: #fff;
-    }
-
-    &:active {
-      background-color: #d86f54;
-      border-color: #ff5335;
-      color: #fff;
-    }
-
-    &:focus {
-      outline: none;
-      background-color: #ff7553;
-      border-color: #ff5335;
-      color: #fff;
-    }
-  }
 }
 
 .plate-img {
