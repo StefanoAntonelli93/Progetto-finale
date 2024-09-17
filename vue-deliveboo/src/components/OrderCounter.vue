@@ -1,0 +1,65 @@
+<script>
+export default {
+  name: "order_counter",
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  methods: {
+    decrease() {
+      if (this.count !== 0) this.count--;
+    },
+    increase() {
+      this.count++;
+    },
+    added() {},
+  },
+};
+</script>
+
+<template>
+  <div
+    class="col-2 d-flex flex-column justify-content-around align-items-center"
+  >
+    <div class="d-flex justify-content-center align-items-center">
+      <button @click="decrease()" id="decrease" class="py-1">-</button>
+      <div id="count" class="px-3">{{ count }}</div>
+      <button @click="increase()" id="increase" class="py-1">+</button>
+    </div>
+    <div>
+      <button @click="added()">Aggiungi</button>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+@use "../assets/scss/partials/variables.scss" as *;
+button {
+  background-color: rgb(254, 255, 255);
+  border: 2px solid #ff9553b9;
+  border-radius: 5px;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    background-color: #ff9553b9;
+    border-color: #ff7553;
+    color: #fff;
+  }
+
+  &:active {
+    background-color: #d86f54;
+    border-color: #ff5335;
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #ff7553;
+    border-color: #ff5335;
+    color: #fff;
+  }
+}
+</style>
