@@ -77,17 +77,17 @@ export default {
       <h3 class="py-5 home-menu">Home {{ restaurant.restaurant_name }}</h3>
       <div class="container">
         <div class="row">
-          <div class="col-9">
+          <div class="col-8">
             <ul>
               <li class="list-unstyled" v-for="plate in plate" :key="plate.id">
                 <div class="plate-cards container p-3">
                   <div class="row">
                     <div class="col-6">
-                      <div>
+                      <p class="fw-bold">
                         {{ plate.name }}
-                        {{ plate.ingredients }}
-                        {{ plate.price }}
-                      </div>
+                      </p>
+                      <p>{{ plate.ingredients }}</p>
+                      <p>{{ plate.price }} &euro;</p>
                     </div>
                     <div class="col-4">
                       <div>
@@ -98,8 +98,20 @@ export default {
                         />
                       </div>
                     </div>
-                    <div class="col-2 d-flex justify-content-end">
-                      <button class="py-3 h-100 px-2">+</button>
+                    <!-- button -->
+                    <div
+                      class="col-2 d-flex flex-column justify-content-around align-items-center"
+                    >
+                      <div
+                        class="d-flex justify-content-center align-items-center"
+                      >
+                        <button class="py-1">-</button>
+                        <div class="px-3">1</div>
+                        <button class="py-1">+</button>
+                      </div>
+                      <div>
+                        <button>Aggiungi</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -129,28 +141,28 @@ img {
   button {
     background-color: rgb(254, 255, 255);
     border: 2px solid #ff9553b9;
-    border-radius: 5px; /* Aggiungi border-radius se vuoi bordi arrotondati */
-    padding: 10px 20px; /* Aggiungi padding per un miglior aspetto */
-    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Aggiungi una transizione dolce per gli effetti */
+    border-radius: 5px;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 
     &:hover {
-      background-color: #ff9553b9; /* Cambia il colore di sfondo al passaggio del mouse */
-      border-color: #ff7553; /* Cambia il colore del bordo al passaggio del mouse */
-      color: #fff; /* Cambia il colore del testo, se necessario */
+      background-color: #ff9553b9;
+      border-color: #ff7553;
+      color: #fff;
     }
 
     &:active {
-      background-color: #d86f54; /* Cambia il colore di sfondo quando il pulsante è cliccato */
-      border-color: #ff5335; /* Cambia il colore del bordo quando il pulsante è cliccato */
-      color: #fff; /* Cambia il colore del testo quando il pulsante è cliccato */
+      background-color: #d86f54;
+      border-color: #ff5335;
+      color: #fff;
     }
 
     &:focus {
-      outline: none; /* Rimuove il contorno predefinito quando il pulsante è a fuoco */
-      background-color: #ff7553; /* Colore di sfondo per il focus */
-      border-color: #ff5335; /* Colore del bordo per il focus */
-      color: #fff; /* Colore del testo per il focus */
+      outline: none;
+      background-color: #ff7553;
+      border-color: #ff5335;
+      color: #fff;
     }
   }
 }
@@ -161,6 +173,5 @@ img {
 
 .home-menu {
   background-color: rgb(255, 255, 255);
-  width: 100%;
 }
 </style>
