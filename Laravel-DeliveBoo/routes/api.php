@@ -24,4 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('restaurants', RestaurantController::class);
 // per visualizzare api su url -> http://127.0.0.1:8000/api/restaurants
 
+
+// rotta per visualizzare ristorante
 Route::get('restaurants/{id}', [RestaurantController::class, 'show']);
+
+// rotta per visualizzare menu ristorante
+Route::get('restaurants/{id}/plates', [RestaurantController::class, 'getPlates']);

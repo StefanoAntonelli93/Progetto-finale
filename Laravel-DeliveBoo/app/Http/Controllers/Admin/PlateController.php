@@ -17,15 +17,17 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
         $admin = auth()->user();
         $restaurant = $admin->restaurant;
+
+        // Recupera solo i piatti associati al ristorante dell'utente e ordina per data di creazione
         $plates = Plate::where('restaurant_id', $restaurant->id)
             ->orderBy('created_at', 'desc')
             ->get();
-        // Ordina i piatti per data di creazione in ordine decrescente
+
         return view('admin.plates.index', compact('restaurant', 'plates'));
     }
+
 
     /**
      * Show the form for creating a new resource.

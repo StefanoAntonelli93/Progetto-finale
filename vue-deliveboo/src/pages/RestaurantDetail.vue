@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       restaurant: null,
+      plate: [],
       baseImageUrl: "http://127.0.0.1:8000/storage/",
     };
   },
@@ -22,12 +23,23 @@ export default {
   },
   methods: {
     fetchRestaurantDetails() {
-      // collego all'url l'id del ristorante selezionato
       const restaurantId = this.$route.params.id;
-      axios
-        .get(`http://127.0.0.1:8000/api/restaurants/${restaurantId}`)
-        .then((response) => {
-          this.restaurant = response.data.result;
+
+      // Chiamate API
+      const restaurantPromise = axios.get(
+        `http://127.0.0.1:8000/api/restaurants/${restaurantId}`
+      );
+      const menuPromise = axios.get(
+        `http://127.0.0.1:8000/api/restaurants/${restaurantId}/plates`
+      );
+
+      // Esecuzione delle chiamate in parallelo
+      Promise.all([restaurantPromise, menuPromise])
+        .then(([restaurantResponse, menuResponse]) => {
+          // Assegna i dati alle variabili
+          this.restaurant = restaurantResponse.data.result;
+          this.plate = menuResponse.data.result;
+          console.log("Menu Data:", menuResponse.data);
         })
         .catch((error) => console.error(error));
     },
@@ -57,7 +69,43 @@ export default {
     </div>
 
     <!-- menu ristorante -->
-    <div class="container">menu</div>
+    <div>
+      <h3 class="py-5 home-menu">Home {{ restaurant.restaurant_name }}</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-9">
+            <ul>
+              <li class="list-unstyled" v-for="plate in plate" :key="plate.id">
+                <div class="plate-cards container p-3">
+                  <div class="row">
+                    <div class="col-6">
+                      <div>
+                        {{ plate.name }}
+                        {{ plate.ingredients }}
+                        {{ plate.price }}
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div>
+                        <img
+                          class="plate-img"
+                          :src="plate.image_url"
+                          :alt="plate.name"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-2 d-flex justify-content-end">
+                      <button class="py-3 h-100 px-2">+</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-3">carrello</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -67,5 +115,46 @@ export default {
 }
 img {
   border-radius: 10px;
+}
+.plate-cards {
+  border: 2px solid#ff9553b9;
+  margin-top: 10px;
+  border-radius: 10px;
+  button {
+    background-color: rgb(254, 255, 255);
+    border: 2px solid #ff9553b9;
+    border-radius: 5px; /* Aggiungi border-radius se vuoi bordi arrotondati */
+    padding: 10px 20px; /* Aggiungi padding per un miglior aspetto */
+    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Aggiungi una transizione dolce per gli effetti */
+
+    &:hover {
+      background-color: #ff9553b9; /* Cambia il colore di sfondo al passaggio del mouse */
+      border-color: #ff7553; /* Cambia il colore del bordo al passaggio del mouse */
+      color: #fff; /* Cambia il colore del testo, se necessario */
+    }
+
+    &:active {
+      background-color: #d86f54; /* Cambia il colore di sfondo quando il pulsante è cliccato */
+      border-color: #ff5335; /* Cambia il colore del bordo quando il pulsante è cliccato */
+      color: #fff; /* Cambia il colore del testo quando il pulsante è cliccato */
+    }
+
+    &:focus {
+      outline: none; /* Rimuove il contorno predefinito quando il pulsante è a fuoco */
+      background-color: #ff7553; /* Colore di sfondo per il focus */
+      border-color: #ff5335; /* Colore del bordo per il focus */
+      color: #fff; /* Colore del testo per il focus */
+    }
+  }
+}
+
+.plate-img {
+  width: 100%;
+}
+
+.home-menu {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
 }
 </style>
