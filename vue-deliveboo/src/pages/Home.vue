@@ -8,8 +8,8 @@ export default {
   data() {
     return {
       store,
-      categories: [],
       currentPage: 1,
+      show: 1,
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
         endPoints: "restaurants",
@@ -20,28 +20,29 @@ export default {
     RestaurantList,
   },
   methods: {
-    resetCategories() {
-      this.categories = [];
-      this.categoryCall();
-    },
-    categoryCall(category) {
+    categoryCall(categories) {
       const url = this.api.baseUrl + this.api.endPoints;
-      this.categories.push(category);
+      const params = {
+        page: this.currentPage,
+      };
+
+      if (categories) {
+        // Add categories to params if they are provided
+        this.store.category.push(categories);
+        params.categories = this.store.category.join(",");
+      }
+
       axios
-        .get(url, {
-          params: {
-            page: this.currentPage,
-            categories: this.categories,
-          },
-        })
+        .get(url, { params })
         .then((response) => {
-          console.log(response.data.results.data);
-          //   console.log(response);
-          // se l'array è popolato restituisci qualcosa altrimenti messaggio errore
-          if (response.data.results && response.data.results.data.length) {
-            this.store.restaurants = response.data.results.data;
+          const data = response.data.results.data;
+          if (data && data.length) {
+            this.store.restaurants = data;
+            this.show = 1; // Set show to 1 if restaurants are found
           } else {
+            this.store.restaurants = [];
             console.log("No restaurants found");
+            this.show = 0; // Set show to 0 if no restaurants are found
           }
         })
         .catch((error) => console.log(error));
@@ -71,7 +72,6 @@ export default {
     <!-- ricerca categoria -->
     <section>
       <div>
-        <button @click="resetCategories">Reset</button>
         <ul class="d-flex gap-3 justify-content-center">
           <li class="list-unstyled" v-for="category in store.categories">
             <div
