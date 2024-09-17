@@ -25,4 +25,22 @@ class RestaurantController extends Controller
             'results' => $restaurants,
         ]);
     }
+
+    // funzione show per visualizzare dettagli ristorante in base a id
+    public function show($id)
+    {
+        $restaurant = Restaurant::with(['plates', 'categories', 'orders'])->find($id);
+
+        if (!$restaurant) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Restaurant not found',
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'result' => $restaurant,
+        ]);
+    }
 }
