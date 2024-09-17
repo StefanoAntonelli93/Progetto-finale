@@ -125,17 +125,22 @@ export default {
         <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
       </div>
       <div class="text-end">
-        <button class="btn btn-primary" @click="resetCategories">Reset</button>
+        <button class="btn btn-secondary" @click="resetCategories">
+          Reset
+        </button>
       </div>
     </div>
     <nav class="py-4 d-flex justify-content-center gap-2">
-      <button class="btn btn-primary" @click="prevPage">indietro</button>
-      <button class="btn btn-primary" @click="nextPage">avanti</button>
+      <button class="btn btn-secondary" @click="prevPage">indietro</button>
+      <button class="btn btn-secondary" @click="nextPage">avanti</button>
     </nav>
   </div>
 </template>
 
 <style scoped lang="scss">
+@use "@/assets/scss/partials/variables.scss" as *;
+@use "@/assets/scss/partials/commons.scss" as *;
+
 .restaurant-card {
   background-color: rgba(250, 249, 249, 0.2);
   border-radius: 5px;
@@ -174,5 +179,9 @@ export default {
 
 .no-style-link:hover {
   text-decoration: none;
+}
+
+button {
+  background-color: $primary-color;
 }
 </style>
