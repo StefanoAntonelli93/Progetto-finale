@@ -1,11 +1,13 @@
 <script>
 import axios from "axios";
 import Cart from "@/components/cart/Cart.vue";
+import OrderCounter from "@/components/OrderCounter.vue";
 
 export default {
   name: "RestaurantDetail",
   components: {
     Cart,
+    OrderCounter,
   },
   data() {
     return {
