@@ -2,6 +2,7 @@
 import axios from "axios";
 import Cart from "@/components/cart/Cart.vue";
 import OrderCounter from "@/components/OrderCounter.vue";
+import { store } from "@/store";
 
 export default {
   name: "RestaurantDetail",
@@ -11,7 +12,9 @@ export default {
   },
   data() {
     return {
+      store,
       restaurant: null,
+      cart: [],
       plate: [],
       baseImageUrl: "http://127.0.0.1:8000/storage/",
     };
@@ -49,6 +52,18 @@ export default {
         })
         .catch((error) => console.error(error));
     },
+    addToCart(item) {
+      this.cart.push(item);
+    },
+    removeFromCart(itemId) {
+      this.cart = this.cart.filter((item) => {
+        item.id !== itemId;
+        this.store.total -= item.price;
+      }); // Filtra l'item da rimuovere
+    },
+    emptyCart() {
+      this.cart = [];
+    },
   },
 };
 </script>
@@ -71,7 +86,6 @@ export default {
             <h1>{{ restaurant.restaurant_name }}</h1>
             <p>{{ restaurant.address }}</p>
             <p>{{ restaurant.description }}</p>
-
             {{ categoriesString }}
           </div>
         </div>
@@ -107,7 +121,14 @@ export default {
                         </div>
                       </div>
                       <!-- Counter per gli ordini + aggiungi ordine al carrello -->
-                      <OrderCounter />
+                      <OrderCounter
+                        @add-to-cart="addToCart"
+                        :item-details="{
+                          id: plate.id,
+                          name: plate.name,
+                          price: plate.price,
+                        }"
+                      />
                     </div>
                   </div>
                 </li>
@@ -117,7 +138,11 @@ export default {
         </div>
       </div>
       <div class="col-3 pb-3">
-        <Cart />
+        <Cart
+          :cart="cart"
+          @remove-from-cart="removeFromCart"
+          @empty-cart="emptyCart"
+        />
       </div>
     </div>
   </div>

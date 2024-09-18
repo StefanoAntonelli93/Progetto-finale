@@ -1,9 +1,17 @@
 <script>
+import { store } from "@/store";
 export default {
   name: "order_counter",
+  props: {
+    itemDetails: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       count: 0,
+      store,
     };
   },
   methods: {
@@ -13,7 +21,19 @@ export default {
     increase() {
       this.count++;
     },
-    added() {},
+    added() {
+      if (this.count > 0) {
+        this.$emit("add-to-cart", {
+          ...this.itemDetails,
+          quantity: this.count,
+          price: this.count * this.itemDetails.price,
+        });
+        this.store.total += this.count * this.itemDetails.price;
+
+        this.count = 0;
+        // Resetta il contatore dopo l'aggiunta
+      }
+    },
   },
 };
 </script>
