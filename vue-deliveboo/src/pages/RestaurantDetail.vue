@@ -57,9 +57,13 @@ export default {
     },
     removeFromCart(itemId) {
       this.cart = this.cart.filter((item) => {
-        item.id !== itemId;
-        this.store.total -= item.price;
-      }); // Filtra l'item da rimuovere
+        if (item.id !== itemId) {
+          return true; // Keep the item if the ID doesn't match
+        } else {
+          this.store.total -= item.price; // Adjust total when the item is removed
+          return false; // Remove the item
+        }
+      });
     },
     emptyCart() {
       this.cart = [];
