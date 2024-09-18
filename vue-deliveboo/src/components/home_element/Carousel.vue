@@ -122,7 +122,7 @@ export default {
 
 .carousel-image {
   position: absolute; /* Sovrappone tutte le immagini l'una sull'altra */
-  width: 500px;
+  width: 600px;
   img {
     background-size: contain;
   }
@@ -141,7 +141,7 @@ export default {
 
 /* Carosello testi */
 .carousel-texts {
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
   height: 50px;
   margin-bottom: 50px;
@@ -161,7 +161,6 @@ export default {
 
 .carousel-text.active {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .carousel-text p {
