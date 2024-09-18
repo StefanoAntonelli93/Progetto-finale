@@ -41,10 +41,16 @@ export default {
         page: this.currentPage,
       };
 
-      if (categories) {
+      if (
+        categories &&
+        categories !== this.store.category[this.store.category.length - 1]
+      ) {
         // Add categories to params if they are provided
         this.store.category.push(categories);
         params.categories = this.store.category.join(",");
+      } else {
+        this.store.category.pop;
+        params.categories.pop;
       }
 
       axios
