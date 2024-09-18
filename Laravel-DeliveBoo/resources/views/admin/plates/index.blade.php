@@ -45,7 +45,7 @@
                                                 class="border border-secondary rounded my-5 {{ $plate->available ? '' : 'opacity-50' }} ">
                                                 <div class="container p-4">
                                                     <div class="row">
-                                                        <div class="col">
+                                                        <div class="col-lg-6 col-sm-12">
                                                             <div class="img_piatto m-auto">
                                                                 @if ($plate->img)
                                                                     <div class="img_ristorante col p-2 ">
@@ -56,7 +56,8 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col d-flex flex-column justify-content-around py-4">
+                                                        <div
+                                                            class="col-lg-6 col-sm-12 d-flex flex-column justify-content-around py-4">
                                                             @if (!$plate->available)
                                                                 <h2 class="text-danger text-center ">Non
                                                                     Disponibile</h2>

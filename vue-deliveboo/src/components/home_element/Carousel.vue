@@ -94,7 +94,9 @@ export default {
             class="indicator"
           ></span>
         </div>
-        <p>{{ text }}</p>
+        <div>
+          <p>{{ text }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -102,8 +104,7 @@ export default {
 
 <style scoped lang="scss">
 .second-container {
-  padding: 40px;
-  padding-bottom: 60px;
+  margin: 40px;
   background: url("@/assets/img/marble-background.png") no-repeat center center;
   background-size: cover;
   text-align: center;
@@ -188,5 +189,27 @@ export default {
 
 .indicator.active {
   background-color: #63c0fe;
+}
+
+@media screen and (max-width: 800px) {
+  .carousel-image {
+    width: 500px;
+  }
+  .carousel-images {
+    height: 350px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .carousel-image {
+    width: 300px;
+  }
+  .carousel-image {
+    height: 300px;
+  }
+  .carousel-images {
+    height: 300px;
+  }
 }
 </style>

@@ -11,16 +11,14 @@ export default {
 };
 </script>
 <template>
-  <div>
-    <!-- Header -->
-    <Header />
+  <!-- Header -->
+  <Header />
 
-    <main>
-      <router-view></router-view>
-    </main>
+  <main class="p-5 container">
+    <router-view></router-view>
+  </main>
 
-    <Footer />
-  </div>
+  <Footer />
 </template>
 
 <style scoped lang="scss"></style>

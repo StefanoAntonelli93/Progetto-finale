@@ -74,10 +74,10 @@ export default {
 <template>
   <div v-if="restaurant" class="restaurant-detail container p-5 mt-3">
     <div class="row">
-      <div class="col-9 px-4">
+      <div class="col-lg-9 col-sm-12 px-4">
         <!-- immagine ristorante -->
         <div class="row">
-          <div class="col-5">
+          <div class="col-lg-6 col-md-6 col-sm-12">
             <img
               class="w-100"
               :src="baseImageUrl + restaurant.img"
@@ -86,7 +86,7 @@ export default {
           </div>
           <!-- dettagli ristorante -->
 
-          <div class="col-5">
+          <div class="col-lg-6 col-md-6 col-sm-12">
             <h1>{{ restaurant.restaurant_name }}</h1>
             <p>{{ restaurant.address }}</p>
             <p>{{ restaurant.description }}</p>
@@ -108,7 +108,7 @@ export default {
                 >
                   <div class="plate-cards container p-3">
                     <div class="row">
-                      <div class="col-6">
+                      <div class="col-4">
                         <p class="fw-bold">
                           {{ plate.name }}
                         </p>
@@ -126,6 +126,7 @@ export default {
                       </div>
                       <!-- Counter per gli ordini + aggiungi ordine al carrello -->
                       <OrderCounter
+                        class="col-4"
                         @add-to-cart="addToCart"
                         :item-details="{
                           id: plate.id,
@@ -141,7 +142,7 @@ export default {
           </div>
         </div>
       </div>
-      <div class="col-3 pb-3">
+      <div class="col-lg-3 pb-3">
         <Cart
           :cart="cart"
           @remove-from-cart="removeFromCart"

@@ -83,58 +83,57 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="row">
-      <div
-        class="col-6"
-        v-for="restaurant in store.restaurants"
-        :key="restaurant.id"
+  <div class="row gap-2">
+    <div
+      class="col-lg-6 col-md-12 restaurant-card p-2"
+      v-for="restaurant in store.restaurants"
+      :key="restaurant.id"
+    >
+      <router-link
+        class="no-style-link"
+        :to="{ name: 'RestaurantDetail', params: { id: restaurant.id } }"
       >
-        <router-link
-          class="no-style-link"
-          :to="{ name: 'RestaurantDetail', params: { id: restaurant.id } }"
-        >
-          <div class="restaurant-card d-flex flex-wrap gap-3 mb-3 py-y3">
-            <div class="col-lg-4 col-md-12">
-              <img
-                class="category_img ms-3"
-                :src="baseImageUrl + restaurant.img"
-                :alt="restaurant.name"
-              />
-            </div>
-            <div class="col-lg-6 col-md-12">
-              <p>{{ restaurant.restaurant_name }}</p>
-              <p class="text-secondary">{{ restaurant.address }}</p>
-              <p>{{ restaurant.description }}</p>
-
-              <!-- categorie -->
-              <div class="d-flex gap-1" v-if="restaurant.categories.length">
-                Categorie:
-                <div
-                  v-for="category in restaurant.categories"
-                  :key="category.id"
-                >
-                  {{ category.name }}
-                </div>
+        <div class="row h-100">
+          <div class="col-lg-6 col-md-12">
+            <img
+              class="restaurant_img"
+              :src="baseImageUrl + restaurant.img"
+              :alt="restaurant.name"
+            />
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <p>{{ restaurant.restaurant_name }}</p>
+            <p class="text-secondary">{{ restaurant.address }}</p>
+            <p>{{ restaurant.description }}</p>
+            <!-- categorie -->
+            <div
+              class="d-flex flex-wrap gap-1"
+              v-if="restaurant.categories.length"
+            >
+              Categorie:
+              <div v-for="category in restaurant.categories" :key="category.id">
+                {{ category.name }}
               </div>
             </div>
           </div>
-        </router-link>
-      </div>
-      <div v-if="store.restaurants.length === 0">
-        <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
-      </div>
-      <div class="text-end">
-        <button class="btn btn-secondary" @click="resetCategories">
-          Reset
-        </button>
-      </div>
+        </div>
+      </router-link>
     </div>
-    <nav class="py-4 d-flex justify-content-center gap-2">
+    <div v-if="store.restaurants.length === 0">
+      <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
+    </div>
+  </div>
+
+  <nav class="py-4 d-flex justify-content-between gap-2 mt-4">
+    <div class="d-flex gap-2">
       <button class="btn btn-secondary" @click="prevPage">indietro</button>
       <button class="btn btn-secondary" @click="nextPage">avanti</button>
-    </nav>
-  </div>
+    </div>
+
+    <div class="text-end">
+      <button class="btn btn-secondary" @click="resetCategories">Reset</button>
+    </div>
+  </nav>
 </template>
 
 <style scoped lang="scss">
@@ -142,7 +141,7 @@ export default {
 @use "@/assets/scss/partials/commons.scss" as *;
 
 .restaurant-card {
-  background-color: rgba(250, 249, 249, 0.2);
+  background-color: rgba(255, 123, 0, 0.264);
   border-radius: 5px;
   box-shadow: 4px 4px 8px rgba(167, 165, 162, 0.3);
   cursor: pointer;
@@ -153,6 +152,11 @@ export default {
     pointer-events: none;
   }
   height: 200px;
+}
+
+.restaurant_img {
+  width: 100%;
+  height: 100%;
 }
 
 .restaurant-card:hover {
@@ -183,5 +187,17 @@ export default {
 
 button {
   background-color: $primary-color;
+}
+@media screen and (min-width: 992px) {
+  .col-lg-6 {
+    flex: 0 0 auto;
+    width: 49.5%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .restaurant-card {
+    height: auto;
+  }
 }
 </style>
