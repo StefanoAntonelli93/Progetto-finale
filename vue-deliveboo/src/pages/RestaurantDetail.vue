@@ -75,7 +75,7 @@ export default {
   <router-link class="no-style-link" :to="{ name: 'home' }">
     <p>indietro</p>
   </router-link>
-  <div v-if="restaurant" class="restaurant-detail container p-5 mt-3">
+  <div v-if="restaurant" class="restaurant-detail container-fluid p-5 mt-3">
     <div class="row">
       <div class="col-lg-9 col-sm-12 px-4">
         <!-- immagine ristorante -->
