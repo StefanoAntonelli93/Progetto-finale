@@ -41,16 +41,18 @@ export default {
         page: this.currentPage,
       };
 
-      if (
-        categories &&
-        categories !== this.store.category[this.store.category.length - 1]
-      ) {
+      if (categories && !this.store.category.includes(categories)) {
         // Add categories to params if they are provided
         this.store.category.push(categories);
-        params.categories = this.store.category.join(",");
       } else {
-        this.store.category.pop;
-        params.categories.pop;
+        this.store.category = this.store.category.filter(
+          (cat) => cat !== categories
+        );
+      }
+
+      console.log(this.store.category);
+      if (this.store.category.length > 0) {
+        params.categories = this.store.category.join(",");
       }
 
       axios
