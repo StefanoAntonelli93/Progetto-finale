@@ -1,4 +1,5 @@
 <script>
+import Braintree from "../components/Braintree.vue";
 export default {
   data() {
     return {
@@ -22,6 +23,9 @@ export default {
       note: "",
       metodoPagamento: "", // Variabile per il metodo di pagamento selezionato
     };
+  },
+  components: {
+    Braintree,
   },
   methods: {
     openModal(title) {
@@ -357,20 +361,13 @@ export default {
           </div>
         </div>
       </div>
+      <!-- brain tree*********************************************** -->
       <div class="col-12 col-lg-4">
-        <div class="content bg-light">
+        <div class="braintree content bg-light py-3">
           <h3>Riepilogo ordine</h3>
           <div class="bg-white">
-            <p>ordine</p>
-            <p>ordine</p>
-            <p>ordine</p>
-            <p>ordine</p>
-            <p>ordine</p>
-            <p>ordine</p>
-            <p>ordine</p>
-            <p>ordine</p>
+            <Braintree />
           </div>
-          <button class="btn btn-pay py-2">Paga</button>
         </div>
       </div>
     </div>
@@ -378,6 +375,11 @@ export default {
 </template>
 <style scoped lang="scss">
 @use "@/assets/scss/partials/variables.scss" as *;
+
+.braintree {
+  position: sticky;
+  top: 20px;
+}
 /* Stile per la modale */
 .custom-modal-overlay {
   position: fixed;
