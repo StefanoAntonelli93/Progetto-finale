@@ -14,7 +14,7 @@ export default {
   <!-- Header -->
   <Header />
 
-  <main class="p-5 container">
+  <main class="p-5 container-fluid">
     <router-view></router-view>
   </main>
 
