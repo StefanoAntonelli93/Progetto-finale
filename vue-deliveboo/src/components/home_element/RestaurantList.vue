@@ -102,8 +102,8 @@ export default {
             />
           </div>
           <div class="col-lg-6 col-md-12">
-            <p>{{ restaurant.restaurant_name }}</p>
-            <p class="text-secondary">{{ restaurant.address }}</p>
+            <h3 class="m-0">{{ restaurant.restaurant_name }}</h3>
+            <p class="text-secondary">Via: {{ restaurant.address }}</p>
             <p>{{ restaurant.description }}</p>
             <!-- categorie -->
             <div
