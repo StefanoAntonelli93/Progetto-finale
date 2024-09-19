@@ -151,7 +151,6 @@ export default {
   img {
     pointer-events: none;
   }
-  height: 200px;
 }
 
 .restaurant_img {
