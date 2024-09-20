@@ -29,7 +29,7 @@ export default {
           price: this.count * this.itemDetails.price,
         });
         this.store.total += this.count * this.itemDetails.price;
-
+        localStorage.setItem("total", this.store.total);
         this.count = 0;
         // Resetta il contatore dopo l'aggiunta
       }
