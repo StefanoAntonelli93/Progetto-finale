@@ -1,10 +1,16 @@
 import { reactive } from "vue";
 
+// Recupera i dati dal localStorage (carrello e totale)
+const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+const savedTotal = parseFloat(localStorage.getItem("total")) || 0;
+
+// Crea lo store reattivo
 export const store = reactive({
-  restaurants: [],
-  category: [],
-  selectedCategories: [],
-  total: 0,
+  restaurants: [], // Lista dei ristoranti
+  category: [], // Categoria selezionata
+  selectedCategories: [], // Categorie selezionate dall'utente
+  cart: savedCart, // Carrello inizializzato dal localStorage
+  total: savedTotal,
   categories: [
     {
       id: "1",

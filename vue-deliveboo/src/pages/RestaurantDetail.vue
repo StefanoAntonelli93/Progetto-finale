@@ -14,14 +14,13 @@ export default {
     return {
       store,
       restaurant: null,
-      cart: [],
+      cart: JSON.parse(localStorage.getItem("cart")) || [], // Recupera il carrello dal localStorage se esiste
       plate: [],
       baseImageUrl: "http://127.0.0.1:8000/storage/",
     };
   },
   computed: {
     categoriesString() {
-      // Mappa le categorie per ottenere un array di nomi e poi uniscili in una stringa separata da virgola
       return this.restaurant.categories
         .map((category) => category.name)
         .join(", ");
@@ -29,12 +28,14 @@ export default {
   },
   created() {
     this.fetchRestaurantDetails();
+    this.store.total = !isNaN(parseFloat(localStorage.getItem("total")))
+      ? parseFloat(localStorage.getItem("total"))
+      : 0;
   },
   methods: {
     fetchRestaurantDetails() {
       const restaurantId = this.$route.params.id;
 
-      // Chiamate API
       const restaurantPromise = axios.get(
         `http://127.0.0.1:8000/api/restaurants/${restaurantId}`
       );
@@ -42,35 +43,54 @@ export default {
         `http://127.0.0.1:8000/api/restaurants/${restaurantId}/plates`
       );
 
-      // Esecuzione delle chiamate in parallelo
       Promise.all([restaurantPromise, menuPromise])
         .then(([restaurantResponse, menuResponse]) => {
-          // Assegna i dati alle variabili
           this.restaurant = restaurantResponse.data.result;
           this.plate = menuResponse.data.result;
           console.log("Menu Data:", menuResponse.data);
         })
         .catch((error) => console.error(error));
     },
+
     addToCart(item) {
-      this.cart.push(item);
+      const cartItem = this.cart.find((cartItem) => cartItem.id === item.id);
+
+      if (cartItem) {
+        cartItem.quantity += item.quantity;
+        cartItem.price += item.price;
+        this.store.total += item.price; // Aggiorna il totale
+        console.log(item.price);
+      } else {
+        this.cart.push(item);
+      }
+
+      this.updateLocalStorage(); // Aggiorna sia il carrello che il totale nel localStorage
     },
+
     removeFromCart(itemId) {
-      this.cart = this.cart.filter((item) => {
-        if (item.id !== itemId) {
-          return true; // Keep the item if the ID doesn't match
-        } else {
-          this.store.total -= item.price; // Adjust total when the item is removed
-          return false; // Remove the item
-        }
-      });
+      const itemToRemove = this.cart.find((item) => item.id === itemId);
+
+      if (itemToRemove) {
+        this.store.total -= itemToRemove.price; // Riduci il totale
+        this.cart = this.cart.filter((item) => item.id !== itemId); // Rimuovi l'elemento dal carrello
+        this.updateLocalStorage(); // Aggiorna il localStorage
+      }
     },
+
     emptyCart() {
       this.cart = [];
+      this.store.total = 0; // Resetta il totale
+      this.updateLocalStorage(); // Aggiorna il localStorage
+    },
+
+    updateLocalStorage() {
+      localStorage.setItem("cart", JSON.stringify(this.cart)); // Salva il carrello nel localStorage
+      localStorage.setItem("total", this.store.total.toString()); // Salva il totale nel localStorage
     },
   },
 };
 </script>
+
 <template>
   <router-link class="no-style-link" :to="{ name: 'home' }">
     <p>indietro</p>
