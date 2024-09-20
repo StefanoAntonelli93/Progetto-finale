@@ -54,16 +54,14 @@ export default {
 
     addToCart(item) {
       const cartItem = this.cart.find((cartItem) => cartItem.id === item.id);
-
       if (cartItem) {
         cartItem.quantity += item.quantity;
         cartItem.price += item.price;
         this.store.total += item.price; // Aggiorna il totale
-        console.log(item.price);
       } else {
         this.cart.push(item);
+        this.store.total += item.price;
       }
-
       this.updateLocalStorage(); // Aggiorna sia il carrello che il totale nel localStorage
     },
 

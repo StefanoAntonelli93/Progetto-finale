@@ -28,8 +28,6 @@ export default {
           quantity: this.count,
           price: this.count * this.itemDetails.price,
         });
-        this.store.total += this.count * this.itemDetails.price;
-        localStorage.setItem("total", this.store.total);
         this.count = 0;
         // Resetta il contatore dopo l'aggiunta
       }
@@ -39,16 +37,16 @@ export default {
 </script>
 
 <template>
-  <div
-    class="col-2 d-flex flex-column justify-content-around align-items-center"
-  >
-    <div class="d-flex justify-content-center align-items-center">
-      <button @click="decrease()" id="decrease" class="py-1">-</button>
-      <div id="count" class="px-3">{{ count }}</div>
-      <button @click="increase()" id="increase" class="py-1">+</button>
-    </div>
-    <div>
-      <button @click="added()">Aggiungi</button>
+  <div class="d-flex flex-column justify-content-around align-items-center">
+    <div class="d-flex flex-column">
+      <div class="d-flex justify-content-center align-items-center mb-4">
+        <button @click="decrease()" id="decrease" class="py-1">-</button>
+        <div id="count" class="px-3">{{ count }}</div>
+        <button @click="increase()" id="increase" class="py-1">+</button>
+      </div>
+      <div>
+        <button class="w-100" @click="added()">Aggiungi</button>
+      </div>
     </div>
   </div>
 </template>
