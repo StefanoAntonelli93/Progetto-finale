@@ -369,11 +369,11 @@ export default {
           <h3>Riepilogo ordine</h3>
           <div class="content p-3 bg-white mb-4">
             <ul class="list-unstyled">
-              <li v-for="item in this.store.cart" :key="item.id">
+              <li v-for="item in store.cart" :key="item.id">
                 {{ item.quantity }} - {{ item.name }} - {{ item.price }} &euro;
               </li>
             </ul>
-            <p class="fw-semibold">Totale: {{ this.store.total }} &euro;</p>
+            <p class="fw-semibold">Totale: {{ store.total }} &euro;</p>
           </div>
 
           <div>
