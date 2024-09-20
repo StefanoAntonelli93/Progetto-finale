@@ -1,8 +1,10 @@
 <script>
 import Braintree from "../components/Braintree.vue";
+import { store } from "@/store";
 export default {
   data() {
     return {
+      store,
       isModalOpen: false,
       modalTitle: "",
       via: "",
@@ -66,7 +68,7 @@ export default {
 <template>
   <div class="container-fluid py-3">
     <div class="row">
-      <div class="col-12 col-lg-8">
+      <div class="col-12 col-lg-8 mb-3">
         <div class="content">
           <div class="container bg-light p-5">
             <h3>Indirizzo di consegna</h3>
@@ -363,9 +365,18 @@ export default {
       </div>
       <!-- brain tree*********************************************** -->
       <div class="col-12 col-lg-4">
-        <div class="braintree content bg-light py-3">
+        <div class="braintree content bg-light p-3">
           <h3>Riepilogo ordine</h3>
-          <div class="bg-white">
+          <div class="content p-3 bg-white mb-4">
+            <ul class="list-unstyled">
+              <li v-for="item in this.store.cart" :key="item.id">
+                {{ item.quantity }} - {{ item.name }} - {{ item.price }} &euro;
+              </li>
+            </ul>
+            <p class="fw-semibold">Totale: {{ this.store.total }} &euro;</p>
+          </div>
+
+          <div>
             <Braintree />
           </div>
         </div>
