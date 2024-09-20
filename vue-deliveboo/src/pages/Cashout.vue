@@ -66,6 +66,9 @@ export default {
 </script>
 
 <template>
+  <button class="ms-3 mb-3 text-white btn btn-back" @click="$router.go(-1)">
+    Torna indietro
+  </button>
   <div class="container-fluid py-3">
     <div class="row">
       <div class="col-12 col-lg-8 mb-3">
@@ -607,5 +610,9 @@ hr {
   background-color: $primary-color;
   color: #fff;
   width: 100%;
+}
+
+.btn-back {
+  background-color: $primary-color;
 }
 </style>
