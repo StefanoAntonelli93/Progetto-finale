@@ -72,7 +72,7 @@ export default {
         :alt="image.alt"
         :key="index"
         :class="{ active: currentSlide === index }"
-        class="carousel-image"
+        class="carousel-image shadow-box"
       />
     </div>
 
@@ -162,6 +162,10 @@ export default {
 
 .carousel-text.active {
   opacity: 1;
+}
+
+.shadow-box {
+  box-shadow: 8px 8px 7px 2px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-text p {

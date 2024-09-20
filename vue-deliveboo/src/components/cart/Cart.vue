@@ -27,122 +27,113 @@ export default {
 </script>
 
 <template>
-  <div class="cart-background">
-    <div class="cart-outer p-2">
-      <h2 class="cart-title text-center">Il tuo ordine</h2>
-      <div
-        class="cart-data d-flex flex-column justify-content-center align-items-center"
-      >
-        <ul class="p-0 m-0" v-if="cart.length > 0">
-          <li
-            class="d-flex justify-content-between align-items-center mb-1 ps-1"
-            v-for="item in cart"
-            :key="item.id"
-          >
-            {{ item.quantity }} - {{ item.name }} - Prezzo: {{ item.price }} €
-            <button @click="dropItem(item.id)" class="btn btn-danger">X</button>
-          </li>
-        </ul>
-        <div class="backgraud-opacity" v-else>
-          <img
-            src="/src/assets/img/logo_boo.png"
-            alt="Non hai ancora aggiunto alcun prodotto. Quando lo farai, compariranno qui!"
-            class="cart-image"
-          />
-          <div class="cart-description text-center">
-            <h5>
-              Non hai ancora aggiunto alcun prodotto. Quando lo farai,
-              compariranno qui!
-            </h5>
-          </div>
+  <div class="cart-outer p-2">
+    <h2 class="cart-title text-center">Il tuo ordine</h2>
+    <div
+      class="cart-data d-flex flex-column justify-content-center align-items-center"
+    >
+      <ul v-if="cart.length > 0" class="p-0 m-0">
+        <li
+          class="d-flex justify-content-between align-items-center mb-2 ps-1"
+          v-for="item in cart"
+          :key="item.id"
+        >
+          {{ item.quantity }} {{ item.name }} {{ item.price }} €
+          <button @click="dropItem(item.id)" class="btn btn-danger">X</button>
+        </li>
+      </ul>
+
+      <div class="backgraud-opacity" v-else>
+        <img
+          src="/src/assets/img/logo_boo.png"
+          alt="Non hai ancora aggiunto alcun prodotto. Quando lo farai, compariranno qui!"
+          class="cart-image"
+        />
+        <div class="cart-description text-center">
+          <h5>
+            Non hai ancora aggiunto alcun prodotto. Quando lo farai,
+            compariranno qui!
+          </h5>
         </div>
       </div>
-      <!-- Pay button -->
-      <div class="cart-pay">
-        <div class="cart-btn">
-          <button class="btn btn-light text-primary">
-            Totale: {{ store.total }}€
-          </button>
-        </div>
-        <div class="cart-btn">
-          <router-link
-            class="no-style-link"
-            :to="{ name: 'cashout' }"
-            v-if="cart.length > 0"
-          >
-            <button class="btn btn-primary">Procedi</button>
-          </router-link>
-          <button class="btn btn-primary" disabled v-else>Procedi</button>
-        </div>
-        <div class="cart-btn">
-          <button @click="empty()" class="btn btn-danger">Svuota</button>
-        </div>
+    </div>
+    <div class="total" v-if="cart.length > 0">
+      <div class="d-flex justify-content-between px-1 my-1">
+        <h3 class="m-0">Totale:</h3>
+        <h3 class="m-0">{{ store.total }}€</h3>
+      </div>
+    </div>
+    <!-- Pay button -->
+    <div class="cart-pay">
+      <div class="cart-btn">
+        <router-link
+          class="no-style-link"
+          :to="{ name: 'cashout' }"
+          v-if="cart.length > 0"
+        >
+          <button class="btn btn-primary">Procedi</button>
+        </router-link>
+        <button class="btn btn-primary" disabled v-else>Procedi</button>
+      </div>
+      <div class="cart-btn">
+        <button @click="empty()" class="btn btn-danger">Svuota</button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-* {
-  color: white;
-}
-
 .cart-outer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(8px);
-}
-.cart-background {
-  background-image: url("/src/assets/img/pizza.png");
-  background-size: cover;
-  background-position: center;
+  border: 2px solid#ff9553b9;
   position: sticky;
+  color: black;
   top: 164px;
-  width: 300px;
-  height: 450px;
+  min-height: 500px;
   border-radius: 20px;
+  box-shadow: 16px 10px 9px 4px rgba(0, 0, 0, 0.3);
 }
 
 .cart-data {
-  height: 300px;
+  min-height: 300px;
   overflow-y: scroll;
   ul {
-    width: 90%;
+    width: 95%;
   }
   li {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.67);
+    box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.087);
     padding: 5px 20px 5px 5px;
-    width: 100%;
     border-radius: 10px;
     button {
       position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
       padding: 0 7px;
+      border: 1px solid red;
     }
   }
 }
 .backgraud-opacity {
-  background-color: rgba(0, 0, 0, 0.67);
   border-radius: 10px;
 }
 .cart-pay {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  button {
+    border-radius: 10px;
+  }
 }
 
 .cart-image {
   width: 100%;
+  filter: grayscale(1) invert(0.2) opacity(0.6);
 }
 
 .cart-btn {
@@ -151,5 +142,10 @@ export default {
     text-align: center;
     border: none;
   }
+}
+
+.total {
+  border-top: 1px solid rgba(0, 0, 0, 0.087);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.087);
 }
 </style>

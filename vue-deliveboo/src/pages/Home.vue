@@ -90,13 +90,11 @@ export default {
   <section class="row">
     <Carousel class="col" />
   </section>
-  <section>
+  <!-- ricerca categoria -->
+  <section class="my-5">
     <div class="slogan-fixed">
       <h1 class="fw-bold text-center mb-5">Scegli cosa mangiare a Venezia</h1>
     </div>
-  </section>
-  <!-- ricerca categoria -->
-  <section>
     <div class="row">
       <ul id="category" class="d-flex flex-wrap gap-3 justify-content-center">
         <li
@@ -127,7 +125,6 @@ export default {
 
   <!-- ristoranti -->
   <section class="py-4 container">
-    <h4 class="py-4">Ristoranti</h4>
     <RestaurantList :selectedCategory="selectedCategory" />
   </section>
 </template>
@@ -143,7 +140,7 @@ h1 {
 .card-category {
   background-color: rgba(250, 249, 249, 0.2);
   border-radius: 20px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 7px 5px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   p {
     user-select: none;

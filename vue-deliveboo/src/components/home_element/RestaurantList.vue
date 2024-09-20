@@ -84,8 +84,9 @@ export default {
 
 <template>
   <div class="row gap-2">
+    <h2>Ristoranti Disponibili</h2>
     <div
-      class="col-lg-6 col-md-12 restaurant-card p-2"
+      class="col-12 restaurant-card m-2"
       v-for="restaurant in store.restaurants"
       :key="restaurant.id"
     >
@@ -141,9 +142,12 @@ export default {
 @use "@/assets/scss/partials/commons.scss" as *;
 
 .restaurant-card {
-  background-color: rgba(255, 123, 0, 0.264);
+  background-color: rgba(255, 123, 0, 0.101);
   border-radius: 5px;
-  box-shadow: 4px 4px 8px rgba(167, 165, 162, 0.3);
+  min-height: 350px;
+  padding: 20px;
+  border: 2px solid#ff9553b9;
+  box-shadow: 16px 10px 9px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   p {
     user-select: none;

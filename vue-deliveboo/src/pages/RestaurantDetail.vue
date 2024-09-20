@@ -123,11 +123,11 @@ export default {
             <div class="col-12">
               <ul class="p-0">
                 <li
-                  class="list-unstyled"
+                  class="list-unstyled shadow-box mb-4"
                   v-for="plate in plate"
                   :key="plate.id"
                 >
-                  <div class="plate-cards container p-3">
+                  <div class="plate-cards p-3">
                     <div class="row">
                       <div class="col-4">
                         <p class="fw-bold">
@@ -186,6 +186,9 @@ img {
   margin-top: 10px;
   border-radius: 10px;
 }
+li {
+  border-radius: 10px;
+}
 
 .plate-img {
   width: 100%;
@@ -193,5 +196,9 @@ img {
 
 .home-menu {
   background-color: rgb(255, 255, 255);
+}
+
+.shadow-box {
+  box-shadow: 16px 10px 9px 4px rgba(0, 0, 0, 0.3);
 }
 </style>

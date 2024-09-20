@@ -14,7 +14,7 @@ export default {
 
 <template>
   <header>
-    <div class="container">
+    <div class="container-fluid d-flex justify-content-between">
       <div class="left">
         <a href="/">
           <img

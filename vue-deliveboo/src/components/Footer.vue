@@ -1,48 +1,41 @@
 <template>
   <footer>
     <div class="container">
-      <!-- Prima sezione del footer: Informazioni aziendali -->
-      <div class="footer-section">
-        <h5>Informazioni aziendali</h5>
-        <ul>
-          <li><a href="#">Chi siamo</a></li>
-          <li><a href="#">Termini e condizioni</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <!-- Seconda sezione del footer: Link ai social media -->
-      <div class="footer-section">
-        <h5>Seguici</h5>
-        <div class="social-icons">
-          <a href="#">
-            <font-awesome-icon :icon="['fab', 'square-twitter']"
-          /></a>
-          <a href="#">
-            <font-awesome-icon :icon="['fab', 'square-facebook']"
-          /></a>
-          <a href="#">
-            <font-awesome-icon :icon="['fab', 'square-instagram']"
-          /></a>
+      <div class="d-flex w-100">
+        <!-- Prima sezione del footer: Informazioni aziendali -->
+        <div class="footer-section col">
+          <h3>Informazioni aziendali</h3>
+          <ul>
+            <li><a href="#">Chi siamo</a></li>
+            <li><a href="#">Termini e condizioni</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
         </div>
-      </div>
 
-      <!-- Terza sezione del footer: Contatti e copyright -->
-      <div class="footer-section">
-        <h5>Contatti</h5>
-        <ul>
-          <li><a href="#">Contattaci</a></li>
-          <li><a href="#">Supporto</a></li>
-        </ul>
-      </div>
+        <!-- Seconda sezione del footer: Link ai social media -->
+        <div class="footer-section mx-3 col">
+          <h3>Contatti</h3>
+          <ul>
+            <li><a href="#">Contattaci</a></li>
+            <li><a href="#">Supporto</a></li>
+          </ul>
+          <div class="social-icons">
+            <a href="#">
+              <font-awesome-icon :icon="['fab', 'square-twitter']"
+            /></a>
+            <a href="#">
+              <font-awesome-icon :icon="['fab', 'square-facebook']"
+            /></a>
+            <a href="#">
+              <font-awesome-icon :icon="['fab', 'square-instagram']"
+            /></a>
+          </div>
+        </div>
 
-      <!-- Quarta sezione del footer: Mappa -->
-      <div class="map-section">
-        <div class="map-container">
+        <!-- Quarta sezione del footer: Mappa -->
+        <div class="map-section p-0 col">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.95373541590466!3d-37.81627957975198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43baffd555%3A0xb1f6c53b37efdf6a!2sMelbourne%20CBD%2C%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1634567890987!5m2!1sen!2sus"
-            width="300"
-            height="200"
             style="border: 0"
             allowfullscreen=""
             loading="lazy"
@@ -69,6 +62,11 @@ footer {
   padding: 40px 0;
 }
 
+iframe {
+  height: 100%;
+  width: 100%;
+}
+
 .logo-container {
   display: flex;
   justify-content: center;
@@ -91,7 +89,6 @@ footer {
 
 .footer-section {
   background-color: #696969bb;
-  flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column; // Assicurati che il contenuto si allinei verticalmente
