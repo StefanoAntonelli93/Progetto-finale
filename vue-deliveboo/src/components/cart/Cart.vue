@@ -67,10 +67,8 @@ export default {
         <div class="cart-btn">
           <router-link
             class="no-style-link"
-            :to="{
-              name: 'cashout',
-            }"
-            v-if="store.cart.length > 0"
+            :to="{ name: 'cashout' }"
+            v-if="cart.length > 0"
           >
             <button class="btn btn-primary">Procedi</button>
           </router-link>
