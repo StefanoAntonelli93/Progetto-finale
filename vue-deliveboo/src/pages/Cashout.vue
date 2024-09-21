@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       store,
+      restaurantId: this.$route.params.id,
       isModalOpen: false,
       modalTitle: "",
       via: "",

@@ -7,6 +7,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    restaurantId: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -68,15 +72,15 @@ export default {
       <div class="cart-btn">
         <router-link
           class="no-style-link"
-          :to="{ name: 'cashout' }"
+          :to="{
+            name: 'cashout',
+            params: { id: restaurantId }, // Usa restaurantId dalla prop
+          }"
           v-if="cart.length > 0"
         >
           <button class="btn btn-primary">Procedi</button>
         </router-link>
         <button class="btn btn-primary" disabled v-else>Procedi</button>
-      </div>
-      <div class="cart-btn">
-        <button @click="empty()" class="btn btn-danger">Svuota</button>
       </div>
     </div>
   </div>
