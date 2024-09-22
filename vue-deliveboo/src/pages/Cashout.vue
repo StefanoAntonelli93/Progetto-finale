@@ -1,10 +1,13 @@
 <script>
 import Braintree from "../components/Braintree.vue";
 import { store } from "@/store";
+
 export default {
   data() {
     return {
       store,
+      cart: [],
+      restaurantId: this.$route.params.id,
       isModalOpen: false,
       modalTitle: "",
       via: "",
@@ -23,43 +26,45 @@ export default {
       telefonoError: false,
       orarioConsegna: "",
       note: "",
-      metodoPagamento: "", // Variabile per il metodo di pagamento selezionato
+      metodoPagamento: "",
     };
   },
   components: {
     Braintree,
   },
+  mounted() {
+    this.loadCart();
+  },
+
   methods: {
-    openModal(title) {
-      this.modalTitle = title;
-      this.isModalOpen = true;
-      document.body.style.overflow = "hidden"; // Disabilita lo scroll
+    loadCart() {
+      this.cart = JSON.parse(localStorage.getItem("cart")) || []; // Carica il carrello dal localStorage
+      console.log("carrello mounted", this.cart);
     },
-    closeModal() {
-      this.isModalOpen = false;
-      document.body.style.overflow = ""; // Ripristina lo scroll
-    },
-    validateVia() {
+
+    validateFields() {
       this.viaError = !this.via;
-    },
-    validateCivico() {
       this.civicoError = !this.civico;
-    },
-    validateCitta() {
       this.cittaError = !this.citta;
-    },
-    validateCap() {
       this.capError = !this.cap;
-    },
-    validateNomeCognome() {
       this.nomeCognomeError = !this.nomeCognome;
-    },
-    validateTelefono() {
       this.telefonoError = !this.telefono;
+
+      return !(
+        this.viaError ||
+        this.civicoError ||
+        this.cittaError ||
+        this.capError ||
+        this.nomeCognomeError ||
+        this.telefonoError
+      );
     },
-    selectPayment(paymentMethod) {
-      this.metodoPagamento = paymentMethod; // Seleziona il metodo di pagamento
-      console.log("Metodo di pagamento selezionato:", paymentMethod);
+    proceedToPayment() {
+      if (this.validateFields()) {
+        this.$router.push("/payment");
+      } else {
+        alert("Compila tutti i campi obbligatori.");
+      }
     },
   },
 };
@@ -372,7 +377,7 @@ export default {
           <h3>Riepilogo ordine</h3>
           <div class="content p-3 bg-white mb-4">
             <ul class="list-unstyled">
-              <li v-for="item in store.cart" :key="item.id">
+              <li v-for="item in this.cart" :key="item.id">
                 {{ item.quantity }} - {{ item.name }} - {{ item.price }} &euro;
               </li>
             </ul>
@@ -380,7 +385,7 @@ export default {
           </div>
 
           <div>
-            <Braintree />
+            <Braintree :validateFields="validateFields" />
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export default {
     return {
       store,
       restaurant: null,
-      cart: JSON.parse(localStorage.getItem("cart")) || [], // Recupera il carrello dal localStorage se esiste
+      cart: [], // Inizializza carrello vuoto
       plate: [],
       baseImageUrl: "http://127.0.0.1:8000/storage/",
     };
@@ -27,14 +27,24 @@ export default {
     },
   },
   created() {
-    this.fetchRestaurantDetails();
     this.store.total = !isNaN(parseFloat(localStorage.getItem("total")))
       ? parseFloat(localStorage.getItem("total"))
       : 0;
   },
+  mounted() {
+    this.loadCart();
+    this.fetchRestaurantDetails();
+    console.log("mounted");
+  },
   methods: {
+    loadCart() {
+      this.cart = JSON.parse(localStorage.getItem("cart")) || []; // Carica il carrello dal localStorage
+      console.log("carrello mounted", this.cart);
+    },
+
     fetchRestaurantDetails() {
       const restaurantId = this.$route.params.id;
+      console.log(restaurantId);
 
       const restaurantPromise = axios.get(
         `http://127.0.0.1:8000/api/restaurants/${restaurantId}`
@@ -62,28 +72,28 @@ export default {
         this.cart.push(item);
         this.store.total += item.price;
       }
-      this.updateLocalStorage(); // Aggiorna sia il carrello che il totale nel localStorage
+      this.updateLocalStorage();
+      console.log(this.cart);
     },
 
     removeFromCart(itemId) {
       const itemToRemove = this.cart.find((item) => item.id === itemId);
-
       if (itemToRemove) {
         this.store.total -= itemToRemove.price; // Riduci il totale
         this.cart = this.cart.filter((item) => item.id !== itemId); // Rimuovi l'elemento dal carrello
-        this.updateLocalStorage(); // Aggiorna il localStorage
+        this.updateLocalStorage();
       }
     },
 
     emptyCart() {
       this.cart = [];
       this.store.total = 0; // Resetta il totale
-      this.updateLocalStorage(); // Aggiorna il localStorage
+      this.updateLocalStorage();
     },
 
     updateLocalStorage() {
-      localStorage.setItem("cart", JSON.stringify(this.cart)); // Salva il carrello nel localStorage
-      localStorage.setItem("total", this.store.total.toString()); // Salva il totale nel localStorage
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+      localStorage.setItem("total", this.store.total.toString());
     },
   },
 };

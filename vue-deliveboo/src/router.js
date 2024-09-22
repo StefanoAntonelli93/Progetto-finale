@@ -18,7 +18,7 @@ const router = createRouter({
       component: RestaurantDetail,
     },
     {
-      path: "/cashout/",
+      path: "/cashout/:id", // Qui accetti un parametro dinamico `id`
       name: "cashout",
       component: Cashout,
     },

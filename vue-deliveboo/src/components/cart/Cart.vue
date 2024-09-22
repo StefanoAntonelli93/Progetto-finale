@@ -21,6 +21,7 @@ export default {
     empty() {
       this.store.total = 0;
       this.$emit("empty-cart");
+      console.log("svuoto carrello");
     },
   },
 };

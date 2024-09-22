@@ -1,14 +1,25 @@
 <template>
   <div id="dropin-container"></div>
-  <button id="submit-button" class="button button--small button--orange w-100">
-    Acquista
-  </button>
+  <button class="btn btn-primary" @click="handlePayment">Paga</button>
 </template>
 
 <script>
 export default {
   name: "Braintree",
+  props: {
+    validateFields: {
+      type: Function,
+      required: true,
+    },
+  },
   methods: {
+    handlePayment() {
+      if (this.validateFields()) {
+        // Logica per procedere con il pagamento
+      } else {
+        alert("Compila tutti i campi obbligatori.");
+      }
+    },
     goToLogin() {
       window.location.href = "http://127.0.0.1:8000/login"; // Route per il login
     },
