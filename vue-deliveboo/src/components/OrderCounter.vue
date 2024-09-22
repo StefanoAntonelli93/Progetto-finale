@@ -37,9 +37,11 @@ export default {
 </script>
 
 <template>
-  <div class="d-flex flex-column justify-content-around align-items-center">
+  <div class="d-flex flex-column justify-content-around align-items-end">
     <div class="d-flex flex-column">
-      <div class="d-flex justify-content-center align-items-center mb-4">
+      <div
+        class="d-flex justify-content-between align-items-center mb-4 counter"
+      >
         <button @click="decrease()" id="decrease" class="py-1">-</button>
         <div id="count" class="px-3">{{ count }}</div>
         <button @click="increase()" id="increase" class="py-1">+</button>
@@ -79,5 +81,9 @@ button {
     border-color: #ff5335;
     color: #fff;
   }
+}
+
+.counter {
+  width: 110px;
 }
 </style>

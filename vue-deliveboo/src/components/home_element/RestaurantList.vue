@@ -84,9 +84,9 @@ export default {
 
 <template>
   <div class="row gap-2">
-    <h2>Ristoranti Disponibili</h2>
+    <h2 class="p-0">Ristoranti Disponibili</h2>
     <div
-      class="col-12 restaurant-card m-2"
+      class="col-12 restaurant-card my-2"
       v-for="restaurant in store.restaurants"
       :key="restaurant.id"
     >
@@ -95,15 +95,15 @@ export default {
         :to="{ name: 'RestaurantDetail', params: { id: restaurant.id } }"
       >
         <div class="row h-100">
-          <div class="col-lg-6 col-md-12">
+          <div class="card-50 col-lg-6 col-md-12">
             <img
               class="restaurant_img"
               :src="baseImageUrl + restaurant.img"
               :alt="restaurant.name"
             />
           </div>
-          <div class="col-lg-6 col-md-12">
-            <h3 class="m-0">{{ restaurant.restaurant_name }}</h3>
+          <div class="card-50 col-lg-6 col-md-12 card-content">
+            <h2 class="m-0">{{ restaurant.restaurant_name }}</h2>
             <p class="text-secondary">Via: {{ restaurant.address }}</p>
             <p>{{ restaurant.description }}</p>
             <!-- categorie -->
@@ -123,18 +123,18 @@ export default {
     <div v-if="store.restaurants.length === 0">
       <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
     </div>
+    <nav class="p-0 d-flex justify-content-between gap-2 mt-4">
+      <div>
+        <button class="btn btn-secondary" @click="prevPage">Indietro</button>
+        <button class="btn btn-secondary ms-2" @click="nextPage">Avanti</button>
+      </div>
+      <div class="text-end">
+        <button class="btn btn-secondary" @click="resetCategories">
+          Reset
+        </button>
+      </div>
+    </nav>
   </div>
-
-  <nav class="py-4 d-flex justify-content-between gap-2 mt-4">
-    <div class="d-flex gap-2">
-      <button class="btn btn-secondary" @click="prevPage">indietro</button>
-      <button class="btn btn-secondary" @click="nextPage">avanti</button>
-    </div>
-
-    <div class="text-end">
-      <button class="btn btn-secondary" @click="resetCategories">Reset</button>
-    </div>
-  </nav>
 </template>
 
 <style scoped lang="scss">
@@ -144,7 +144,7 @@ export default {
 .restaurant-card {
   background-color: rgba(255, 123, 0, 0.101);
   border-radius: 5px;
-  min-height: 350px;
+  height: 350px;
   padding: 20px;
   border: 2px solid#ff9553b9;
   box-shadow: 16px 10px 9px 4px rgba(0, 0, 0, 0.3);
@@ -153,12 +153,12 @@ export default {
     user-select: none;
   }
   img {
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
   }
 }
 
-.restaurant_img {
-  width: 100%;
+.card-50 {
   height: 100%;
 }
 
@@ -191,16 +191,16 @@ export default {
 button {
   background-color: $primary-color;
 }
-@media screen and (min-width: 992px) {
-  .col-lg-6 {
-    flex: 0 0 auto;
-    width: 49.5%;
-  }
-}
 
 @media screen and (max-width: 992px) {
   .restaurant-card {
-    height: auto;
+    height: 600px;
+    .card-50 {
+      height: 50%;
+    }
+  }
+  .card-content {
+    margin-top: 20px;
   }
 }
 </style>
