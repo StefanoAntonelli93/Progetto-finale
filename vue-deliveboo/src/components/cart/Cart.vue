@@ -35,17 +35,17 @@ export default {
     >
       <ul v-if="cart.length > 0" class="p-0 m-0">
         <li
-          class="d-flex justify-content-around align-items-center mb-2 ps-1 flex-wrap"
+          class="d-flex justify-content-between align-items-center mb-2 ps-1 flex-wrap"
           v-for="item in cart"
           :key="item.id"
         >
-          <div class="d-flex">
+          <div class="d-flex me-2">
             <h4 class="me-3 mb-0">Qt. {{ item.quantity }}</h4>
             <h4 class="mb-0">{{ item.name }}</h4>
           </div>
 
           <div>
-            <h4 class="mb-0">{{ item.price }} €</h4>
+            <h4 class="mb-0 me-3">{{ item.price }} €</h4>
           </div>
 
           <button @click="dropItem(item.id)" class="btn btn-danger">X</button>
