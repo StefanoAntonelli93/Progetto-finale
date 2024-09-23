@@ -35,7 +35,7 @@ export default {
     >
       <ul v-if="cart.length > 0" class="p-0 m-0">
         <li
-          class="d-flex justify-content-around align-items-center mb-2 ps-1"
+          class="d-flex justify-content-around align-items-center mb-2 ps-1 flex-wrap"
           v-for="item in cart"
           :key="item.id"
         >

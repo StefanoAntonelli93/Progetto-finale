@@ -128,7 +128,7 @@ export default {
 </script>
 
 <template>
-  <router-link class="no-style-link ps-5" :to="{ name: 'home' }">
+  <router-link class="no-style-link ps-5 zero-padding" :to="{ name: 'home' }">
     <button class="btn btn-secondary primary-color">Indietro</button>
   </router-link>
   <div
