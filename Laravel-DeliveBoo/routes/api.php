@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\OrderController;
 use App\Http\Controllers\api\RestaurantController;
 use App\Http\Controllers\api\UserController;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // apiresource crea una resource senza i metodi edit e create
 Route::apiResource('restaurants', RestaurantController::class);
 // per visualizzare api su url -> http://127.0.0.1:8000/api/restaurants
-
+Route::apiResource('order', OrderController::class);
 
 // rotta per visualizzare ristorante
 Route::get('restaurants/{id}', [RestaurantController::class, 'show']);
