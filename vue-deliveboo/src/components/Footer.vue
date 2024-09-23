@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="container">
-      <div class="d-flex w-100">
+      <div class="d-flex flex-wrap w-100 gap-5">
         <!-- Prima sezione del footer: Informazioni aziendali -->
         <div class="footer-section col">
           <h3>Informazioni aziendali</h3>
@@ -13,7 +13,7 @@
         </div>
 
         <!-- Seconda sezione del footer: Link ai social media -->
-        <div class="footer-section mx-3 col">
+        <div class="footer-section col">
           <h3>Contatti</h3>
           <ul>
             <li><a href="#">Contattaci</a></li>
@@ -67,17 +67,6 @@ iframe {
   width: 100%;
 }
 
-.logo-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-}
-
-.footer-logo {
-  width: 150px;
-  height: auto;
-}
-
 .container {
   display: flex;
   justify-content: space-between;
@@ -90,8 +79,6 @@ iframe {
 .footer-section {
   background-color: #696969bb;
   padding: 20px;
-  display: flex;
-  flex-direction: column; // Assicurati che il contenuto si allinei verticalmente
 }
 
 .footer-section h5 {
