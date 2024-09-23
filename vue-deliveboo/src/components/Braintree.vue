@@ -1,8 +1,13 @@
 <template>
   <div id="dropin-container"></div>
-  <button class="btn btn-primary" @click="handlePayment">Paga</button>
+  <button
+    id="submit-button"
+    class="button button--small button--green w-100 mt-3"
+    @click="handlePayment()"
+  >
+    Paga
+  </button>
 </template>
-
 <script>
 export default {
   name: "Braintree",
@@ -14,9 +19,19 @@ export default {
   },
   methods: {
     handlePayment() {
+      // Controlla se i campi obbligatori sono stati compilati
       if (this.validateFields()) {
-        // Logica per procedere con il pagamento
+        // Se i campi sono validi, procedi con la richiesta del metodo di pagamento
+        this.instance.requestPaymentMethod((err, payload) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          console.log("Nonce ricevuto:", payload.nonce);
+          // Logica per inviare il nonce al server backend
+        });
       } else {
+        // Mostra un messaggio d'errore se i campi non sono validi
         alert("Compila tutti i campi obbligatori.");
       }
     },
@@ -28,31 +43,19 @@ export default {
     },
   },
   mounted() {
-    var button = document.querySelector("#submit-button");
-
     braintree.dropin.create(
       {
         authorization: "sandbox_g42y39zw_348pk9cgf3bgyw2b", // Usa il tuo token di autorizzazione sandbox
         selector: "#dropin-container",
       },
-      function (err, instance) {
+      (err, instance) => {
         if (err) {
           console.error(err);
           return;
         }
 
-        button.addEventListener("click", function () {
-          instance.requestPaymentMethod(function (err, payload) {
-            if (err) {
-              console.error(err);
-              return;
-            }
-
-            // Invia payload.nonce al tuo server
-            console.log("Nonce ricevuto:", payload.nonce);
-            // Logica per inviare il nonce al server backend
-          });
-        });
+        // Salva l'istanza di Braintree in `this` per usarla in `handlePayment`
+        this.instance = instance;
       }
     );
   },
@@ -63,11 +66,16 @@ export default {
 .button {
   cursor: pointer;
   font-weight: 500;
+  left: 3px;
   line-height: inherit;
+  position: relative;
+  text-decoration: none;
   text-align: center;
   border-style: solid;
   border-width: 1px;
   border-radius: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   display: inline-block;
 }
 
@@ -76,8 +84,10 @@ export default {
   font-size: 0.875rem;
 }
 
-.button--orange {
-  background-color: #ff9653;
+.button--green {
+  outline: none;
+  background-color: #64d18a;
+  border-color: #64d18a;
   color: white;
   transition: all 200ms ease;
 }

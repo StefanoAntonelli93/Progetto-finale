@@ -45,10 +45,13 @@ export default {
     validateFields() {
       this.viaError = !this.via;
       this.civicoError = !this.civico;
-      this.cittaError = !this.citta;
+      this.cittaError = !this.citta || !/^[a-zA-Z\s]+$/.test(this.citta);
       this.capError = !this.cap;
       this.nomeCognomeError = !this.nomeCognome;
-      this.telefonoError = !this.telefono;
+      // regex numero di telefono
+      const phoneNumberPattern = /^[0-9]+$/;
+      this.telefonoError =
+        !this.telefono || !phoneNumberPattern.test(this.telefono);
 
       return !(
         this.viaError ||
@@ -146,7 +149,7 @@ export default {
                     placeholder="Inserisci la tua città"
                   />
                   <p v-if="cittaError" class="error-message">
-                    Città o località obbligatori
+                    La città è obbligatoria (può contenere solo lettere).
                   </p>
                 </div>
 
@@ -201,7 +204,7 @@ export default {
                     placeholder="Inserisci il tuo numero di telefono"
                   />
                   <p v-if="telefonoError" class="error-message">
-                    Il numero di telefono è necessario
+                    Inserisci un numero di telefono valido (solo numeri).
                   </p>
                 </div>
               </section>
