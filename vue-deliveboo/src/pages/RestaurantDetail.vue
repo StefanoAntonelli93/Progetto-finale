@@ -131,7 +131,10 @@ export default {
   <router-link class="no-style-link ps-5" :to="{ name: 'home' }">
     <button class="btn btn-secondary primary-color">Indietro</button>
   </router-link>
-  <div v-if="restaurant" class="restaurant-detail container-fluid px-5 mt-4">
+  <div
+    v-if="restaurant"
+    class="restaurant-detail container-fluid px-5 mt-4 zero-padding"
+  >
     <div class="row">
       <div class="col-lg-8 col-sm-12 px-4">
         <!-- immagine ristorante e dati ristorante -->
@@ -150,19 +153,19 @@ export default {
           >
             <h1 class="m-0">{{ restaurant.restaurant_name }}</h1>
             <hr class="orange-border my-2" />
-            <div class="d-flex">
+            <div class="d-flex justify-content-between flex-wrap">
               <h4 class="me-2">Indirizzo:</h4>
               <h4 class="text-end">{{ restaurant.address }}</h4>
             </div>
             <hr class="orange-border my-2" />
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between flex-wrap">
               <h4 class="me-2">Chi siamo:</h4>
               <h4 class="text-end">{{ restaurant.description }}</h4>
             </div>
             <hr class="orange-border my-2" />
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between flex-wrap">
               <h4 class="me-2">Cucina:</h4>
-              <h4>{{ categoriesString }}</h4>
+              <h4 class="text-end">{{ categoriesString }}</h4>
             </div>
           </div>
         </div>
@@ -190,17 +193,19 @@ export default {
                     <div
                       class="col-lg-5 col-sm-12 d-flex flex-column justify-content-around"
                     >
-                      <div class="d-flex justify-content-between">
+                      <div class="d-flex justify-content-between flex-wrap">
                         <h4 class="me-2">Piatto:</h4>
                         <h4 class="text-end">{{ plate.name }}</h4>
                       </div>
                       <hr class="orange-border my-2" />
-                      <div class="d-flex justify-content-between">
+                      <div
+                        class="d-flex flex-wrap justify-content-between flex-wrap"
+                      >
                         <h4 class="me-2">Ingredienti:</h4>
                         <h4 class="text-end">{{ plate.ingredients }}</h4>
                       </div>
                       <hr class="orange-border my-2" />
-                      <div class="d-flex justify-content-between">
+                      <div class="d-flex justify-content-between flex-wrap">
                         <h4 class="me-2">Prezzo:</h4>
                         <h4 class="text-end">{{ plate.price }} &euro;</h4>
                       </div>
@@ -268,7 +273,7 @@ export default {
 .restaurant-card {
   height: 350px;
   border: 2px solid#ff9553b9;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .restaurant-card-content {
@@ -361,6 +366,15 @@ button:hover {
   .restaurant-card {
     height: auto;
     padding: 20px;
+  }
+  .cart-outer {
+    margin: 0px 11px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .zero-padding {
+    padding: 0 !important;
   }
 }
 </style>

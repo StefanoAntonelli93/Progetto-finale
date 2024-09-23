@@ -66,7 +66,7 @@ export default {
         </div>
       </div>
     </div>
-    <div class="total" v-if="cart.length > 0">
+    <div class="total px-3" v-if="cart.length > 0">
       <hr class="orange-border my-2" />
       <div class="d-flex justify-content-between px-1 my-1">
         <h3 class="m-0">Totale:</h3>
@@ -75,7 +75,7 @@ export default {
       <hr class="orange-border my-2" />
     </div>
     <!-- Pay button -->
-    <div class="cart-pay">
+    <div class="cart-pay px-3">
       <div class="cart-btn">
         <router-link
           class="no-style-link"
@@ -107,7 +107,7 @@ export default {
   color: black;
   top: 164px;
   min-height: 500px;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 16px 10px 9px 4px rgba(0, 0, 0, 0.3);
 }
 
