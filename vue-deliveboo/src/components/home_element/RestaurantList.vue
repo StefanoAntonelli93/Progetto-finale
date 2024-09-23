@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { store } from "@/store";
+import { onMounted } from "vue";
 
 export default {
   name: "restaurant_list",
@@ -9,6 +10,8 @@ export default {
       type: Object,
       default: null,
     },
+    isNextPage: "boolean",
+    isPrevPage: "boolean",
   },
 
   data() {
@@ -32,52 +35,16 @@ export default {
     },
   },
   methods: {
-    resetCategories() {
-      this.store.category = [];
-      this.store.selectedCategories = [];
-      this.categoryCall(null);
-      this.show = 1;
-    },
     prevPage() {
-      console.log("pagina precedente");
-      this.currentPage--;
-      this.categoryCall();
+      this.$emit("previous-page");
     },
     nextPage() {
-      console.log("pagina seguente");
-      this.currentPage++;
-      this.categoryCall();
-    },
-    categoryCall(categories) {
-      const url = this.api.baseUrl + this.api.endPoints;
-      const params = {
-        page: this.currentPage,
-      };
-
-      if (categories) {
-        // Add categories to params if they are provided
-        this.store.category.push(categories);
-        params.categories = this.store.category.join(",");
-      }
-
-      axios
-        .get(url, { params })
-        .then((response) => {
-          const data = response.data.results.data;
-          if (data && data.length) {
-            this.store.restaurants = data;
-            this.show = 1; // Set show to 1 if restaurants are found
-          } else {
-            this.store.restaurants = [];
-            console.log("No restaurants found");
-            this.show = 0; // Set show to 0 if no restaurants are found
-          }
-        })
-        .catch((error) => console.log(error));
+      this.$emit("next-page");
     },
   },
-  created() {
-    this.categoryCall();
+  mounted() {
+    this.$emit("fill-restaurants");
+    console.log(this.isPrevPage);
   },
 };
 </script>
@@ -97,40 +64,59 @@ export default {
         <div class="row h-100">
           <div class="card-50 col-lg-6 col-md-12">
             <img
-              class="restaurant_img"
+              class="restaurant_img rounded"
               :src="baseImageUrl + restaurant.img"
               :alt="restaurant.name"
             />
           </div>
           <div class="card-50 col-lg-6 col-md-12 card-content">
-            <h2 class="m-0">{{ restaurant.restaurant_name }}</h2>
-            <p class="text-secondary">Via: {{ restaurant.address }}</p>
-            <p>{{ restaurant.description }}</p>
-            <!-- categorie -->
-            <div
-              class="d-flex flex-wrap gap-1"
-              v-if="restaurant.categories.length"
-            >
-              Categorie:
-              <div v-for="category in restaurant.categories" :key="category.id">
-                {{ category.name }}
-              </div>
+            <div class="d-flex justify-content-between">
+              <h2>{{ restaurant.restaurant_name }}</h2>
+            </div>
+            <hr class="orange-border my-2" />
+            <div class="d-flex justify-content-between">
+              <h3 class="me-2">Indirizzo:</h3>
+              <h3>{{ restaurant.address }}</h3>
+            </div>
+            <hr class="orange-border my-2" />
+            <div class="d-flex justify-content-between">
+              <h4 class="me-2">Chi siamo:</h4>
+              <h4 class="text-end">{{ restaurant.description }}</h4>
+            </div>
+            <hr class="orange-border my-2" />
+            <div class="d-flex justify-content-between">
+              <h4 class="me-2">Cucina:</h4>
+              <h4
+                class="d-flex gap-2 flex-wrap"
+                v-if="restaurant.categories.length"
+              >
+                <div
+                  v-for="category in restaurant.categories"
+                  :key="category.id"
+                >
+                  {{ category.name }}
+                </div>
+              </h4>
+              <h4 v-else>Nessuna categoria specificata</h4>
             </div>
           </div>
         </div>
       </router-link>
     </div>
-    <div v-if="store.restaurants.length === 0">
+    <div class="p-0" v-if="store.restaurants.length === 0">
       <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
     </div>
     <nav class="p-0 d-flex justify-content-between gap-2 mt-4">
       <div>
-        <button class="btn btn-secondary" @click="prevPage">Indietro</button>
-        <button class="btn btn-secondary ms-2" @click="nextPage">Avanti</button>
-      </div>
-      <div class="text-end">
-        <button class="btn btn-secondary" @click="resetCategories">
-          Reset
+        <button v-if="isPrevPage" class="btn btn-secondary" @click="prevPage">
+          Indietro
+        </button>
+        <button
+          v-if="isNextPage"
+          class="btn btn-secondary ms-2"
+          @click="nextPage"
+        >
+          Avanti
         </button>
       </div>
     </nav>
@@ -140,9 +126,10 @@ export default {
 <style scoped lang="scss">
 @use "@/assets/scss/partials/variables.scss" as *;
 @use "@/assets/scss/partials/commons.scss" as *;
-
+.orange-border {
+  border: 2px solid $primary-color;
+}
 .restaurant-card {
-  background-color: rgba(255, 123, 0, 0.101);
   border-radius: 5px;
   height: 350px;
   padding: 20px;

@@ -26,23 +26,26 @@ export default {
       </div>
       <div class="right">
         <!-- Sezione 1 -->
-        <div class="right-section">
+        <div class="right-section align-items-center show">
           <button @click="goToLogin" class="btn btn-primary">
             <i class="fa fa-user"></i> Accedi
           </button>
+          <button @click="goToRegister" class="btn btn-primary ms-4">
+            Crea un account
+          </button>
+          <div class="right-section ms-4">
+            <img
+              src="@/assets/img/italy-flag.png"
+              alt="Italian Flag"
+              class="flag"
+            />
+          </div>
         </div>
 
         <!-- Sezione 2 -->
-        <div class="right-section">
-          <img
-            src="@/assets/img/italy-flag.png"
-            alt="Italian Flag"
-            class="flag"
-          />
-        </div>
 
         <!-- Sezione 3 -->
-        <div class="right-section">
+        <div class="right-section hidden">
           <!-- Menu hamburger -->
           <button
             type="button"
@@ -106,8 +109,7 @@ export default {
 
 header {
   background-color: rgb(236, 236, 236);
-  padding: 20px 0; /* Aggiungi del padding sopra e sotto */
-  height: 100px; /* Aumenta l'altezza dell'header */
+  padding: 25px 0; /* Aggiungi del padding sopra e sotto */
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease; /* Transizione per un effetto fluido */
   z-index: 100; /* Mantiene l'header sopra gli altri elementi */
@@ -213,5 +215,22 @@ header {
 /* Stile per i singoli pulsanti */
 .btn-close {
   background-color: transparent;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+@media screen and (max-width: 580px) {
+  .hidden {
+    display: block;
+  }
+  .show {
+    display: none;
+  }
 }
 </style>

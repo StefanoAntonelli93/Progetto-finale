@@ -2,11 +2,11 @@
 
 
 @section('content')
-    <div class="container py-5">
+    <div class="container my-5 orange-border p-3 card-shadow">
         <div class="content d-flex justify-content-between align-items-center">
-            <h2 class="py-3">Dettagli del tuo ristorante</h2>
+            <h1 class="py-3">Dettagli del tuo ristorante</h1>
             {{-- vai a index --}}
-            <a href="{{ route('admin.restaurants.index') }}"><button class="btn btn-primary btn-md">Torna ai
+            <a href="{{ route('admin.restaurants.index') }}"><button class="btn btn-primary btn-md button-shadow">Torna ai
                     ristoranti</button></a>
         </div>
 
@@ -15,34 +15,52 @@
                 <div class="row">
                     <div class="col-6">
                         @if ($restaurant->img)
-                            <div>
+                            <div class="d-flex h-100">
                                 <img class="w-100" src="{{ asset('storage/' . $restaurant->img) }}"
                                     alt="{{ $restaurant->restauran_name }}">
                             </div>
                     </div>
                     <div class="col-6">
         @endif
-        <p>Nome ristorante: {{ $restaurant->restaurant_name }}</p>
-        <p>Indirizzo: {{ $restaurant->address }}</p>
-        <p>Numero di telefono: {{ $restaurant->phone_number }}</p>
-        <p>Descrizione: {{ $restaurant->description }}</p>
-        <p>Partita IVA: {{ $restaurant->p_iva }}</p>
-
-
-        <p>Categorie: {{ implode(', ', $restaurant->categories->pluck('name')->toArray()) }}</p>
-
+        <div class="d-flex justify-content-between">
+            <h2>Nome ristorante: </h2>
+            <h2>{{ $restaurant->restaurant_name }}</h2>
+        </div>
+        <hr class="orange-border my-2">
+        <div class="d-flex justify-content-between">
+            <h3>Indirizzo:</h3>
+            <h3>{{ $restaurant->address }}</h3>
+        </div>
+        <hr class="orange-border my-2">
+        <div class="d-flex justify-content-between">
+            <h3>Numero di telefono:</h3>
+            <h3>{{ $restaurant->phone_number }}</h3>
+        </div>
+        <hr class="orange-border my-2">
+        <div class="d-flex justify-content-between">
+            <h3 class="me-5">Descrizione:</h3>
+            <h3 class="text-end ps-5">{{ $restaurant->description }}</h3>
+        </div>
+        <hr class="orange-border my-2">
+        <div class="d-flex justify-content-between">
+            <h3>Partita IVA:</h3>
+            <h3>{{ $restaurant->p_iva }}</h3>
+        </div>
+        <hr class="orange-border my-2">
+        <div class="d-flex justify-content-between">
+            <h3>Categorie:</h3>
+            <h3>{{ implode(', ', $restaurant->categories->pluck('name')->toArray()) }}</h3>
+        </div>
         {{-- modifica --}}
         <div>
-            <button class="btn btn-warning mt-3"><a
+            <button class="btn btn-warning mt-3 button-shadow"><a
                     href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
         </div>
     </div>
     </div>
-
     </div>
 @else
-    <p>Ristorante non trovato.</p>
+    <h1>Ristorante non trovato.</h1>
     @endif
-
     </div>
 @endsection

@@ -42,12 +42,20 @@ export default {
       <div
         class="d-flex justify-content-between align-items-center mb-4 counter"
       >
-        <button @click="decrease()" id="decrease" class="py-1">-</button>
-        <div id="count" class="px-3">{{ count }}</div>
-        <button @click="increase()" id="increase" class="py-1">+</button>
+        <button @click="decrease()" id="decrease" class="py-1">
+          <h4 class="mb-0">-</h4>
+        </button>
+        <div id="count" class="px-3">
+          <h4 class="mb-0">{{ count }}</h4>
+        </div>
+        <button @click="increase()" id="increase" class="py-1">
+          <h4 class="mb-0">+</h4>
+        </button>
       </div>
       <div>
-        <button class="w-100" @click="added()">Aggiungi</button>
+        <button class="w-100" @click="added()">
+          <h4 class="mb-0">Aggiungi</h4>
+        </button>
       </div>
     </div>
   </div>

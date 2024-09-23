@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_boo">
                         <img src="/storage/images/logo_boo.png" alt="logo_deliveboo">
@@ -39,7 +39,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ 'http://localhost:5173/' }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{ 'http://localhost:5173/' }}"><button
+                                    class="btn deliveboo-orange-background text-light gray-hover button-shadow">{{ __('Home') }}</button></a>
                         </li>
                     </ul>
 

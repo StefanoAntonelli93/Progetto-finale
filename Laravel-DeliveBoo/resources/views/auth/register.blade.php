@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-                            <p class="text-secondary">i campi contrassegnati con * sono obbligatori</p>
+                            <p class="text-secondary mb-2">I campi contrassegnati con * sono obbligatori</p>
                             <div class="mb-4 row">
                                 <label for="name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Nome *') }}</label>
@@ -34,7 +34,6 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                         class="form-control @error('email') non è valida @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email">
 

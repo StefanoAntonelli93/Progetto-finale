@@ -28,18 +28,26 @@ export default {
 </script>
 
 <template>
-  <div class="cart-outer p-2">
+  <div class="cart-outer p-3">
     <h2 class="cart-title text-center">Il tuo ordine</h2>
     <div
       class="cart-data d-flex flex-column justify-content-center align-items-center"
     >
       <ul v-if="cart.length > 0" class="p-0 m-0">
         <li
-          class="d-flex justify-content-between align-items-center mb-2 ps-1"
+          class="d-flex justify-content-around align-items-center mb-2 ps-1"
           v-for="item in cart"
           :key="item.id"
         >
-          {{ item.quantity }} {{ item.name }} {{ item.price }} €
+          <div class="d-flex">
+            <h4 class="me-3 mb-0">Qt. {{ item.quantity }}</h4>
+            <h4 class="mb-0">{{ item.name }}</h4>
+          </div>
+
+          <div>
+            <h4 class="mb-0">{{ item.price }} €</h4>
+          </div>
+
           <button @click="dropItem(item.id)" class="btn btn-danger">X</button>
         </li>
       </ul>
@@ -59,10 +67,12 @@ export default {
       </div>
     </div>
     <div class="total" v-if="cart.length > 0">
+      <hr class="orange-border my-2" />
       <div class="d-flex justify-content-between px-1 my-1">
         <h3 class="m-0">Totale:</h3>
         <h3 class="m-0">{{ store.total }}€</h3>
       </div>
+      <hr class="orange-border my-2" />
     </div>
     <!-- Pay button -->
     <div class="cart-pay">
@@ -72,12 +82,16 @@ export default {
           :to="{ name: 'cashout' }"
           v-if="cart.length > 0"
         >
-          <button class="btn btn-primary">Procedi</button>
+          <button class="btn btn-primary button-shadow">Procedi</button>
         </router-link>
-        <button class="btn btn-primary" disabled v-else>Procedi</button>
+        <button class="btn btn-primary button-shadow" disabled v-else>
+          Procedi
+        </button>
       </div>
       <div class="cart-btn">
-        <button @click="empty()" class="btn btn-danger">Svuota</button>
+        <button @click="empty()" class="btn btn-danger button-shadow">
+          Svuota
+        </button>
       </div>
     </div>
   </div>
@@ -119,6 +133,9 @@ export default {
     }
   }
 }
+.button-shadow {
+  box-shadow: 5px 5px 6px 2px rgba(0, 0, 0, 0.3);
+}
 .backgraud-opacity {
   border-radius: 10px;
 }
@@ -144,9 +161,7 @@ export default {
     border: none;
   }
 }
-
-.total {
-  border-top: 1px solid rgba(0, 0, 0, 0.087);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.087);
+.orange-border {
+  border: 2px solid#ff9553b9;
 }
 </style>

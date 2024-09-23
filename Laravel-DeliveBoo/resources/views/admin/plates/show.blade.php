@@ -2,11 +2,13 @@
 
 
 @section('content')
-    <div class="container py-5">
-        <div class="content d-flex justify-content-between align-items-center">
-            <h2 class="py-3">Dettagli piatto</h2>
+    <div class="container my-5 p-4 orange-border card-shadow">
+        <div class="content d-flex justify-content-between align-items-center px-2">
+            <h1 class="my-4">Dettagli piatto</h1>
             {{-- vai a index --}}
-            <a href="{{ route('admin.plates.index') }}"> <button class="btn btn-primary btn-md">Torna ai tuoi
+            <a href="{{ route('admin.plates.index') }}"> <button
+                    class="btn btn-primary btn-md button-shadow gray-hover border-0">Torna
+                    ai tuoi
                     piatti</button></a>
         </div>
 
@@ -14,25 +16,49 @@
         @if ($plate)
             <div class="container-sm">
                 <div class="row">
-                    <div class="col-6">
-                        @if ($plate->img)
-                            <div>
-                                <img class="w-100" src="{{ asset('storage/' . $plate->img) }}" alt="{{ $plate->name }}">
-                            </div>
+                    @if ($plate->img)
+                        <div class="col-lg-6 col-12-sm">
+                            <img class="w-100 h-100 rounded" src="{{ asset('storage/' . $plate->img) }}"
+                                alt="{{ $plate->name }}">
+                        </div>
+                        <div class="col-lg-6 col-12-sm mt-4 ">
+                        @else
+                            <div class="col-12 p-0">
+                    @endif
+                    <div class="d-flex justify-content-between">
+                        <h2 class="me-3">Nome piatto: </h2>
+                        <h2>{{ $plate->name }}</h2>
                     </div>
-                    <div class="col-6">
-        @endif
-        <p>Nome piatto: {{ $plate->name }}</p>
-        <p>Ingredienti: {{ $plate->ingredients }}</p>
-        <p>Allergeni: {{ $plate->allergenes }}</p>
-        <p>Descrizione: {{ $plate->description }}</p>
-        <p>Prezzo: {{ $plate->price }}</p>
-        {{-- modifica --}}
-        <div>
-            <a href="{{ route('admin.plates.edit', $plate) }}"><button class="btn btn-warning mt-3">Modifica</button></a>
-        </div>
-    </div>
-    </div>
+                    <hr class="orange-border my-2">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="me-3">Ingredienti:</h3>
+                        <h3>{{ $plate->ingredients }}</h3>
+                    </div>
+                    <hr class="orange-border my-2">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="me-3">Allergeni:</h3>
+                        <h3>{{ $plate->allergenes }}</h3>
+                    </div>
+                    <hr class="orange-border my-2">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="me-3">Descrizione:</h3>
+                        <h3>{{ $plate->description }} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, quod,
+                            vero ex, quam rerum aliquam porro nisi eos perspiciatis fugit quis facere repellat consectetur?
+                            Architecto illo molestias perspiciatis et nemo.</h3>
+                    </div>
+                    <hr class="orange-border my-2">
+                    <div class="d-flex justify-content-between">
+                        <h3>Prezzo:</h3>
+                        <h3>{{ $plate->price }}€</h3>
+                    </div>
+
+                    {{-- modifica --}}
+                    <div>
+                        <a href="{{ route('admin.plates.edit', $plate) }}"><button
+                                class="btn btn-primary mt-3 button-shadow gray-hover border-0 text-light">Modifica</button></a>
+                    </div>
+                </div>
+            </div>
 
 
 

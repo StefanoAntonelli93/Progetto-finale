@@ -108,26 +108,40 @@ export default {
       <div class="col-lg-8 col-sm-12 px-4">
         <!-- immagine ristorante e dati ristorante -->
         <div class="row mx-auto restaurant-card shadow-box">
-          <div class="h-100 col-lg-6 col-md-6 col-sm-12 p-2">
+          <div class="col-lg-6 col-sm-12 p-3 h-100">
             <img
-              class="img_restaurant"
+              class="img_restaurant w-100 h-100"
               :src="baseImageUrl + restaurant.img"
               :alt="restaurant.restaurant_name"
             />
           </div>
           <!-- dettagli ristorante -->
 
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <h1>{{ restaurant.restaurant_name }}</h1>
-            <p>{{ restaurant.address }}</p>
-            <p>{{ restaurant.description }}</p>
-            {{ categoriesString }}
+          <div
+            class="col-lg-6 col-sm-12 d-flex flex-column h-100 restaurant-card-content"
+          >
+            <h1 class="m-0">{{ restaurant.restaurant_name }}</h1>
+            <hr class="orange-border my-2" />
+            <div class="d-flex">
+              <h4 class="me-2">Indirizzo:</h4>
+              <h4 class="text-end">{{ restaurant.address }}</h4>
+            </div>
+            <hr class="orange-border my-2" />
+            <div class="d-flex justify-content-between">
+              <h4 class="me-2">Chi siamo:</h4>
+              <h4 class="text-end">{{ restaurant.description }}</h4>
+            </div>
+            <hr class="orange-border my-2" />
+            <div class="d-flex justify-content-between">
+              <h4 class="me-2">Cucina:</h4>
+              <h4>{{ categoriesString }}</h4>
+            </div>
           </div>
         </div>
 
         <!-- menu ristorante -->
 
-        <h3 class="mt-5 home-menu">Home {{ restaurant.restaurant_name }}</h3>
+        <h2 class="mt-5 home-menu">Menù {{ restaurant.restaurant_name }}</h2>
         <div class="row">
           <div class="col-12">
             <ul class="p-0">
@@ -145,12 +159,23 @@ export default {
                         :alt="plate.name"
                       />
                     </div>
-                    <div class="margin-t-10 col-lg-4 col-sm-12">
-                      <p class="fw-bold">
-                        {{ plate.name }}
-                      </p>
-                      <p>{{ plate.ingredients }}</p>
-                      <p>{{ plate.price }} &euro;</p>
+                    <div
+                      class="col-lg-5 col-sm-12 d-flex flex-column justify-content-around"
+                    >
+                      <div class="d-flex justify-content-between">
+                        <h4 class="me-2">Piatto:</h4>
+                        <h4 class="text-end">{{ plate.name }}</h4>
+                      </div>
+                      <hr class="orange-border my-2" />
+                      <div class="d-flex justify-content-between">
+                        <h4 class="me-2">Ingredienti:</h4>
+                        <h4 class="text-end">{{ plate.ingredients }}</h4>
+                      </div>
+                      <hr class="orange-border my-2" />
+                      <div class="d-flex justify-content-between">
+                        <h4 class="me-2">Prezzo:</h4>
+                        <h4 class="text-end">{{ plate.price }} &euro;</h4>
+                      </div>
                     </div>
 
                     <!-- Counter per gli ordini + aggiungi ordine al carrello -->
@@ -193,21 +218,21 @@ export default {
   border: none;
 }
 
-.img_restaurant {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
 .restaurant-card {
   height: 350px;
   border: 2px solid#ff9553b9;
   border-radius: 12px;
-  display: flex;
-  justify-content: end;
+}
+
+.restaurant-card-content {
+  overflow-y: scroll;
 }
 img {
   border-radius: 10px;
+}
+
+.orange-border {
+  border: 2px solid#ff9553b9;
 }
 .plate-cards {
   border: 2px solid#ff9553b9;
@@ -231,6 +256,13 @@ li {
 
 .shadow-box {
   box-shadow: 16px 10px 9px 4px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  box-shadow: 5px 5px 6px 2px rgba(0, 0, 0, 0.3);
+}
+button:hover {
+  background-color: gray;
 }
 
 @media screen and (max-width: 992px) {

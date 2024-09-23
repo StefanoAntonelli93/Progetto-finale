@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="container py-4">
-        <div class="border border-secondary rounded my-5 p-5">
+        <div class=" rounded my-5 p-5 orange-border card-shadow">
             <div class="content d-flex justify-content-between align-items-center">
                 <h2 class="py-3">Registra nuovo ristorante </h2>
                 {{-- Vai a index --}}
                 <a href="{{ route('admin.restaurants.index') }}">
-                    <button class="btn btn-primary btn-md">Torna ai tuoi ristoranti</button>
+                    <button class="btn btn-primary btn-md button-shadow">Torna ai tuoi ristoranti</button>
                 </a>
             </div>
             {{-- Includo errors.blade.php per mostrare errori --}}
@@ -62,7 +62,7 @@
                     <label for="img" class="form-label">Immagine ristorante</label>
                     <input class="form-control" type="file" id="img" name="img">
                 </div>
-                <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary">Crea
+                <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary button-shadow">Crea
                         Ristorante</button></div>
 
             </form>

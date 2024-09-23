@@ -11,6 +11,8 @@ export default {
       store,
       currentPage: 1,
       show: 1,
+      isNextPage: null,
+      isPrevPage: null,
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
         endPoints: "restaurants",
@@ -35,6 +37,17 @@ export default {
       }
     },
 
+    prevPage() {
+      console.log("pagina precedente");
+      this.currentPage--;
+      this.categoryCall();
+    },
+    nextPage() {
+      console.log("pagina seguente");
+      this.currentPage++;
+      this.categoryCall();
+    },
+
     categoryCall(categories) {
       const url = this.api.baseUrl + this.api.endPoints;
       const params = {
@@ -50,7 +63,6 @@ export default {
         );
       }
 
-      console.log(this.store.category);
       if (this.store.category.length > 0) {
         params.categories = this.store.category.join(",");
       }
@@ -58,6 +70,8 @@ export default {
       axios
         .get(url, { params })
         .then((response) => {
+          this.isNextPage = response.data.results.next_page_url;
+          this.isPrevPage = response.data.results.prev_page_url;
           const data = response.data.results.data;
           if (data && data.length) {
             this.store.restaurants = data;
@@ -74,15 +88,6 @@ export default {
 };
 </script>
 <template>
-  <!-- title -->
-  <!-- <TitlePage :titlePage="'Homepage'"></TitlePage> -->
-  <!-- router link alle pagine menu ristorante e cashout -->
-  <!-- <router-link class="btn btn-primary me-2" :to="{ name: 'restaurant_menu' }"
-      >pagina menu ristorante</router-link
-    >
-    <router-link class="btn btn-primary" :to="{ name: 'cashout' }"
-      >pagina cashout</router-link
-    > -->
   <!-- slogan -->
   <!-- link top-->
   <a id="top"></a>
@@ -125,7 +130,14 @@ export default {
 
   <!-- ristoranti -->
   <section class="py-4 container">
-    <RestaurantList :selectedCategory="selectedCategory" />
+    <RestaurantList
+      @previous-page="prevPage()"
+      @next-page="nextPage()"
+      @fill-restaurants="categoryCall()"
+      :isNextPage="isNextPage"
+      :isPrevPage="isPrevPage"
+      :selectedCategory="selectedCategory"
+    />
   </section>
 </template>
 

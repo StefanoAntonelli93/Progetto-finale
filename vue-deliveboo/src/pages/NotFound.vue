@@ -2,7 +2,7 @@
 import TitlePage from "../components/TitlePage.vue";
 
 export default {
-  name: "Npt Found",
+  name: "Not Found",
   components: {
     TitlePage,
   },

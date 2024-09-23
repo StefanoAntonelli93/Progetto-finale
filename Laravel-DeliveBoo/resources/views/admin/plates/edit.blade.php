@@ -1,16 +1,18 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container py-4">
+    <div class="container my-5 orange-border card-shadow p-5">
         <div class="content d-flex justify-content-between align-items-center">
             <h2 class="py-3">Modifica piatto {{ $plate->name }}</h2>
             {{-- vai a index --}}
-            <a href="{{ route('admin.plates.index') }}"> <button class="btn btn-primary btn-md">Torna ai tuoi
+            <a href="{{ route('admin.plates.index') }}"> <button
+                    class="btn btn-primary btn-md button-shadow gray-hover border-0">Torna
+                    ai tuoi
                     piatti</button></a>
         </div>
         <form action="{{ route('admin.plates.update', $plate) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <p class="text-secondary">i campi contrassegnati con * sono obbligatori</p>
+            <p class="text-secondary">I campi contrassegnati con * sono obbligatori</p>
             @include('shared.errors')
             <div class="mb-3">
                 <label for="name" class="form-label">Nome piatto *</label>
@@ -66,6 +68,7 @@
                 <input class="form-control" type="file" id="img" name="img">
             </div>
 
-            <button type="submit" class="btn btn-primary">Modifica Piatto</button>
-            <button type="#" class="btn btn-danger"><a href="{{ route('admin.plates.index') }}">Annulla</a></button>
+            <button type="submit" class="btn btn-primary button-shadow gray-hover border-0 me-3">Modifica Piatto</button>
+            <a href="{{ route('admin.plates.index') }}"><button type="#"
+                    class="btn btn-danger button-shadow gray-hover border-0 ">Annulla</button></a>
         @endsection
