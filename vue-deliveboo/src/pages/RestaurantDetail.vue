@@ -17,6 +17,8 @@ export default {
       cart: [], // Inizializza carrello vuoto
       plate: [],
       baseImageUrl: "http://127.0.0.1:8000/storage/",
+      showModal: false,
+      selectedItem: null,
     };
   },
   computed: {
@@ -63,13 +65,29 @@ export default {
     },
 
     addToCart(item) {
+      const restaurantIdInCart =
+        this.cart.length > 0 ? this.cart[0].restaurantId : null;
+
+      if (restaurantIdInCart && restaurantIdInCart !== this.restaurant.id) {
+        // memorizzo elemento selezionato
+        this.selectedItem = item;
+        //  apri modale
+        this.showModal = true;
+        // interrompi
+        return;
+      }
+
+      // Aggiungi il ristoranteId all'oggetto item
       const cartItem = this.cart.find((cartItem) => cartItem.id === item.id);
       if (cartItem) {
         cartItem.quantity += item.quantity;
         cartItem.price += item.price;
         this.store.total += item.price; // Aggiorna il totale
       } else {
-        this.cart.push(item);
+        this.cart.push({
+          ...item,
+          restaurantId: this.restaurant.id, // Salva l'ID del ristorante corrente
+        });
         this.store.total += item.price;
       }
       this.updateLocalStorage();
@@ -94,6 +112,16 @@ export default {
     updateLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("total", this.store.total.toString());
+    },
+    clearCartAndAddNew() {
+      // Svuota il carrello e aggiungi il nuovo elemento
+      this.emptyCart(); // svuota il carrello
+      this.addToCart(this.selectedItem); // Aggiungi l'articolo al carrello
+      this.closeModal(); // Chiudi modale
+    },
+
+    closeModal() {
+      this.showModal = false;
     },
   },
 };
@@ -196,6 +224,25 @@ export default {
         </div>
       </div>
 
+      <!-- Modale -->
+
+      <div v-if="showModal" class="modal-backdrop">
+        <div class="modal-content">
+          <h4>Attenzione</h4>
+          <p>
+            Hai già articoli di un altro ristorante nel carrello. Vuoi svuotare
+            il carrello per aggiungere nuovi articoli?
+          </p>
+          <div class="modal-buttons">
+            <button class="btn" @click="closeModal">Annulla</button>
+            <button class="btn" @click="clearCartAndAddNew(item)">
+              Svuota e Aggiungi
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- fine modale -->
+
       <div class="col-lg-4 pb-3 mb-2">
         <Cart
           :cart="cart"
@@ -263,6 +310,42 @@ button {
 }
 button:hover {
   background-color: gray;
+}
+
+// stile modale
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: rgb(231, 122, 58);
+  }
 }
 
 @media screen and (max-width: 992px) {
