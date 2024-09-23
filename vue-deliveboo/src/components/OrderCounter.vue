@@ -37,8 +37,8 @@ export default {
 </script>
 
 <template>
-  <div class="d-flex flex-column justify-content-around align-items-end">
-    <div class="d-flex flex-column">
+  <div class="d-flex flex-column justify-content-around">
+    <div class="d-flex flex-column align-items-center">
       <div
         class="d-flex justify-content-between align-items-center mb-4 counter"
       >

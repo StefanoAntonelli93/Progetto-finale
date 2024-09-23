@@ -136,7 +136,7 @@ export default {
     class="restaurant-detail container-fluid px-5 mt-4 zero-padding"
   >
     <div class="row">
-      <div class="col-lg-8 col-sm-12 px-4">
+      <div class="col-xxl-8 col-sm-12 px-4">
         <!-- immagine ristorante e dati ristorante -->
         <div class="row mx-auto restaurant-card shadow-box">
           <div class="col-lg-6 col-sm-12 p-3 h-100">
@@ -183,7 +183,7 @@ export default {
               >
                 <div class="plate-cards p-3">
                   <div class="row justify-content-between h-100">
-                    <div class="col-lg-5 col-sm-12 h-100">
+                    <div class="col-xxl-5 col-xl-12 h-100">
                       <img
                         class="plate-img"
                         :src="plate.image_url"
@@ -191,7 +191,7 @@ export default {
                       />
                     </div>
                     <div
-                      class="col-lg-5 col-sm-12 d-flex flex-column justify-content-around"
+                      class="col-xxl-5 col-xl-12 d-flex flex-column justify-content-around"
                     >
                       <div class="d-flex justify-content-between flex-wrap">
                         <h4 class="me-2">Piatto:</h4>
@@ -213,7 +213,7 @@ export default {
 
                     <!-- Counter per gli ordini + aggiungi ordine al carrello -->
                     <OrderCounter
-                      class="col-lg-2 col-sm-12"
+                      class="col-xxl-2 col-xl-12"
                       @add-to-cart="addToCart"
                       :item-details="{
                         id: plate.id,
@@ -248,7 +248,7 @@ export default {
       </div>
       <!-- fine modale -->
 
-      <div class="col-lg-4 pb-3 mb-2">
+      <div class="col-xxl-4 pb-3 mb-2 px-4">
         <Cart
           :cart="cart"
           @remove-from-cart="removeFromCart"
@@ -350,6 +350,12 @@ button:hover {
   }
   button:hover {
     background-color: rgb(231, 122, 58);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .plate-cards {
+    height: auto;
   }
 }
 
