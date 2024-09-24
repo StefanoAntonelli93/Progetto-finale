@@ -38,9 +38,40 @@
 
                     {{-- colonna info --}}
                     <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column justify-content-between">
-                        <div class=" mb-4">
-                            <h1>{{ $restaurant->restaurant_name }}</h1>
-                            <p class="ms-1 text-secondary">Creato il: {{ $restaurant->created_at }}</p>
+                        <div class="d-flex gap-3 justify-content-between">
+                            <div class=" mb-4">
+                                <h1 class="fw-semibold">{{ $restaurant->restaurant_name }}</h1>
+                                <p class="ms-1 text-secondary">Creato il: {{ $restaurant->created_at }}</p>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <div>
+                                    {{-- visualizza dettagli --}}
+                                    <button class="btn btn-info button-shadow border-0 gray-hover"><a
+                                            href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a></button>
+                                </div>
+                                {{-- modifica --}}
+                                <div>
+                                    <button class="btn btn-warning button-shadow border-0 gray-hover"><a
+                                            href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
+                                </div>
+
+                                <div>
+                                    <button type="button" class="btn btn-danger border-0 button-shadow gray-hover"
+                                        data-bs-toggle="modal" data-bs-target="#deleteRestaurant"
+                                        data-restaurant-id="{{ $restaurant->id }}">
+                                        Elimina
+                                    </button>
+                                    {{-- cancella --}}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="categoria">
+                            <div class="d-flex justify-content-between">
+                                <h3>Categorie:</h3>
+                                <h3>{{ implode(', ', $restaurant->categories->pluck('name')->toArray()) }}</h3>
+                            </div>
                         </div>
 
                         {{-- piatti --}}
@@ -57,11 +88,9 @@
                                 <div
                                     class="d-flex
                                          justify-content-between align-items-center">
-                                    <h2>Piatti:</h2>
+                                    <h4 class="fw-semibold mt-2">Piatti:</h4>
 
-                                    <button class="btn btn-primary button-shadow gray-hover border-0 all-plt-btn-abs"><a
-                                            href="{{ route('admin.plates.index', $restaurant) }}">Visualizza tutti i
-                                            Piatti</a></button>
+
                                 </div>
                                 <hr class="orange-border my-2">
                                 <div>
@@ -84,44 +113,47 @@
                                         @endif
                                     @endforeach
                                 </div>
+                                <button
+                                    class="btn deliveboo-orange-background  button-shadow gray-hover border-0 w-100 mt-2"><a
+                                        href="{{ route('admin.plates.index', $restaurant) }}">Visualizza tutti i
+                                        Piatti</a></button>
                             @endif
                         </div>
 
-                        <div class="categoria">
-                            <div class="d-flex justify-content-between">
-                                <h3>Categorie:</h3>
-                                <h3>{{ implode(', ', $restaurant->categories->pluck('name')->toArray()) }}</h3>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-3 justify-content-center mt-3">
-                            <div>
-                                {{-- visualizza dettagli --}}
-                                <button class="btn deliveboo-orange-background gray-hover button-shadow"><a
-                                        href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a></button>
-                            </div>
-                            {{-- modifica --}}
-                            <div>
-                                <button class="btn btn-warning button-shadow border-0 gray-hover"><a
-                                        href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
-                            </div>
-
-                            <div>
-                                <button type="button" class="btn btn-danger border-0 button-shadow gray-hover"
-                                    data-bs-toggle="modal" data-bs-target="#deleteRestaurant"
-                                    data-restaurant-id="{{ $restaurant->id }}">
-                                    Elimina
-                                </button>
-                                {{-- cancella --}}
-                            </div>
-                        </div>
                     </div>
                 </div>
                 @include('shared.restaurantModal')
             @endif
-            @foreach ($restaurant->orders as $order)
-                <h2>{{ $order->customer_name }}</h2>
-                <h3>Prezzo: {{ $order->price }}€</h3>
-            @endforeach
+
+            {{-- tabella ordini ristorante --}}
+            <div class="container">
+                <h2 class="fw-semibold mb-3">Tabella Ordini {{ $restaurant->restaurant_name }}</h2>
+                <table class="table border py-5 mb-5">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome cliente</th>
+                            <th scope="col">Indirizzo consegna</th>
+                            <th scope="col">Totale ordine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach ($restaurant->orders as $order)
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                    {{ $order->customer_name }}
+                                </td>
+                                <td>{{ $order->delivery_address }}</td>
+                                <td>{{ $order->price }} &euro;</td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 @endsection

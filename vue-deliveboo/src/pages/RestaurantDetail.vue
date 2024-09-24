@@ -129,7 +129,7 @@ export default {
 
 <template>
   <router-link class="no-style-link ps-5 zero-padding" :to="{ name: 'home' }">
-    <button class="btn btn-secondary primary-color">Indietro</button>
+    <button class="btn primary-color text-white">Indietro</button>
   </router-link>
   <div
     v-if="restaurant"
@@ -317,7 +317,7 @@ button {
   box-shadow: 5px 5px 6px 2px rgba(0, 0, 0, 0.3);
 }
 button:hover {
-  background-color: gray;
+  background-color: rgb(168, 120, 64);
 }
 
 // stile modale
