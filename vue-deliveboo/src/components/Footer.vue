@@ -1,9 +1,9 @@
 <template>
   <footer>
     <div class="container">
-      <div class="d-flex flex-wrap w-100 gap-5">
+      <div class="d-flex flex-wrap w-100 gap-5 justify-content-center">
         <!-- Prima sezione del footer: Informazioni aziendali -->
-        <div class="footer-section col">
+        <div class="footer-section col-lg-3 col-md-5 col-sm-10">
           <h3>Informazioni aziendali</h3>
           <ul>
             <li><a href="#">Chi siamo</a></li>
@@ -13,7 +13,7 @@
         </div>
 
         <!-- Seconda sezione del footer: Link ai social media -->
-        <div class="footer-section col">
+        <div class="footer-section col-lg-3 col-md-5 col-sm-10">
           <h3>Contatti</h3>
           <ul>
             <li><a href="#">Contattaci</a></li>
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Quarta sezione del footer: Mappa -->
-        <div class="map-section p-0 col">
+        <div class="map-section p-0 col-lg-3 col-md-12 col-sm-12">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.95373541590466!3d-37.81627957975198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43baffd555%3A0xb1f6c53b37efdf6a!2sMelbourne%20CBD%2C%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1634567890987!5m2!1sen!2sus"
             style="border: 0"
@@ -135,4 +135,16 @@ footer p {
 //   overflow: hidden;
 //   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 // }
+
+@media screen and (max-width: 992px) {
+  .map-section {
+    height: 250px;
+    max-width: 83%;
+    min-width: 280px;
+  }
+
+  .col-md-5 {
+    min-width: 280px;
+  }
+}
 </style>

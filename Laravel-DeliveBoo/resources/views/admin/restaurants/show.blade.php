@@ -13,21 +13,21 @@
         @if ($restaurant)
             <div class="conatiner-sm">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-xxl-6 col-md-12">
                         @if ($restaurant->img)
                             <div class="d-flex h-100">
                                 <img class="w-100" src="{{ asset('storage/' . $restaurant->img) }}"
                                     alt="{{ $restaurant->restauran_name }}">
                             </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-xxl-6 col-md-12">
         @endif
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between  flex-wrap">
             <h2>Nome ristorante: </h2>
             <h2>{{ $restaurant->restaurant_name }}</h2>
         </div>
         <hr class="orange-border my-2">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between  flex-wrap">
             <h3>Indirizzo:</h3>
             <h3>{{ $restaurant->address }}</h3>
         </div>
@@ -37,9 +37,9 @@
             <h3>{{ $restaurant->phone_number }}</h3>
         </div>
         <hr class="orange-border my-2">
-        <div class="d-flex justify-content-between">
-            <h3 class="me-5">Descrizione:</h3>
-            <h3 class="text-end ps-5">{{ $restaurant->description }}</h3>
+        <div class="d-flex justify-content-between flex-wrap">
+            <h3 class="me-2">Descrizione:</h3>
+            <h3 class="text-end">{{ $restaurant->description }}</h3>
         </div>
         <hr class="orange-border my-2">
         <div class="d-flex justify-content-between">
