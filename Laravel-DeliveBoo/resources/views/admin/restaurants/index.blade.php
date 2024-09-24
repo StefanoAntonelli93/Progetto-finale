@@ -86,6 +86,7 @@
                                 </div>
                             @endif
                         </div>
+
                         <div class="categoria">
                             <div class="d-flex justify-content-between">
                                 <h3>Categorie:</h3>
@@ -117,7 +118,10 @@
                 </div>
                 @include('shared.restaurantModal')
             @endif
-
+            @foreach ($restaurant->orders as $order)
+                <h2>{{ $order->customer_name }}</h2>
+                <h3>Prezzo: {{ $order->price }}€</h3>
+            @endforeach
         </div>
     </div>
 @endsection

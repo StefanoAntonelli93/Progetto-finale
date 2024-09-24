@@ -13,11 +13,21 @@ class Order extends Model
 
     public function restaurant()
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsToMany(Plate::class, 'order_plate')
+            ->withPivot('quantity')
+            ->withTimestamps();
     }
 
     public function plates()
     {
         return $this->belongsToMany(Plate::class);
     }
+    protected $fillable = [
+        'customer_name',
+        'delivery_address',
+        'restaurant_id',
+        'price',
+        'note',
+        'cart', // Se 'cart' è serializzato in JSON o ha un formato adatto
+    ];
 }

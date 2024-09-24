@@ -1,13 +1,3 @@
-<template>
-  <div id="dropin-container"></div>
-  <button
-    id="submit-button"
-    class="button button--small button--green w-100 mt-3"
-    @click="handlePayment()"
-  >
-    Paga
-  </button>
-</template>
 <script>
 export default {
   name: "Braintree",
@@ -16,11 +6,21 @@ export default {
       type: Function,
       required: true,
     },
+    submitForm: {
+      // Nuova prop per il metodo submitForm
+      type: Function,
+      required: true,
+    },
   },
   methods: {
+    updateLocalStorage() {
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+      localStorage.setItem("total", this.store.total.toString());
+    },
     handlePayment() {
       // Controlla se i campi obbligatori sono stati compilati
       if (this.validateFields()) {
+        // Chiama il submitForm prima di procedere con la richiesta di pagamento
         // Se i campi sono validi, procedi con la richiesta del metodo di pagamento
         this.instance.requestPaymentMethod((err, payload) => {
           if (err) {
@@ -29,7 +29,6 @@ export default {
           }
           console.log("Nonce ricevuto:", payload.nonce);
           // Logica per inviare il nonce al server backend
-          this.$emit("send-form");
         });
       } else {
         // Mostra un messaggio d'errore se i campi non sono validi
@@ -55,13 +54,24 @@ export default {
           return;
         }
 
-        // Salva l'istanza di Braintree in `this` per usarla in `handlePayment`
+        // Salva l'istanza di Braintree in this per usarla in handlePayment
         this.instance = instance;
       }
     );
   },
 };
 </script>
+
+<template>
+  <div id="dropin-container"></div>
+  <button
+    id="submit-button"
+    class="button button--small button--green w-100 mt-3"
+    @click="handlePayment()"
+  >
+    Paga
+  </button>
+</template>
 
 <style scoped>
 .button {

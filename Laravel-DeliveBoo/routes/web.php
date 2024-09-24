@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\PlateController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\ProfileController;
@@ -27,6 +28,7 @@ Route::middleware('auth', 'verified')->name('admin.')
         Route::get('/', [RestaurantController::class, 'index'])->name('index');
         Route::resource('restaurants', RestaurantController::class);
         Route::resource('plates', PlateController::class);
+        Route::resource('orders', AdminOrderController::class);
     });
 
 Route::middleware('auth')->group(function () {

@@ -79,6 +79,7 @@ export default {
       <div class="cart-btn">
         <router-link
           class="no-style-link"
+          :restId="restId"
           :to="{ name: 'cashout' }"
           v-if="cart.length > 0"
         >
