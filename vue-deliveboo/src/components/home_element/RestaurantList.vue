@@ -134,6 +134,7 @@ export default {
   height: 350px;
   padding: 20px;
   border: 2px solid#ff9553b9;
+  transition: transform 0.4s;
   box-shadow: 16px 10px 9px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   p {
@@ -143,6 +144,10 @@ export default {
     width: 100%;
     height: 100%;
   }
+}
+
+.restaurant-card:hover {
+  transform: scale(1.02);
 }
 
 .card-50 {

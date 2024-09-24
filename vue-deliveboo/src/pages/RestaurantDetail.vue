@@ -193,7 +193,9 @@ export default {
                     <div
                       class="col-xxl-5 col-xl-12 d-flex flex-column justify-content-around"
                     >
-                      <div class="d-flex justify-content-between flex-wrap">
+                      <div
+                        class="d-flex justify-content-between flex-wrap margin-top-10"
+                      >
                         <h4 class="me-2">Piatto:</h4>
                         <h4 class="text-end">{{ plate.name }}</h4>
                       </div>
@@ -292,6 +294,7 @@ img {
   margin-top: 10px;
   border-radius: 10px;
 }
+
 li {
   border-radius: 10px;
 }
@@ -357,6 +360,9 @@ button:hover {
   .plate-cards {
     height: auto;
   }
+  .margin-top-10 {
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -372,9 +378,6 @@ button:hover {
   .restaurant-card {
     height: auto;
     padding: 20px;
-  }
-  .cart-outer {
-    margin: 0px 11px;
   }
 }
 

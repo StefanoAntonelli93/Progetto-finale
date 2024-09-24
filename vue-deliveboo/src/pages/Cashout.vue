@@ -27,6 +27,9 @@ export default {
       orarioConsegna: "",
       note: "",
       metodoPagamento: "",
+      form: new Form({
+        customer_name: "",
+      }),
     };
   },
   components: {
@@ -68,6 +71,10 @@ export default {
       } else {
         alert("Compila tutti i campi obbligatori.");
       }
+    },
+    sendFormData() {
+      let data = new FormData();
+      data.append("customer_name", this.form.customer_name);
     },
   },
 };
@@ -388,7 +395,10 @@ export default {
           </div>
 
           <div>
-            <Braintree :validateFields="validateFields" />
+            <Braintree
+              @send-form="sendFormData()"
+              :validateFields="validateFields"
+            />
           </div>
         </div>
       </div>

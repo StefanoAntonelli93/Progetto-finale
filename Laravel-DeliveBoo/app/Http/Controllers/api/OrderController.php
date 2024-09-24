@@ -8,5 +8,13 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     //
-    public function index() {}
+    public function store(Request $request)
+    {
+        $request->validate([
+            'customer_name' => 'required|max:100',
+            'delivery_address' => 'required|max:255',
+            'phone_number' => 'required|max:25',
+            'price' => 'required'
+        ]);
+    }
 }

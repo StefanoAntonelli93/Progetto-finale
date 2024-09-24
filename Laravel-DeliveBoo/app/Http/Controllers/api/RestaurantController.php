@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Plate;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,6 +14,7 @@ class RestaurantController extends Controller
     {
         // aggiungo 4 ristoranti per pagina e le tabelle relazionate a tabella restaurants con l'eager loading
         $categoryNames = $request->query('categories');
+        $user = auth()->user();
         $restaurants = Restaurant::with(['plates', 'categories', 'orders'])->when($categoryNames, function ($query, $categoryNames) {
             $categoryArray = explode(',', $categoryNames); // Split the string into an array of categories
             return $query->whereHas('categories', function ($q) use ($categoryArray) {
@@ -25,6 +25,7 @@ class RestaurantController extends Controller
         return response()->json([
             'status' => 'success',
             'results' => $restaurants,
+            'user' => $user,
         ]);
     }
 

@@ -10,7 +10,7 @@
                 Sei sicuro di voler eliminare il ristorante?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modalRestaurant">Annulla</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                 <form id="deleteForm" action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
                     @csrf
                     @method('DELETE')

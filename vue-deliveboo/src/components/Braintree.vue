@@ -29,6 +29,7 @@ export default {
           }
           console.log("Nonce ricevuto:", payload.nonce);
           // Logica per inviare il nonce al server backend
+          this.$emit("send-form");
         });
       } else {
         // Mostra un messaggio d'errore se i campi non sono validi

@@ -27,10 +27,13 @@ export default {
       <div class="right">
         <!-- Sezione 1 -->
         <div class="right-section align-items-center show">
-          <button @click="goToLogin" class="btn btn-primary">
+          <button @click="goToLogin" class="btn btn-primary button-shadow">
             <i class="fa fa-user"></i> Accedi
           </button>
-          <button @click="goToRegister" class="btn btn-primary ms-4">
+          <button
+            @click="goToRegister"
+            class="btn btn-primary ms-4 button-shadow"
+          >
             Crea un account
           </button>
           <div class="right-section ms-4">
@@ -79,10 +82,16 @@ export default {
                 <div class="modal-body">
                   <!-- Pulsanti Accedi e crea un account -->
                   <div class="account-buttons">
-                    <button @click="goToLogin" class="btn btn-light">
+                    <button
+                      @click="goToLogin"
+                      class="btn btn-light button-shadow"
+                    >
                       Accedi
                     </button>
-                    <button @click="goToRegister" class="btn btn-primary">
+                    <button
+                      @click="goToRegister"
+                      class="btn btn-primary button-shadow"
+                    >
                       Crea un account
                     </button>
                   </div>
@@ -174,6 +183,9 @@ header {
 
 .modal-body {
   padding-top: 0;
+}
+.button-shadow {
+  box-shadow: 5px 5px 6px 2px rgba(0, 0, 0, 0.3);
 }
 
 .account-buttons {

@@ -13,6 +13,7 @@ export default {
       show: 1,
       isNextPage: null,
       isPrevPage: null,
+      isLogged: null,
       api: {
         baseUrl: "http://127.0.0.1:8000/api/",
         endPoints: "restaurants",
@@ -72,6 +73,7 @@ export default {
         .then((response) => {
           this.isNextPage = response.data.results.next_page_url;
           this.isPrevPage = response.data.results.prev_page_url;
+          console.log(response.data);
           const data = response.data.results.data;
           if (data && data.length) {
             this.store.restaurants = data;
@@ -103,7 +105,7 @@ export default {
     <div class="row">
       <ul id="category" class="d-flex flex-wrap gap-3 justify-content-center">
         <li
-          class="list-unstyled"
+          class="list-unstyled card-category"
           @click="selectFilter(category)"
           :class="{ isActive: store.selectedCategories.includes(category) }"
           v-for="category in store.categories"
@@ -111,16 +113,14 @@ export default {
         >
           <div
             @click="categoryCall(category.name)"
-            class="card-category d-flex flex-column gap-2"
+            class="d-flex flex-column gap-2"
           >
-            <div class="card-category d-flex flex-column gap-2">
-              <img
-                class="category_img"
-                :src="category.img"
-                :alt="category.name"
-              />
-              <p class="text-center">{{ category.name }}</p>
-            </div>
+            <img
+              class="category_img"
+              :src="category.img"
+              :alt="category.name"
+            />
+            <p class="text-center">{{ category.name }}</p>
           </div>
         </li>
       </ul>
@@ -153,6 +153,7 @@ h1 {
   background-color: rgba(250, 249, 249, 0.2);
   border-radius: 20px;
   box-shadow: 5px 7px 5px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s;
   cursor: pointer;
   p {
     user-select: none;
@@ -164,6 +165,7 @@ h1 {
 }
 
 .card-category:hover {
+  transform: scale(1.04);
   background-color: rgba(
     128,
     128,
