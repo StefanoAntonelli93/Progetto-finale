@@ -158,7 +158,7 @@ export default {
             <hr class="orange-border my-2" />
             <div class="d-flex justify-content-between flex-wrap">
               <h4 class="me-2">Chi siamo:</h4>
-              <h4 class="text-end">{{ restaurant.description }}</h4>
+              <p class="text-start">{{ restaurant.description }}</p>
             </div>
             <hr class="orange-border my-2" />
             <div class="d-flex justify-content-between flex-wrap">

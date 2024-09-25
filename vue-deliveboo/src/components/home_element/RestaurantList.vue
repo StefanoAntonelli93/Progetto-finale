@@ -62,14 +62,14 @@ export default {
         :to="{ name: 'RestaurantDetail', params: { id: restaurant.id } }"
       >
         <div class="row h-100">
-          <div class="card-50 col-lg-6 col-md-12">
+          <div class="card-50 col-lg-5 col-md-12">
             <img
               class="restaurant_img rounded"
               :src="baseImageUrl + restaurant.img"
               :alt="restaurant.name"
             />
           </div>
-          <div class="card-50 col-lg-6 col-md-12 card-content">
+          <div class="card-50 col-lg-7 col-md-12 card-content">
             <div class="d-flex justify-content-between">
               <h2>{{ restaurant.restaurant_name }}</h2>
             </div>

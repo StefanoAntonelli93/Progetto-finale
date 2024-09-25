@@ -117,10 +117,10 @@
                                     @endif
 
                                 </div>
-                                <button
-                                    class="btn deliveboo-orange-background  button-shadow gray-hover border-0 w-100 mt-2"><a
-                                        href="{{ route('admin.plates.index', $restaurant) }}">Visualizza tutti i
-                                        Piatti</a></button>
+                                <a href="{{ route('admin.plates.index', $restaurant) }}"> <button
+                                        class="btn deliveboo-orange-background  button-shadow gray-hover border-0 w-100 mt-2 text-white">Visualizza
+                                        tutti i
+                                        Piatti</button></a>
                             @endif
                         </div>
 
