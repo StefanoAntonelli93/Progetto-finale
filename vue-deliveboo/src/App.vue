@@ -25,8 +25,9 @@ export default {
 
 <style scoped lang="scss">
 .background-main {
-  position: relative; /* Crea un contesto di posizionamento per il pseudo-elemento */
-  /* Nasconde eventuali contenuti in eccesso */
+  position: relative; /* Mantiene il contesto di posizionamento */
+  overflow: visible; /* Assicurati che l'overflow non nasconda gli elementi sticky */
+  min-height: 100vh; /* Imposta un'altezza minima per il contenitore */
 }
 
 .background-main::before {
