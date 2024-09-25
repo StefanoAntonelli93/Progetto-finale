@@ -94,3 +94,45 @@ p {
 .relative {
     position: relative;
 }
+.restaurant-card {
+    max-height: 550px;
+    min-height: 450px;
+}
+@media only screen and (max-width: 768px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block; /* Ogni elemento diventa un blocco */
+        width: 100%; /* Imposta la larghezza a 100% */
+    }
+
+    thead {
+        display: none; /* Nascondi l'intestazione della tabella */
+    }
+
+    tr {
+        margin-bottom: 1rem; /* Aggiungi spazio tra le righe */
+    }
+
+    td {
+        display: flex; /* Usa Flexbox */
+        justify-content: space-between; /* Distribuzione degli spazi */
+        padding: 0.5rem 0; /* Aggiungi un padding verticale */
+        position: relative;
+    }
+
+    td:before {
+        content: attr(
+            data-label
+        ); /* Usa l'attributo data-label per il contenuto */
+        font-weight: bold; /* Rendi il testo dell'etichetta grassetto */
+        margin-right: 10px; /* Spazio tra l'etichetta e il valore */
+    }
+
+    td[data-label]:before {
+        flex: 0 0 50%; /* Controlla la larghezza dell'etichetta */
+    }
+}

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ">
             {{-- message creazione nuovo ristorante --}}
             @if (session('message'))
                 <div class="alert alert-success mt-5">
@@ -28,22 +28,22 @@
                 </div>
             @else
                 {{-- colonna foto --}}
-                <div class="row orange-border card-shadow rounded my-5 p-3 relative">
+                <div class="row orange-border card-shadow rounded my-5 p-3 relative ">
                     @if ($restaurant->img)
                         <div class="col-lg-6 col-md-6 col-sm-12 d-flex">
-                            <img class="rounded img_ristorante" src="{{ asset('storage/' . $restaurant->img) }}"
-                                alt="">
+                            <img class="rounded img_ristorante restaurant-card"
+                                src="{{ asset('storage/' . $restaurant->img) }}" alt="">
                         </div>
                     @endif
 
                     {{-- colonna info --}}
                     <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column justify-content-between">
-                        <div class="d-flex gap-3 justify-content-between">
-                            <div class=" mb-4">
+                        <div class="d-flex flex-wrap gap-3 justify-content-between">
+                            <div class=" ">
                                 <h1 class="fw-semibold">{{ $restaurant->restaurant_name }}</h1>
                                 <p class="ms-1 text-secondary">Creato il: {{ $restaurant->created_at }}</p>
                             </div>
-                            <div class="d-flex gap-2 mt-2">
+                            <div class="d-flex gap-2 mb-3 mt-2 ">
                                 <div>
                                     {{-- visualizza dettagli --}}
                                     <button class="btn btn-info button-shadow border-0 gray-hover"><a
@@ -110,9 +110,10 @@
                                                 <div>
                                                     <h3>Prezzo: {{ $plate->price }}€</h3>
                                                 </div>
+
                                             </div>
+                                            <hr class="orange-border my-2">
                                         @endforeach
-                                        <hr class="orange-border my-2">
                                     @endif
 
                                 </div>
@@ -136,35 +137,38 @@
                     @if ($restaurant->orders->isEmpty())
                         <h2>Nessun ordine per questo ristorante.</h2>
                     @else
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nome Cliente</th>
-                                    <th>Indirizzo Consegna</th>
-                                    <th>Data Ordine</th>
-                                    <th>Piatti Ordinati</th>
-                                    <th>Totale</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($restaurant->orders as $order)
+                        <div style="overflow-x:auto;">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $order->customer_name }}</td>
-                                        <td>{{ $order->delivery_address }}</td>
-                                        <td>{{ $order->order_date }}</td>
-                                        <td>
-                                            <ul>
-                                                @foreach ($order->plates as $plate)
-                                                    <li>{{ $plate->name }} - Quantità: {{ $plate->pivot->quantity }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </td>
-                                        <td>{{ $order->price }} €</td>
-
+                                        <th>Nome Cliente</th>
+                                        <th>Indirizzo Consegna</th>
+                                        <th>Data Ordine</th>
+                                        <th>Piatti Ordinati</th>
+                                        <th>Totale</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($restaurant->orders as $order)
+                                        <tr>
+                                            <td data-label="Nome Cliente">{{ $order->customer_name }}</td>
+                                            <td data-label="Indirizzo Consegna">{{ $order->delivery_address }}</td>
+                                            <td data-label="Data Ordine">{{ $order->order_date }}</td>
+                                            <td data-label="Piatti Ordinati">
+                                                <ul class="list-unstyled">
+                                                    @foreach ($order->plates as $plate)
+                                                        <li class="text-start">{{ $plate->name }} - Quantità:
+                                                            {{ $plate->pivot->quantity }}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                            <td data-label="Totale">{{ $order->price }} €</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @endif
                 </div>
             @endif
