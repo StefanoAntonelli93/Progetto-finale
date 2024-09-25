@@ -69,7 +69,9 @@ export default {
         );
 
         console.log("Ordine inviato con successo:", response.data);
-        alert("Ordine inviato con successo!");
+        alert(
+          "Pagamento effettuato! Ti invieremo per E-mail i dettagli del tuo ordine!"
+        );
         this.cart = [];
         this.store.total = 0; // Resetta il totale
         this.updateLocalStorage();
