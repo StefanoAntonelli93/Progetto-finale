@@ -63,7 +63,7 @@ export default {
 </script>
 
 <template>
-  <div class="second-container">
+  <div class="second-container my-5">
     <!-- Carosello immagini -->
     <div class="carousel-images">
       <img

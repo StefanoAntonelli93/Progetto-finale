@@ -108,12 +108,16 @@ export default {
     </div>
     <nav class="p-0 d-flex justify-content-between gap-2 mt-4">
       <div>
-        <button v-if="isPrevPage" class="btn btn-secondary" @click="prevPage">
+        <button
+          v-if="isPrevPage"
+          class="btn btn-secondary button-shadow border-0"
+          @click="prevPage"
+        >
           Indietro
         </button>
         <button
           v-if="isNextPage"
-          class="btn btn-secondary ms-2"
+          class="btn btn-secondary ms-2 button-shadow border-0"
           @click="nextPage"
         >
           Avanti
@@ -179,6 +183,9 @@ export default {
 
 .no-style-link:hover {
   text-decoration: none;
+}
+.button-shadow {
+  box-shadow: 5px 5px 6px 2px rgba(0, 0, 0, 0.3);
 }
 
 button {
