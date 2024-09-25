@@ -53,7 +53,7 @@ export default {
   <div class="row gap-2">
     <h2 class="p-0">Ristoranti Disponibili</h2>
     <div
-      class="col-12 restaurant-card my-2"
+      class="col-12 restaurant-card bg-white my-2"
       v-for="restaurant in store.restaurants"
       :key="restaurant.id"
     >

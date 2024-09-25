@@ -120,7 +120,7 @@ export default {
               :src="category.img"
               :alt="category.name"
             />
-            <p class="text-center">{{ category.name }}</p>
+            <p class="text-center fw-semibold">{{ category.name }}</p>
           </div>
         </li>
       </ul>
@@ -150,7 +150,7 @@ h1 {
 }
 
 .card-category {
-  background-color: rgba(250, 249, 249, 0.2);
+  background-color: rgba(248, 248, 248, 0.4);
   border-radius: 20px;
   box-shadow: 5px 7px 5px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s;

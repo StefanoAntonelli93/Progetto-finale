@@ -28,7 +28,7 @@ export default {
 </script>
 
 <template>
-  <div class="cart-outer p-3">
+  <div class="cart-outer bg-white p-3">
     <h2 class="cart-title text-center">Il tuo ordine</h2>
     <div
       class="cart-data d-flex flex-column justify-content-center align-items-center"
