@@ -83,11 +83,11 @@ export default {
           :to="{ name: 'cashout' }"
           v-if="cart.length > 0"
         >
-          <button class="btn btn-primary button-shadow">Procedi</button>
+          <button class="btn btn-orange text-white button-shadow">
+            Procedi
+          </button>
         </router-link>
-        <button class="btn btn-primary button-shadow" disabled v-else>
-          Procedi
-        </button>
+        <button class="btn button-shadow" disabled v-else>Procedi</button>
       </div>
       <div class="cart-btn">
         <button @click="empty()" class="btn btn-danger button-shadow">
@@ -98,7 +98,8 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use "@/assets/scss/partials/variables.scss" as *;
 .cart-outer {
   display: flex;
   flex-direction: column;
@@ -164,5 +165,11 @@ export default {
 }
 .orange-border {
   border: 2px solid#ff9553b9;
+}
+.btn-orange {
+  background-color: $primary-color;
+}
+.btn-orange:hover {
+  background-color: rgb(168, 120, 64);
 }
 </style>

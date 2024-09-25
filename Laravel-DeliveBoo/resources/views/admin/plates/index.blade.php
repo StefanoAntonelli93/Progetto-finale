@@ -13,7 +13,7 @@
                 <a id="top"></a>
                 <div>
                     <a href="{{ route('admin.restaurants.index') }}"> <button
-                            class="btn btn-primary gray-hover border-0 button-shadow">Torna
+                            class="btn deliveboo-orange-background gray-hover border-0 button-shadow text-white">Torna
                             Indietro</button></a>
                 </div>
                 <div class="d-flex justify-content-around orange-border card-shadow rounded my-5">
@@ -29,7 +29,7 @@
                                             uno?</h1>
                                         <div class="text-center mt-5">
                                             <a href="{{ route('admin.plates.create') }}"><button
-                                                    class="btn deliveboo-orange-background text-light gray-hover border-0 button-shadow">
+                                                    class="btn btn-primary text-light gray-hover border-0 button-shadow">
                                                     Aggiungi
                                                     Piatto</button></a>
                                         </div>
@@ -107,7 +107,8 @@
                         </div>
                         <!-- Scroll fino al link top -->
                         <div class="d-flex justify-content-center my-4 ">
-                            <a class="btn btn-primary gray-hover border-0 button-shadow" href="#top">Torna su</a>
+                            <a class="btn deliveboo-orange-background  gray-hover border-0 button-shadow text-white"
+                                href="#top">Torna su</a>
                         </div>
                     </div>
                 </div>

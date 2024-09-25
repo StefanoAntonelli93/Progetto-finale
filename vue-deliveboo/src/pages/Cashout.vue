@@ -82,11 +82,11 @@ export default {
   <button class="ms-3 mb-3 text-white btn btn-back" @click="$router.go(-1)">
     Torna indietro
   </button>
-  <div class="container border p-5">
+  <div class="container-sm border p-5">
     <div class="row">
       <!-- Form del cliente -->
       <div class="col-12">
-        <h3 class="p-0 m-0">Riepilogo ordine</h3>
+        <h3 class="p-0 m-0 mb-3">Riepilogo ordine</h3>
         <form @submit.prevent="submitForm">
           <!-- Nome e Cognome -->
           <div class="mb-3">
@@ -173,5 +173,8 @@ export default {
 
 .btn-back {
   background-color: $primary-color;
+}
+.btn-back:hover {
+  background-color: rgb(168, 120, 64);
 }
 </style>
