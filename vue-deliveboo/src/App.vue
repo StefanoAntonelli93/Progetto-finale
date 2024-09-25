@@ -14,7 +14,7 @@ export default {
   <!-- Header -->
   <Header />
 
-  <main class="p-5 container-fluid">
+  <main class="p-5 container-fluid background-main">
     <div class="content">
       <router-view></router-view>
       <!-- Qui verranno caricati i tuoi componenti -->
@@ -26,7 +26,7 @@ export default {
 <style scoped lang="scss">
 .background-main {
   position: relative; /* Crea un contesto di posizionamento per il pseudo-elemento */
-  overflow: hidden; /* Nasconde eventuali contenuti in eccesso */
+  /* Nasconde eventuali contenuti in eccesso */
 }
 
 .background-main::before {
