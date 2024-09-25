@@ -59,7 +59,7 @@ export default {
 footer {
   background-color: #333;
   color: white;
-  padding: 40px 0;
+  padding: 40px 0 0 0;
 }
 
 iframe {

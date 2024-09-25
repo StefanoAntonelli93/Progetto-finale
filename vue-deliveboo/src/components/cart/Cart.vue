@@ -75,7 +75,12 @@ export default {
       <hr class="orange-border my-2" />
     </div>
     <!-- Pay button -->
-    <div class="cart-pay px-3">
+    <div class="cart-pay px-3 mt-4">
+      <div class="cart-btn">
+        <button @click="empty()" class="btn btn-danger button-shadow">
+          Svuota
+        </button>
+      </div>
       <div class="cart-btn">
         <router-link
           class="no-style-link"
@@ -87,11 +92,6 @@ export default {
           </button>
         </router-link>
         <button class="btn button-shadow" disabled v-else>Procedi</button>
-      </div>
-      <div class="cart-btn">
-        <button @click="empty()" class="btn btn-danger button-shadow">
-          Svuota
-        </button>
       </div>
     </div>
   </div>

@@ -153,7 +153,7 @@ h1 {
 }
 
 .card-category {
-  background-color: rgba(248, 248, 248, 0.4);
+  background-color: rgba(248, 248, 248, 0.774);
   border-radius: 20px;
   box-shadow: 5px 7px 5px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s;

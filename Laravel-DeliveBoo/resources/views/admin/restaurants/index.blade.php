@@ -46,13 +46,13 @@
                             <div class="d-flex gap-2 mb-3 mt-2 ">
                                 <div>
                                     {{-- visualizza dettagli --}}
-                                    <button class="btn btn-info button-shadow border-0 gray-hover"><a
-                                            href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a></button>
+                                    <a href="{{ route('admin.restaurants.show', $restaurant) }}"> <button
+                                            class="btn btn-info button-shadow border-0 gray-hover text-white">Dettagli</button></a>
                                 </div>
                                 {{-- modifica --}}
                                 <div>
-                                    <button class="btn btn-warning button-shadow border-0 gray-hover"><a
-                                            href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
+                                    <a href="{{ route('admin.restaurants.edit', $restaurant) }}"> <button
+                                            class="btn btn-warning button-shadow border-0 gray-hover text-white">Modifica</button></a>
                                 </div>
 
                                 <div>

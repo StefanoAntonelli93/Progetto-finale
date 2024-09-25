@@ -107,7 +107,7 @@ export default {
       <h2>Ci dispiace ma non abbiamo trovato nessun ristorante</h2>
     </div>
     <nav class="p-0 d-flex justify-content-between gap-2 mt-4">
-      <div>
+      <div class="d-flex">
         <button
           v-if="isPrevPage"
           class="btn btn-secondary button-shadow border-0"

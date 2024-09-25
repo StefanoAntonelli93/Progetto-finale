@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container my-5 orange-border p-3 card-shadow">
+    <div class="container my-5 orange-border rounded p-3 card-shadow">
         <div class="content d-flex justify-content-between align-items-center">
             <h1 class="py-3">Dettagli del tuo ristorante</h1>
             {{-- vai a index --}}
@@ -53,8 +53,8 @@
         </div>
         {{-- modifica --}}
         <div>
-            <button class="btn btn-warning mt-3 button-shadow"><a
-                    href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a></button>
+            <a href="{{ route('admin.restaurants.edit', $restaurant) }}"> <button
+                    class="btn btn-warning mt-3 button-shadow text-white">Modifica</button></a>
         </div>
     </div>
     </div>

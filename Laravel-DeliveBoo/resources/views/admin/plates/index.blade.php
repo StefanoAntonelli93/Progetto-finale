@@ -80,12 +80,12 @@
                                                                 <div>
                                                                     {{-- visualizza dettagli --}}
                                                                     <a href="{{ route('admin.plates.show', $plate) }}"><button
-                                                                            class="btn btn-info gray-hover border-0 button-shadow">Dettagli</button></a>
+                                                                            class="btn btn-info gray-hover border-0 button-shadow text-white">Dettagli</button></a>
                                                                 </div>
 
                                                                 <div>
                                                                     <a href="{{ route('admin.plates.edit', $plate) }}"><button
-                                                                            class="btn btn-warning gray-hover border-0 button-shadow">Modifica</button></a>
+                                                                            class="btn btn-warning gray-hover border-0 button-shadow text-white">Modifica</button></a>
                                                                 </div>
                                                                 {{-- cancella --}}
                                                                 <button type="button"

@@ -92,7 +92,7 @@ export default {
   <button class="ms-3 mb-3 text-white btn btn-back" @click="$router.go(-1)">
     Torna indietro
   </button>
-  <div class="container-sm border-orange rounded p-5">
+  <div class="container-sm border-orange bg-white rounded p-5">
     <div class="row">
       <!-- Form del cliente -->
       <div class="col-12">

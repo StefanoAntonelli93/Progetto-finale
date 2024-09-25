@@ -125,6 +125,7 @@ export default {
 </script>
 
 <template>
+  <a id="top"></a>
   <router-link class="no-style-link ps-5 zero-padding" :to="{ name: 'home' }">
     <button class="btn primary-color text-white">Indietro</button>
   </router-link>
@@ -255,6 +256,10 @@ export default {
         />
       </div>
     </div>
+  </div>
+
+  <div class="d-flex justify-content-center my-4">
+    <a class="btn primary-color text-white mt-2" href="#top">Torna su</a>
   </div>
 </template>
 
