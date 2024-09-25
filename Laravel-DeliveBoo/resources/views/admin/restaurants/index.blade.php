@@ -31,8 +31,8 @@
                 <div class="row orange-border card-shadow rounded my-5 p-3 relative ">
                     @if ($restaurant->img)
                         <div class="col-lg-6 col-md-6 col-sm-12 d-flex">
-                            <img class="rounded img_ristorante restaurant-card"
-                                src="{{ asset('storage/' . $restaurant->img) }}" alt="">
+                            <img class="rounded img_ristorante w-100" src="{{ asset('storage/' . $restaurant->img) }}"
+                                alt="">
                         </div>
                     @endif
 
