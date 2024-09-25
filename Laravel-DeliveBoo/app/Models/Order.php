@@ -13,14 +13,14 @@ class Order extends Model
 
     public function restaurant()
     {
-        return $this->belongsToMany(Plate::class, 'order_plate')
-            ->withPivot('quantity')
-            ->withTimestamps();
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function plates()
     {
-        return $this->belongsToMany(Plate::class);
+        return $this->belongsToMany(Plate::class, 'order_plate')
+            ->withPivot('quantity') // Include il campo 'quantity' dalla tabella pivot
+            ->withTimestamps();
     }
     protected $fillable = [
         'customer_name',

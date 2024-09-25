@@ -49,11 +49,13 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}"><button
+                                        class="btn deliveboo-orange-background text-light gray-hover button-shadow">{{ __('Accedi') }}</button></a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"><button
+                                            class="btn deliveboo-orange-background text-light gray-hover button-shadow">{{ __('Registrati') }}</button></a>
                                 </li>
                             @endif
                         @else

@@ -85,8 +85,6 @@ export default {
   border-style: solid;
   border-width: 1px;
   border-radius: 3px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   display: inline-block;
 }
 

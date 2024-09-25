@@ -13,6 +13,8 @@ export default {
       deliveryAddress: "",
       deliveryAddressError: false,
       note: "",
+      plate_id: [],
+      plate_qt: [],
     };
   },
   components: {
@@ -20,6 +22,10 @@ export default {
   },
   mounted() {
     this.loadCart();
+    this.cart.forEach((element) => {
+      this.plate_id.push(element.id);
+      this.plate_qt.push(element.quantity);
+    });
   },
   methods: {
     updateLocalStorage() {
@@ -47,6 +53,8 @@ export default {
         delivery_address: this.deliveryAddress,
         restaurant_id: this.cart[0].restaurantId,
         price: this.store.total,
+        plate_id: this.plate_id,
+        quantity: this.plate_qt,
       };
 
       try {

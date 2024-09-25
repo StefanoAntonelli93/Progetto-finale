@@ -36,7 +36,6 @@ export default {
   mounted() {
     this.loadCart();
     this.fetchRestaurantDetails();
-    console.log("mounted");
   },
   methods: {
     loadCart() {
@@ -46,7 +45,6 @@ export default {
 
     fetchRestaurantDetails() {
       const restaurantId = this.$route.params.id;
-      console.log(restaurantId);
 
       const restaurantPromise = axios.get(
         `http://127.0.0.1:8000/api/restaurants/${restaurantId}`
@@ -91,7 +89,6 @@ export default {
         this.store.total += item.price;
       }
       this.updateLocalStorage();
-      console.log(this.cart);
     },
 
     removeFromCart(itemId) {

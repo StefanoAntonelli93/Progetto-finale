@@ -21,7 +21,7 @@ class RestaurantController extends Controller
         //
         $admin = auth()->user();
 
-        $restaurant = $admin->restaurant;
+        $restaurant = $admin->restaurant->with(['orders.plates'])->first();
         $categories = Category::all();
         return view('admin.restaurants.index', compact('restaurant', 'categories'));
     }

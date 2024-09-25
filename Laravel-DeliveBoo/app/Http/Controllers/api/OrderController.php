@@ -26,8 +26,11 @@ class OrderController extends Controller
             'customer_name' => 'required|string|max:255',
             'delivery_address' => 'required|string|max:255',
             'restaurant_id' => 'required|integer',
-            'price' => 'required|integer'
-
+            'price' => 'required|integer',
+            'plate_id' => 'required|array',
+            'plate_id.*' => 'integer|exists:plates,id',
+            'quantity' => 'required|array',
+            'quantity.*' => 'integer|min:1'
         ]);
 
         // Salva l'ordine nel database
@@ -39,6 +42,15 @@ class OrderController extends Controller
             'order_date' => now(), // Imposta la data dell'ordine
         ]);
 
-        return response()->json($order, 201); // Restituisce una risposta JSON con l'ordine creato
+        $plateIds = $validatedData['plate_id'];
+        $quantities = $validatedData['quantity'];
+        foreach ($plateIds as $index => $plateId) {
+            $order->plates()->attach($plateId, ['quantity' => $quantities[$index]]);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'order' => $order->load('plates') // Carica i piatti associati
+        ], 201);
     }
 }
