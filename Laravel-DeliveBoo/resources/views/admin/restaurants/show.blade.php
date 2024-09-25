@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-xxl-6 col-md-12">
                         @if ($restaurant->img)
-                            <div class="d-flex h-100">
+                            <div class="d-flex ">
                                 <img class="w-100" src="{{ asset('storage/' . $restaurant->img) }}"
                                     alt="{{ $restaurant->restauran_name }}">
                             </div>
