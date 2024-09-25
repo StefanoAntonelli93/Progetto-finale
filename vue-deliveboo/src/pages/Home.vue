@@ -99,11 +99,14 @@ export default {
   </section>
   <!-- ricerca categoria -->
   <section class="my-5">
-    <div class="slogan-fixed">
+    <div class="slogan-fixed background-slogan">
       <h1 class="fw-bold text-center mb-5">Scegli cosa mangiare a Venezia</h1>
     </div>
     <div class="row">
-      <ul id="category" class="d-flex flex-wrap gap-3 justify-content-center">
+      <ul
+        id="category"
+        class="d-flex flex-wrap gap-3 justify-content-center mt-5"
+      >
         <li
           class="list-unstyled card-category"
           @click="selectFilter(category)"
@@ -188,6 +191,18 @@ h1 {
   ); /* Cambia il colore dello sfondo quando cliccato */
 }
 
+// .background-slogan {
+//   background-image: url("@/assets/img/venezia.jpg");
+//   background-size: cover; /* Copre completamente il contenitore */
+//   background-repeat: no-repeat; /* Non ripete l'immagine */
+//   width: 50%; /* Occupa tutta la larghezza */
+//   height: 500px; /* Imposta un'altezza specifica (esempio: 500px) */
+//   padding: 100px; /* Padding interno */
+//   margin: 20px 0 100px 0; /* Margini superiori e inferiori */
+//   position: relative; /* Posizionamento relativo per il contenuto sovrapposto */
+//   color: white; /* Colore del testo se applicabile */
+//   text-align: center; /* Centra il testo */
+// }
 @media screen and (max-width: 800px) {
   .slogan-fixed {
     margin-top: 75px;
