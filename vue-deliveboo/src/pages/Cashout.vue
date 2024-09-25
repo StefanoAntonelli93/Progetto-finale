@@ -142,6 +142,21 @@ export default {
               placeholder="Aggiungi eventuali richieste o note per la consegna"
             ></textarea>
           </div>
+
+          <!-- indirizzo email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Indirizzo Email</label>
+            <input
+              id="email"
+              type="email"
+              class="form-control @error('email') non è valida @enderror"
+              name="email"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <!-- riepilogo ordine -->
           <div class="braintree content braintree-color rounded p-3">
             <div class="content p-3 bg-white mb-4">
               <ul class="list-unstyled">
