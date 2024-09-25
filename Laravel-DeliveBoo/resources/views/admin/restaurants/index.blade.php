@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             {{-- message creazione nuovo ristorante --}}
             @if (session('message'))
-                <div class="alert alert-success">
+                <div class="alert alert-success mt-5">
                     {{ session('message') }}
                 </div>
             @endif
@@ -129,42 +129,45 @@
             @endif
 
             {{-- tabella ordini ristorante --}}
-            <div class="container">
-                <h2 class="fw-semibold mb-3">Tabella Ordini {{ $restaurant->restaurant_name }}</h2>
-                @if ($restaurant->orders->isEmpty())
-                    <h2>Nessun ordine per questo ristorante.</h2>
-                @else
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nome Cliente</th>
-                                <th>Indirizzo Consegna</th>
-                                <th>Data Ordine</th>
-                                <th>Piatti Ordinati</th>
-                                <th>Totale</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($restaurant->orders as $order)
+            @if (!$restaurant || !$restaurant->restaurant_name)
+            @else
+                <div class="container">
+                    <h2 class="fw-semibold mb-3">Tabella Ordini {{ $restaurant->restaurant_name }}</h2>
+                    @if ($restaurant->orders->isEmpty())
+                        <h2>Nessun ordine per questo ristorante.</h2>
+                    @else
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td>{{ $order->customer_name }}</td>
-                                    <td>{{ $order->delivery_address }}</td>
-                                    <td>{{ $order->order_date }}</td>
-                                    <td>
-                                        <ul>
-                                            @foreach ($order->plates as $plate)
-                                                <li>{{ $plate->name }} - Quantità: {{ $plate->pivot->quantity }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>{{ $order->price }} €</td>
-
+                                    <th>Nome Cliente</th>
+                                    <th>Indirizzo Consegna</th>
+                                    <th>Data Ordine</th>
+                                    <th>Piatti Ordinati</th>
+                                    <th>Totale</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @endif
-            </div>
+                            </thead>
+                            <tbody>
+                                @foreach ($restaurant->orders as $order)
+                                    <tr>
+                                        <td>{{ $order->customer_name }}</td>
+                                        <td>{{ $order->delivery_address }}</td>
+                                        <td>{{ $order->order_date }}</td>
+                                        <td>
+                                            <ul>
+                                                @foreach ($order->plates as $plate)
+                                                    <li>{{ $plate->name }} - Quantità: {{ $plate->pivot->quantity }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>{{ $order->price }} €</td>
+
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+                </div>
+            @endif
 
         </div>
     </div>

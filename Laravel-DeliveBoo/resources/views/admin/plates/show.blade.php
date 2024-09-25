@@ -42,9 +42,7 @@
                     <hr class="orange-border my-2">
                     <div class="d-flex justify-content-between">
                         <h3 class="me-3">Descrizione:</h3>
-                        <h3>{{ $plate->description }} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, quod,
-                            vero ex, quam rerum aliquam porro nisi eos perspiciatis fugit quis facere repellat consectetur?
-                            Architecto illo molestias perspiciatis et nemo.</h3>
+                        <h3>{{ $plate->description }}</h3>
                     </div>
                     <hr class="orange-border my-2">
                     <div class="d-flex justify-content-between">
