@@ -94,9 +94,11 @@
                                 </div>
                                 <hr class="orange-border my-2">
                                 <div>
-                                    @foreach ($restaurant->plates as $plate)
-                                        @if ($plate->available)
-                                            <div class="d-flex align-items-center justify-content-between lista-piatti ">
+                                    @if ($restaurant->plates->isNotEmpty())
+                                        {{-- Verifica se ci sono piatti disponibili --}}
+                                        @foreach ($restaurant->plates->take(3) as $plate)
+                                            {{-- Mostra al massimo 3 piatti --}}
+                                            <div class="d-flex align-items-center justify-content-between lista-piatti">
                                                 <div class="d-flex align-items-center">
                                                     @if ($plate->img)
                                                         <img width="50px" height="50px" class="me-2"
@@ -109,9 +111,10 @@
                                                     <h3>Prezzo: {{ $plate->price }}€</h3>
                                                 </div>
                                             </div>
-                                            <hr class="orange-border my-2">
-                                        @endif
-                                    @endforeach
+                                        @endforeach
+                                        <hr class="orange-border my-2">
+                                    @endif
+
                                 </div>
                                 <button
                                     class="btn deliveboo-orange-background  button-shadow gray-hover border-0 w-100 mt-2"><a
