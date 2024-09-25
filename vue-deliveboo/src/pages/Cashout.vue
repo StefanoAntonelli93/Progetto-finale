@@ -90,7 +90,7 @@ export default {
   <button class="ms-3 mb-3 text-white btn btn-back" @click="$router.go(-1)">
     Torna indietro
   </button>
-  <div class="container-sm border p-5">
+  <div class="container-sm border-orange rounded p-5">
     <div class="row">
       <!-- Form del cliente -->
       <div class="col-12">
@@ -140,7 +140,7 @@ export default {
               placeholder="Aggiungi eventuali richieste o note per la consegna"
             ></textarea>
           </div>
-          <div class="braintree content bg-light p-3">
+          <div class="braintree content braintree-color rounded p-3">
             <div class="content p-3 bg-white mb-4">
               <ul class="list-unstyled">
                 <li v-for="item in cart" :key="item.id">
@@ -184,5 +184,11 @@ export default {
 }
 .btn-back:hover {
   background-color: rgb(168, 120, 64);
+}
+.border-orange {
+  border: 2px solid#ff9553b9;
+}
+.braintree-color {
+  background-color: #ff9653;
 }
 </style>

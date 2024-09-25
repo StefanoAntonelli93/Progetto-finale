@@ -148,7 +148,7 @@ export default {
           <div
             class="col-lg-6 col-sm-12 d-flex flex-column h-100 restaurant-card-content"
           >
-            <h1 class="m-0">{{ restaurant.restaurant_name }}</h1>
+            <h1 class="m-0 mt-2">{{ restaurant.restaurant_name }}</h1>
             <hr class="orange-border my-2" />
             <div class="d-flex justify-content-between flex-wrap">
               <h4 class="me-2">Indirizzo:</h4>
