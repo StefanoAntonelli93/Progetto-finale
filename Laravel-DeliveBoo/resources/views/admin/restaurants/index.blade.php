@@ -115,7 +115,7 @@
                                             <hr class="orange-border my-2">
                                         @endforeach
                                     @endif
-
+                                    <div class="fw-bold fs-2 text-center">...</div>
                                 </div>
                                 <a href="{{ route('admin.plates.index', $restaurant) }}"> <button
                                         class="btn deliveboo-orange-background  button-shadow gray-hover border-0 w-100 mt-2 text-white">Visualizza

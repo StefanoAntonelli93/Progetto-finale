@@ -38,8 +38,14 @@
         </div>
         <hr class="orange-border my-2">
         <div class="d-flex justify-content-between flex-wrap">
-            <h3 class="me-2">Descrizione:</h3>
-            <h3 class="text-end">{{ $restaurant->description }}</h3>
+            <div class="col-4">
+                <h3 class="me-2">Descrizione:</h3>
+            </div>
+            <div class="col-8">
+                <p class="text-end">{{ $restaurant->description }}</p>
+            </div>
+
+
         </div>
         <hr class="orange-border my-2">
         <div class="d-flex justify-content-between">
